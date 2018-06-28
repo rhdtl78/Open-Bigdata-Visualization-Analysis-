@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var fs = require('fs');
+const storage = require('@google-cloud/storage')();
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -20,34 +21,11 @@ admin.initializeApp({
   databaseURL: "https://obva1234.firebaseio.com"
 });
 
-storage = admin.storage();
-var remoteFile = storage.bucket('/csv').file('iris.csv');
-var stream = remoteFile.createReadStream();
+// storage = admin.storage();
+var remoteFile = storage.bucket('csv').file('iris.csv');
 var localFilename="./csv/iris.csv";
+remoteFile.download({destination : localFilename});
 
-console.log(remoteFile);
-
-remoteFile.createReadStream()
-  .on('error', function(err) {})
-  .on('response', function(response) {
-    // Server connected and responded with the specified status and headers.
-   })
-  .on('end', function() {
-    // The file is fully downloaded.
-    console.log("down done");
-  })
-  .pipe(fs.createWriteStream(localFilename)).on("end", function(){
-    var localStream = fs.createReadStream(localFilename);
-    var csvStream = fastCSV()
-        .on("data", function(data){
-             console.log(data);
-        })
-        .on("end", function(){
-             console.log("done");
-        });
-
-    localStream.pipe(csvStream);
-  });
 
 
 
