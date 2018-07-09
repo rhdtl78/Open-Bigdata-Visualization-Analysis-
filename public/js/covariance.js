@@ -18,7 +18,7 @@ function covariance() {
 }
 function showCovariance(data, variable) {
   $('#analysis').empty();
-  var table = $('<table width="100%" class="table table-striped table-bordered table-hover">').attr('id', 'covTable');
+  var table = $('<table width="100%" class="table table-bordered table-hover table-striped">').attr('id', 'covTable');
 
   table.append($('<th>').addClass('covValue').text(" "));
   for (i = 0; i < variable.length; i++) {

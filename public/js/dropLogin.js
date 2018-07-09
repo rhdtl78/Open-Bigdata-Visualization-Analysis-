@@ -15,10 +15,25 @@ function dropLogin(std){
         // $('.fa-sign-out').hide();
     }
 }
-$('#signOutLi').hide();
+if(loginCheck()){
+    $('#signIn').hide();
+    $('#signUp').hide();
+    // $('.fa-user').hide();
+    // $('.fa-gear').hide();
+    $('#signOutLi').show();
+    // $('.fa-sign-out').show();
+    
+}else{
+    $('#signIn').show();
+    $('#signUp').show();
+    // $('.fa-user').show();
+    // $('.fa-gear').show();
+    $('#signOutLi').hide();
+}
+
 $('.modal').on('hidden.bs.modal', function (e) {
 
-  $(this).find('input').val('')
+  $(this).find('#signInPassword').val('')
 });
 $('#exampleModalCenter').on('shown.bs.modal', function (e) {
     if(loginCheck()){
@@ -29,6 +44,7 @@ $('#exampleModalCenter').on('shown.bs.modal', function (e) {
     }
 });
 
+
 function loginCheck(){
     try{
     var uid = firebase.auth().currentUser.uid;
@@ -37,5 +53,31 @@ function loginCheck(){
         //alert("Please login first")
         //$('#close-modal').trigger('click');
         return false;
+    }
+}
+
+function bodyLogin()
+  {
+      console.log("body")
+    if (self.screenTop > 9000) {
+        $('#signOut').trigger('click');
+    } else {
+        if(document.readyState == "complete" ||document.readyState == "loading") {
+            if(loginCheck()){
+                $('#signIn').hide();
+                $('#signUp').hide();
+                // $('.fa-user').hide();
+                // $('.fa-gear').hide();
+                $('#signOutLi').show();
+                // $('.fa-sign-out').show();
+                
+            }else{
+                $('#signIn').show();
+                $('#signUp').show();
+                // $('.fa-user').show();
+                // $('.fa-gear').show();
+                $('#signOutLi').hide();
+            }
+        }  
     }
 }

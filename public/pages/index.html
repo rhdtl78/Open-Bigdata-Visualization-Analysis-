@@ -39,7 +39,7 @@
  
 </head>
 
-<body>
+<body onunload="bodyLogin()">
     <div id="wrapper">
 
         <!-- Navigation -->
@@ -55,198 +55,9 @@
             </div>
             <!-- /.navbar-header -->
 
-            <ul class="nav navbar-top-links navbar-right">
-                <!-- <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-messages">
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <strong>John Smith</strong
-                                    <span class="pull-right text-muted">
-                                        <em>Yesterday</em>
-                                    </span>
-                                </div>
-                                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <strong>John Smith</strong>
-                                    <span class="pull-right text-muted">
-                                        <em>Yesterday</em>
-                                    </span>
-                                </div>
-                                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <strong>John Smith</strong>
-                                    <span class="pull-right text-muted">
-                                        <em>Yesterday</em>
-                                    </span>
-                                </div>
-                                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a class="text-center" href="#">
-                                <strong>Read All Messages</strong>
-                                <i class="fa fa-angle-right"></i>
-                            </a>
-                        </li>
-                    </ul>
-                  
-                </li>
-                 
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-tasks fa-fw"></i> <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-tasks">
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <p>
-                                        <strong>Task 1</strong>
-                                        <span class="pull-right text-muted">40% Complete</span>
-                                    </p>
-                                    <div class="progress progress-striped active">
-                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-                                            <span class="sr-only">40% Complete (success)</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <p>
-                                        <strong>Task 2</strong>
-                                        <span class="pull-right text-muted">20% Complete</span>
-                                    </p>
-                                    <div class="progress progress-striped active">
-                                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
-                                            <span class="sr-only">20% Complete</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <p>
-                                        <strong>Task 3</strong>
-                                        <span class="pull-right text-muted">60% Complete</span>
-                                    </p>
-                                    <div class="progress progress-striped active">
-                                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                                            <span class="sr-only">60% Complete (warning)</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <p>
-                                        <strong>Task 4</strong>
-                                        <span class="pull-right text-muted">80% Complete</span>
-                                    </p>
-                                    <div class="progress progress-striped active">
-                                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-                                            <span class="sr-only">80% Complete (danger)</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a class="text-center" href="#">
-                                <strong>See All Tasks</strong>
-                                <i class="fa fa-angle-right"></i>
-                            </a>
-                        </li>
-                    </ul>
-                    
-                </li>
-                
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-alerts">
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <i class="fa fa-comment fa-fw"></i> New Comment
-                                    <span class="pull-right text-muted small">4 minutes ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <i class="fa fa-twitter fa-fw"></i> 3 New Followers
-                                    <span class="pull-right text-muted small">12 minutes ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <i class="fa fa-envelope fa-fw"></i> Message Sent
-                                    <span class="pull-right text-muted small">4 minutes ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <i class="fa fa-tasks fa-fw"></i> New Task
-                                    <span class="pull-right text-muted small">4 minutes ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <i class="fa fa-upload fa-fw"></i> Server Rebooted
-                                    <span class="pull-right text-muted small">4 minutes ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a class="text-center" href="#">
-                                <strong>See All Alerts</strong>
-                                <i class="fa fa-angle-right"></i>
-                            </a>
-                        </li>
-                    </ul>
- 
-                </li> -->
-                
-                <li class="dropdown">
+            <ul class="nav navbar-top-links navbar-right" >
+                                
+                <li class="dropdown" style="float: right">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
@@ -268,29 +79,17 @@
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-                        <!-- <li class="sidebar-search">
-                            <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Search...">
-                                <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
-                            </div>
-                            <!-- /input-group 
-                        </li> -->
+                       
                         <li class="sidebar-nav">
                            <!-- Button trigger modal -->
-                            <a href = "#"  data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-bar-chart-o fa-fw" ></i>
+                            <a href = "#"  data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-file fa-fw" ></i>
                                 Upload CSV File</a>
                             <!-- </button> -->
                      
                         </li>
-                        <!-- <li>
-                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-                        </li> -->
+
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw" ></i> Charts<span class="fa arrow" ></span></a>
+                            <a href="#"><i class="fa fa-area-chart fa-fw" ></i> Charts<span class="fa arrow" ></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="#" onclick="graphVariable('scatter')" data-toggle="modal" data-target="#graphModal">Line graph</a>
@@ -311,7 +110,7 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-table fa-fw"></i>Process <span class="fa arrow"></span> </a>
+                            <a href="#"><i class="fa fa-pencil fa-fw"></i> Process <span class="fa arrow"></span> </a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="#" onclick="outlierBox()" data-toggle="modal" data-target="#outlierModal"> Outlier process</a>
@@ -325,7 +124,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-edit fa-fw"></i> Analysis <span class="fa arrow"></span> </a>
+                            <a href="#"><i class="fa fa-search fa-fw"></i> Analysis <span class="fa arrow"></span> </a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="#" onclick="correlation()"> Correlation</a>
@@ -335,32 +134,9 @@
                                 </li>
                             </ul>
                         </li>
-                        <!-- <li>
-                            <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="panels-wells.html">Panels and Wells</a>
-                                </li>
-                                <li>
-                                    <a href="buttons.html">Buttons</a>
-                                </li>
-                                <li>
-                                    <a href="notifications.html">Notifications</a>
-                                </li>
-                                <li>
-                                    <a href="typography.html">Typography</a>
-                                </li>
-                                <li>
-                                    <a href="icons.html"> Icons</a>
-                                </li>
-                                <li>
-                                    <a href="grid.html">Grid</a>
-                                </li>
-                            </ul>
-                           /.nav-second-level 
-                        </li> -->
+  
                         <li>
-                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> Database <span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-database fa-fw"></i> Database <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a id="save-database" data-toggle="modal" data-target="#saveDBModal"> Save in database</a>
@@ -368,38 +144,11 @@
                                 <li>
                                     <a id="load-database" data-toggle="modal" data-target="#loadDBModal"> Load from database</a>
                                 </li>
-                                <!-- <li>
-                                    <a href="#">Third Level <span class="fa arrow"></span></a>
-                                    <ul class="nav nav-third-level">
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                    </ul>
-                                    <!-- /.nav-third-level
-                                </li> -->
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-files-o fa-fw"></i> Help </a>
-                            <!-- <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="blank.html">Blank Page</a>
-                                </li>
-                                <li>
-                                    <a href="login.html">Login Page</a>
-                                </li>
-                            </ul> -->
-                            <!-- /.nav-second-level -->
+                            <a href="#"><i class="fa fa-question-circle fa-fw"></i> Help </a>
                         </li>
                     </ul>
                 </div>
@@ -410,9 +159,8 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">OVBA</h1>
+                    <h1 class="page-header">OBVA - Open Bid-Data Visualization & Analysis</h1>
                 </div>
-                <!-- /.col-lg-12 -->
             </div>
             
             <!-- /.row -->
@@ -424,10 +172,10 @@
                     <!-- /.panel -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i> data summary
+                            <i class="fa fa-table fa-fw"></i> data summary
                         </div>
                         <!-- /.panel-heading -->
-                        <div class="panel-body">
+                        <div class="panel-body table-responsive">
                             
                                 
                                     
@@ -462,10 +210,10 @@
                     </div>
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i> graph
+                            <i class="fa fa-area-chart fa-fw"></i> graph
                         </div>
                         <!-- /.panel-heading -->
-                        <div class="panel-body">
+                        <div class="panel-body table-responsive">
                             <div id="plotlyGraph">
                         
                             </div>
@@ -475,12 +223,12 @@
 
                     <div class="panel panel-default">
                             <div class="panel-heading">
-                                <i class="fa fa-bar-chart-o fa-fw"></i> analysis
+                                <i class="fa fa-search fa-fw"></i> analysis
                             </div>
                            
                             
                             <!-- /.panel-heading -->
-                            <div class="panel-body" id="analysis">
+                            <div class="panel-body table-responsive" id="analysis">
                                 
                                 <!-- /.row -->
                             </div>
@@ -495,7 +243,7 @@
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
                   <h4 class="modal-title">Graph</h4>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body table-responsive">
                     <table width="100%" class="table table-bordered table-hover table-striped"   id="graphTable" >
                         <thead>
                             <tr>
@@ -523,8 +271,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                <button type="button" class="btn btn-success" onclick="btnGraphApply()" >Apply</button>
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" onclick="btnGraphApply()" >Apply</button>
                 </div>
               </div>
           
@@ -540,7 +288,7 @@
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
                   <h4 class="modal-title">Outlier process</h4>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body table-responsive">
                     <div id="outlierBox">
 
                     </div>
@@ -558,8 +306,9 @@
                     </table>
                 </div>
                 <div class="modal-footer">
-                <button type="button" class="btn btn-success" onclick="btnOutlierApply()" >Apply</button>
+                
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" onclick="btnOutlierApply()" >Apply</button>
                 </div>
               </div>
           
@@ -586,8 +335,9 @@
             
                 </div>
                 <div class="modal-footer">
-                <button type="button" class="btn btn-success" onclick="btnStratificationApply()" >Apply</button>
+               
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" onclick="btnStratificationApply()" >Apply</button>
                 </div>
               </div>
           
@@ -604,7 +354,7 @@
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
                   <h4 class="modal-title">Not available process</h4>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body table-responsive">
                     <table width="100%" class="table table-bordered table-hover table-striped"   id="NATable" >
                         <thead>
                             <tr>
@@ -631,8 +381,9 @@
 
                 </div>
                 <div class="modal-footer">
-                <button type="button" class="btn btn-success" onclick="btnNotAvailableApply()" >Apply</button>
+                
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" onclick="btnNotAvailableApply()" >Apply</button>
                 </div>
               </div>
           
