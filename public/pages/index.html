@@ -256,7 +256,7 @@
                         <li><a href="#" data-toggle="modal" data-target="#signUpModal" ><i class="fa fa-gear fa-fw"></i> Sign up</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="#" ><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a  id='signOut' ><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
                    
@@ -363,10 +363,10 @@
                             <a href="#"><i class="fa fa-sitemap fa-fw"></i> Database <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#"> Save in database</a>
+                                    <a id="save-database" data-toggle="modal" data-target="#saveDBModal"> Save in database</a>
                                 </li>
                                 <li>
-                                    <a href="#"> Load from database</a>
+                                    <a id="load-database" data-toggle="modal" data-target="#loadDBModal"> Load from database</a>
                                 </li>
                                 <!-- <li>
                                     <a href="#">Third Level <span class="fa arrow"></span></a>
@@ -653,20 +653,20 @@
                 <input class="form-control" id="inputName" type="text" aria-describedby="nameHelp" placeholder="Enter first name">
                 <label for="exampleInputLastName">Last name</label>
                 <input class="form-control" id="inputLastName" type="text" aria-describedby="nameHelp" placeholder="Enter last name">
-                <label for="exampleInputEmail1">Email address</label>
-                <input class="form-control" id="inputEmail1" type="email" aria-describedby="emailHelp" placeholder="Enter email">    
-                <label for="exampleInputPassword1">Password</label>
-                <input class="form-control" id="inputPassword1" type="password" placeholder="Password">
+                <label for="exampleInputEmail">Email address</label>
+                <input class="form-control" id="inputEmail" type="email" aria-describedby="emailHelp" placeholder="Enter email">
+                <label for="exampleInputPassword">Password</label>
+                <input class="form-control" id="inputPassword" type="password" placeholder="Password">
                 <label for="exampleConfirmPassword">Confirm password</label>
                 <input class="form-control" id="confirmPassword" type="password" placeholder="Confirm password">
                 </div>
                 <div class="modal-footer">
-                    <a class="btn btn-primary btn-block" href="#">Sign up</a>
+                    <a class="btn btn-primary btn-block" href="#" id="submit-signUp">Sign up</a>
                 </div>
               </div>
-          
+
             </div>
-          </div>
+</div>
 
           <div id="signInModal" class="modal fade" role="dialog">
             <div class="modal-dialog">
@@ -678,18 +678,62 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" placeholder="Password" name="password" type="password" value="">
-                    </div>
+                                            <input class="form-control" placeholder="E-mail" name="email" type="email" id="signInEmail" autofocus>
+                                          </div>
+                                          <div class="form-group">
+                                            <input class="form-control" placeholder="Password" name="password" type="password" value="" id="signInPassword">
+                                          </div>
+                        
+                                          <!-- Change this to a button or input when using this as a form -->
+                        
+                         
+                                           <!-- Change this to a button or input when using this as a form -->
+                                        </div>
+                                        <div class="modal-footer">
+                                          <a href="#" class="btn btn-lg btn-success btn-block" id="submit-signIn">Sign in</a>
+                                        </div>
+                                      </div>
+                         
+                                    </div>
+                                  </div>
+                        
+                                  <div id="saveDBModal" class="modal fade" role="dialog">
+                                    <div class="modal-dialog">
+                                      <!-- Modal content-->
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                          <h4 class="modal-title">Save Current Work</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                          <div class="form-group">
+                                            <input class="form-control" placeholder="Work Name" name="work-name" type="text" id="work-name" autofocus>
+                                          </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                          <a href="#" class="btn btn-lg btn-success btn-block" id="submit-save">Save</a>
+                                        </div>
+                                      </div>
+                        
+                                    </div>
+                                  </div>
+                        
+                                  <div id="loadDBModal" class="modal fade" role="dialog">
+                                    <div class="modal-dialog">
+                                      <!-- Modal content-->
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                          <h4 class="modal-title">Load Work</h4>
+                                        </div>
+                                        <div class="modal-body" id='load-body'>
                     
                     <!-- Change this to a button or input when using this as a form -->
                     
                    
                 </div>
                 <div class="modal-footer">
-                    <a href="#" class="btn btn-lg btn-success btn-block">Sign in</a>
+                    <a href="#" class="btn btn-lg btn-success btn-block" id="submit-load">Load</a>
                 </div>
               </div>
           
@@ -760,6 +804,8 @@
     <script type="text/javascript" src="../js/covariance.js"></script>
     <script type="text/javascript" src="../js/stratificationModal.js"></script>
     <script type="text/javascript" src="../js/NAModal.js"></script>
+    <script type="text/javascript" src="../js/auth.js"></script>
+    <script type="text/javascript" src="../js/database.js"></script>
     
     <!-- Custom Action Javascript -->
     <script type="text/javascript" src="../js/upload.js"></script>
