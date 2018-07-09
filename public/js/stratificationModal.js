@@ -21,9 +21,11 @@ function strScatter(){
     $('#summaryTable tr').each(function(){
         variable.push($(this).find("td:first").text())
     })      
+    var currentUser = firebase.auth().currentUser;
+    var uid = currentUser.uid;
     
     $.ajax({
-        data : {"variable": variable[1]},
+        data : {"variable": variable[1],"uid":uid},
         url : "/stratification/modal",
         success : function (res) {
           data = res.data;
@@ -39,8 +41,11 @@ function strScatter(){
 
 function itemChange(){
     var selectItem = $("#strSelect").val();
+    var currentUser = firebase.auth().currentUser;
+    var uid = currentUser.uid;
+    
     $.ajax({
-        data : {"variable": selectItem},
+        data : {"variable": selectItem,"uid":uid},
         url : "/stratification/modal",
         success : function (res) {
           data = res.data;
@@ -57,9 +62,12 @@ function itemChange(){
 
 function btnStratificationApply(){
     var variable =  $("#strSelect").val()
+    var currentUser = firebase.auth().currentUser;
+    var uid = currentUser.uid;
+    
     $('#stratificationModal').modal('hide');
     $.ajax({
-        data : {"yRange": yRange,"variable":variable},
+        data : {"yRange": yRange,"variable":variable,"uid":uid},
         url : "/stratification",
         success : function (res) {
           data = res.data;

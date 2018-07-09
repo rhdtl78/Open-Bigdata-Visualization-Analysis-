@@ -1,5 +1,9 @@
 function covariance() {
+  var currentUser = firebase.auth().currentUser;
+  var uid = currentUser.uid;
+
   $.ajax({
+    data:{"uid":uid},
     url: "/covariance",
     success: function (res) {
       data = res.data;

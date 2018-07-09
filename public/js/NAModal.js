@@ -52,8 +52,11 @@ function btnNotAvailableApply() {
 
     $('#notAvailableModal').modal('hide');
 
+    var currentUser = firebase.auth().currentUser;
+    var uid = currentUser.uid;
+    
     $.ajax({
-        data: { "variable": variable, "process": process },
+        data: { "variable": variable, "process": process,"uid":uid },
         url: "/notAvailable",
         success: function (res) {
             data = res.data;

@@ -37,9 +37,11 @@ function btnGraphApply() {
     });
 
     $('#graphModal').modal('hide');
+    var currentUser = firebase.auth().currentUser;
+    var uid = currentUser.uid;
 
     $.ajax({
-        data: { "xVar": xVar, "yVar": yVar, "type": type },
+        data: { "xVar": xVar, "yVar": yVar, "type": type,"uid":uid },
         url: "/graph",
         success: function (res) {
             Xdata = res.Xdata;

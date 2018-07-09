@@ -1,5 +1,9 @@
 function correlation() {
+  var currentUser = firebase.auth().currentUser;
+  var uid = currentUser.uid;
+
   $.ajax({
+    data:{"uid":uid},
     url: "/correlation",
     success: function (res) {
       data = res.data;

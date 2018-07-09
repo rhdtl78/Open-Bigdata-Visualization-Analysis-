@@ -6,8 +6,12 @@ function outlierVariable(variable) {
   });
 }
 
+
 function outlierBox() {
+  var currentUser = firebase.auth().currentUser;
+  var uid = currentUser.uid;
   $.ajax({
+    data:{"uid":uid},
     url: "/outlier/modal",
     success: function (res) {
       data = res.data;
@@ -33,8 +37,11 @@ function btnOutlierApply() {
   
   $('#outlierModal').modal('hide');
 
+  var currentUser = firebase.auth().currentUser;
+  var uid = currentUser.uid;
+  
   $.ajax({
-    data: { "minArray": minArray, "maxArray": maxArray },
+    data: { "minArray": minArray, "maxArray": maxArray,"uid":uid },
     url: "/outlier",
     success: function (res) {
       data = res.data;
