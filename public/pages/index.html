@@ -251,12 +251,12 @@
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#" data-toggle="modal" data-target="#signInModal" ><i class="fa fa-user fa-fw"></i> Sign in</a>
+                        <li id="signIn"><a href="#" data-toggle="modal" data-target="#signInModal" ><i class="fa fa-user fa-fw"></i> Sign in</a>
                         </li>
-                        <li><a href="#" data-toggle="modal" data-target="#signUpModal" ><i class="fa fa-gear fa-fw"></i> Sign up</a>
+                        <li id="signUp"><a href="#" data-toggle="modal" data-target="#signUpModal" ><i class="fa fa-gear fa-fw"></i> Sign up</a>
                         </li>
-                        <li class="divider"></li>
-                        <li><a  id='signOut' ><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <!-- <li class="divider"></li> -->
+                        <li id="signOutLi"><a  id='signOut'><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
                    
@@ -806,6 +806,7 @@
     <script type="text/javascript" src="../js/NAModal.js"></script>
     <script type="text/javascript" src="../js/auth.js"></script>
     <script type="text/javascript" src="../js/database.js"></script>
+    <script type="text/javascript" src="../js/dropLogin.js"></script>
     
     <!-- Custom Action Javascript -->
     <script type="text/javascript" src="../js/upload.js"></script>

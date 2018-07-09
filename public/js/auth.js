@@ -42,11 +42,13 @@ firebase.auth().onAuthStateChanged(function(user) {
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then(function() {
         var currentUser = firebase.auth().currentUser;
-        alert(currentUser.displayName + "님 환영합니다!!");
+        alert("Welcome" + currentUser.displayName);
         $(".close").trigger('click');
+        dropLogin(true);
       })
       .catch(function(error) {
         console.log(error.code, error.message);
+        alert("Please check your email and password")
       });
   });
   
@@ -61,7 +63,7 @@ firebase.auth().onAuthStateChanged(function(user) {
   
   
     if ($password.val() != $confPasswd.val()) {
-      alert("비밀번호를 다시 확인해 주십시오. 비밀번호 확인과 비밀번호는 같아야 합니다.");
+      alert("Please check your password and confirm password");
     } else {
       firebase.auth().createUserWithEmailAndPassword($email.val(), $password.val())
         .then(function() {
@@ -69,7 +71,7 @@ firebase.auth().onAuthStateChanged(function(user) {
           currentUser.updateProfile({
             displayName: $lastName.val() + " " + $firstName.val()
           }).then(function() {
-            alert(currentUser.displayName + "님 환영합니다!!");
+            alert("Sign up is complete");
             $(".close").trigger('click');
           });
         })
@@ -77,6 +79,7 @@ firebase.auth().onAuthStateChanged(function(user) {
           var errorCode = error.code;
           var errorMessage = error.message;
           console.log(errorCode, errorMessage);
+         
         });
   
     }
@@ -95,7 +98,9 @@ firebase.auth().onAuthStateChanged(function(user) {
           uid: uid
         },
         success: function(res) {
-          console.log(res);
+          alert("Good Bye!")
+          dropLogin(false)
+          //console.log(res);
         },
         error: function(res) {
           console.log(res);

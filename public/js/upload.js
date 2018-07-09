@@ -2,6 +2,7 @@ var fileInput = document.getElementById("upload-csv");
 var submit = document.getElementById('submit-csv');
 
 submit.addEventListener("click", function() {
+  try{
   var file = fileInput.files[0];
   var formData = new FormData();
   var uid = firebase.auth().currentUser.uid;
@@ -22,4 +23,7 @@ submit.addEventListener("click", function() {
       console.log(res);
     }
   });
+}catch(error){
+  $('#close-modal').trigger('click');
+}
 });
