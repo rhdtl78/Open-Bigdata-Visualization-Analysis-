@@ -1,18 +1,23 @@
 var fileInput = document.getElementById("upload-csv");
-fileInput.addEventListener("change", function () {
-  var file = this.files[0];
-  var storage = firebase.storage();
-  var storageRef = storage.ref().child('/CSV/' + file.name);
-  storageRef.put(file).then(function(snapshot) {
-    $.ajax({
-      data : {"name" : file.name},
-      url : "/parse/csv",
-      success : function (res) {
-        console.log(res);
-      },
-      error : function (res) {
-        console.log(res);
-      }
-    });
-  })
+var submit = document.getElementById('submit-csv');
+
+submit.addEventListener("click", function() {
+  var file = fileInput.files[0];
+  var formData = new FormData();
+  formData.append('csvfile', file, file.name);
+  $.ajax({
+    data: formData,
+    url: "/parse/csv",
+    processData: false,
+    contentType: false,
+    type: 'post',
+    success: function(res) {
+      console.log(res);
+      showSummary(res.data);
+      $('#close-modal').trigger('click');
+    },
+    error: function(res) {
+      console.log(res);
+    }
+  });
 });

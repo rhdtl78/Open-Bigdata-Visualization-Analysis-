@@ -3,17 +3,42 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var fs = require('fs');
-const storage = require('@google-cloud/storage')();
+fs = require('fs');
+//const storage = require('@google-cloud/storage')();
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var admin = require('firebase-admin');
 var firebase = require('firebase');
 var parser = require('./routes/parser');
-var fastCSV = require('fast-csv');
+var outlier = require('./routes/outlier');
+var corr = require('./routes/correlation')
+var cov = require('./routes/covariance')
+var graph = require('./routes/graph')
+var stratification = require('./routes/stratification')
+var notAvailable = require('./routes/notAvailable')
+
+plotly = require('plotly')("dongdong9335", "L4BOh9JUAoM30nRrLeIy")
+fastCSV = require('fast-csv');
+pandas = require('pandas-js');
+DataFrame = require('pandas-js').DataFrame
+Series =require('pandas-js').Series
+//DType = require('pandas-js').DType  
+//DType = require('dtype')
+map =require('pandas-js').map
+
+dataframe = new DataFrame();
+
+// DataFrame = require('DataFrame');
+// Series = require('Series')
+immutable = require('immutable');
+// dataframe = require('pandas-js').DataFrame;
+// series = require('pandas-js').Series;
 var serviceAccount = require("./serviceAccount.json");
 var appAccount = require("./firebase-credit.json");
+var bodyParser = require('body-parser')
+
+
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
@@ -21,17 +46,18 @@ admin.initializeApp({
   databaseURL: "https://obva1234.firebaseio.com"
 });
 
-// storage = admin.storage();
-var remoteFile = storage.bucket('csv').file('iris.csv');
-var localFilename="./csv/iris.csv";
-remoteFile.download({destination : localFilename});
-
 
 
 
 
 var app = express();
+app.use(bodyParser.urlencoded({ extended: false }))
+ 
+// parse application/json
+app.use(bodyParser.json())
 
+
+app.set('fastCSV', fastCSV); 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -47,7 +73,29 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/parse', parser);
+app.use('/outlier', outlier);
+app.use('/correlation', corr);
+app.use('/covariance', cov);
+app.use('/graph', graph);
+app.use('/stratification', stratification);
+app.use('/notAvailable', notAvailable);
 
+app.post('/upload',function(req,res){
+  console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++==============")
+  console.log(req)
+  fs.readFile(req.files.uploadFile.path,function(error,data){
+    var filePath ="C:/Users/ICUNIX/Desktop"+req.files.uploadFile.name;
+    fs.writeFile(filePath,data,function(error){
+      if(error){
+        throw err;
+      }
+      else{
+        res.redirect("back");
+      }
+    })
+  })
+
+})
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
