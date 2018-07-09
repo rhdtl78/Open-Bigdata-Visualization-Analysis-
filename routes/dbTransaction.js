@@ -1,14 +1,15 @@
 var express = require('express');
 var router = express.Router();
 var database = require('./transaction.js');
-//const summay = require('../dataProcess/summary.js');
+//var dataSum = require('./dataSummary')
+const summary = require('../dataProcess/summary.js');
 
 router.post("/load", (req, res, next) => {
   const db = new database(req.body.uid);
   var name = req.body.name;
   db.load(name, function(data) {
     res.send({
-      data: summay(data)
+      data: summary(data)
     });
   });
 

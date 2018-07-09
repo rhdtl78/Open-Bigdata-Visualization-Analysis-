@@ -1,4 +1,4 @@
-function graphVariable() {
+function graphVariable(type) {
     $('#graphTable > tbody').empty();
     var variable = new Array();
     var example = new Array();
@@ -9,6 +9,13 @@ function graphVariable() {
     for (i = 1; i < variable.length; i++) {
         $('#graphTable > tbody:last').append('<tr><td>' + variable[i] + '</td><td>' + example[i] + '</td><td><input type="checkbox" name="Xcheck" value=' + variable[i] + ' /></td><td><input type="checkbox" name="Ycheck" value=' + variable[i] + ' /></td>');
     }
+    $("input:radio[name='graphRadio']").each(function () {
+        if (type == this.value) {
+            $(this).attr("checked", true) ;
+        }
+    });
+    
+
 }
 function btnGraphApply() {
     var xVar = new Array();
