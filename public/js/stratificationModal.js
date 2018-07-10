@@ -67,7 +67,7 @@ function btnStratificationApply(){
     
     $('#stratificationModal').modal('hide');
     $.ajax({
-        data : {"yRange": yRange,"variable":variable,"uid":uid},
+        data : {"yRange": yRange,"variable":variable,"uid":uid,"xRange":xRange},
         url : "/stratification",
         success : function (res) {
           data = res.data;

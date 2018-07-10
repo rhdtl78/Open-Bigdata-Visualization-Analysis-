@@ -32,6 +32,7 @@ firebase.auth().onAuthStateChanged(function(user) {
       // Handle Errors here.
       var errorCode = error.code;
       var errorMessage = error.message;
+      //alert(errorMessage)
     });
   
   
@@ -42,13 +43,13 @@ firebase.auth().onAuthStateChanged(function(user) {
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then(function() {
         var currentUser = firebase.auth().currentUser;
-        alert("Welcome" + currentUser.displayName);
+        alert("Welcome " + currentUser.displayName);
         $(".close").trigger('click');
         dropLogin(true);
       })
       .catch(function(error) {
         console.log(error.code, error.message);
-        alert("Please check your email and password")
+        alert(error.message)
       });
   });
   
@@ -79,6 +80,7 @@ firebase.auth().onAuthStateChanged(function(user) {
           var errorCode = error.code;
           var errorMessage = error.message;
           console.log(errorCode, errorMessage);
+          alert(errorMessage)
          
         });
   
@@ -108,5 +110,7 @@ firebase.auth().onAuthStateChanged(function(user) {
       })
     }).catch(function(error) {
       // An error happened.
+      alert(error.message)
+      
     });
   });

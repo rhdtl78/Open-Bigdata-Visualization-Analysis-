@@ -17,6 +17,7 @@ router.get('/modal', function (req, res, next) {
 
 router.get('/', function (req, res, next) {
   var yRange = req.query.yRange;
+  var xRange = req.query.xRange;
   var name = req.query.variable;
   var uid = req.query.uid;
   const db = new database(uid);
@@ -32,6 +33,20 @@ router.get('/', function (req, res, next) {
 
     variable.forEach(function (element, index) {
       if (element == name) {
+        var start = parseInt(xRange[0]);
+        var end = parseInt(xRange[1]);
+
+        var strDf = df.get(element);
+        var strArray = new Array();
+        strDf.forEach(function (current,index) { 
+          if (start<=index && index<=end) {
+             strArray.push(true) 
+            } else { 
+              strArray.push(false) 
+            }; 
+        });
+        df = df.filter(strArray)
+      
         df = df.filter(df.get(variable[index]).gte(yRange[0]));
         df = df.filter(df.get(variable[index]).lte(yRange[1]));
       }

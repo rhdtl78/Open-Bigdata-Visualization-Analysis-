@@ -14,13 +14,11 @@ submit.addEventListener("click", function() {
     processData: false,
     contentType: false,
     type: 'post',
-    success: function(res) {
-      console.log(res);
+    success: function(res) {    
       showSummary(res.data);
       $('#close-modal').trigger('click');
     },
     error: function(res) {
-      console.log(res);
     }
   });
 }catch(error){

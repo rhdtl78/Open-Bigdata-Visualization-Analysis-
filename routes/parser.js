@@ -24,15 +24,13 @@ router.post('/csv', upload.single('csvfile'), function (req, res, next) {
   var csvStream = fastCSV({
     headers: true
   })
-    .on("data", function (data) {
-      //console.log(data);
+    .on("data", function (data) {  
       for (var key in data) {
         if (data.hasOwnProperty(key)) {
           data[key] = (isNaN(data[key])) ? data[key] : Number(data[key]);
         }
       }
       array[i] = data;
-      // console.log(array[i])
       i++;
     })
     .on("end", function () {

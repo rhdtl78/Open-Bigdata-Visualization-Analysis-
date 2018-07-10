@@ -2,38 +2,33 @@ function dropLogin(std){
     if(std){
         $('#signIn').hide();
         $('#signUp').hide();
-        // $('.fa-user').hide();
-        // $('.fa-gear').hide();
         $('#signOutLi').show();
-        // $('.fa-sign-out').show();
     } else {
         $('#signIn').show();
         $('#signUp').show();
-        // $('.fa-user').show();
-        // $('.fa-gear').show();
         $('#signOutLi').hide();
-        // $('.fa-sign-out').hide();
     }
 }
 if(loginCheck()){
     $('#signIn').hide();
     $('#signUp').hide();
-    // $('.fa-user').hide();
-    // $('.fa-gear').hide();
     $('#signOutLi').show();
-    // $('.fa-sign-out').show();
-    
+   
 }else{
     $('#signIn').show();
     $('#signUp').show();
-    // $('.fa-user').show();
-    // $('.fa-gear').show();
     $('#signOutLi').hide();
 }
 
 $('.modal').on('hidden.bs.modal', function (e) {
 
   $(this).find('#signInPassword').val('')
+  $(this).find('#inputName').val('')
+  $(this).find('#inputLastName').val('')
+  $(this).find('#inputEmail').val('')
+  $(this).find('#inputPassword').val('')
+  $(this).find('#confirmPassword').val('')
+
 });
 $('#exampleModalCenter').on('shown.bs.modal', function (e) {
     if(loginCheck()){
