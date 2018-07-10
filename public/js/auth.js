@@ -1,12 +1,14 @@
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
-  
+      $('#signIn').hide();
+      $('#signUp').hide();
+      $('#signOutLi').show();
     } else {
       $('#signInModal').modal('show');
     }
   });
-  
-  
+
+
   firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
     .then(function() {
       // Existing and future Auth states are now persisted in the current
@@ -21,10 +23,10 @@ firebase.auth().onAuthStateChanged(function(user) {
           uid: firebase.auth().currentUser.uid
         },
         success: function(res) {
-          console.log('s');
+          // console.log('s');
         },
         error: function(res) {
-          console.log(res);
+          // console.log(res);
         }
       })
     })
@@ -34,12 +36,12 @@ firebase.auth().onAuthStateChanged(function(user) {
       var errorMessage = error.message;
       //alert(errorMessage)
     });
-  
-  
+
+
   $('#submit-signIn').click(function() {
     var email = $('#signInEmail').val();
     var password = $('#signInPassword').val();
-  
+
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then(function() {
         var currentUser = firebase.auth().currentUser;
@@ -48,12 +50,12 @@ firebase.auth().onAuthStateChanged(function(user) {
         dropLogin(true);
       })
       .catch(function(error) {
-        console.log(error.code, error.message);
+        // console.log(error.code, error.message);
         alert(error.message)
       });
   });
-  
-  
+
+
   $("#submit-signUp").click(function() {
     // validating
     var $firstName = $('#inputName');
@@ -61,8 +63,8 @@ firebase.auth().onAuthStateChanged(function(user) {
     var $email = $('#inputEmail');
     var $password = $('#inputPassword');
     var $confPasswd = $('#confirmPassword');
-  
-  
+
+
     if ($password.val() != $confPasswd.val()) {
       alert("Please check your password and confirm password");
     } else {
@@ -79,18 +81,18 @@ firebase.auth().onAuthStateChanged(function(user) {
         .catch(function(error) {
           var errorCode = error.code;
           var errorMessage = error.message;
-          console.log(errorCode, errorMessage);
+          // console.log(errorCode, errorMessage);
           alert(errorMessage)
-         
+
         });
-  
+
     }
-  
+
   });
-  
+
   $('#signOut').click(function() {
     var uid = firebase.auth().currentUser.uid;
-    console.log(uid);
+    // console.log(uid);
     firebase.auth().signOut().then(function() {
       // Sign-out successful.
       $.ajax({
@@ -102,15 +104,15 @@ firebase.auth().onAuthStateChanged(function(user) {
         success: function(res) {
           alert("Good Bye!")
           dropLogin(false)
-          //console.log(res);
+          // console.log(res);
         },
         error: function(res) {
-          console.log(res);
+          // console.log(res);
         }
       })
     }).catch(function(error) {
       // An error happened.
       alert(error.message)
-      
+
     });
   });

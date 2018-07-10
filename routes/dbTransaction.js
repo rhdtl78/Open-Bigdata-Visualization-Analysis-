@@ -38,6 +38,15 @@ router.post('/list', (req, res, next) => {
   });
 });
 
+router.post('/delete', (req, res, next) => {
+  var uid = req.body.uid;
+  var workName = req.body.name;
+  const db = new database(uid);
+
+  db.delete(workName);
+  res.send('s');
+});
+
 router.post('/sessionOut', (req, res, next) => {
   var uid = req.body.uid;
   const db = new database(uid);

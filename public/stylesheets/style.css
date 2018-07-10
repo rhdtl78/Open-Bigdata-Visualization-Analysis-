@@ -1,14 +1,24 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00B7FF;
+
+
+#divLoadBody {
+  width: 100%;
+  height: 100%;
+  display: none;
 }
 
-.menubar {
-  width: 3em;
-  height: 10em;
-  border: solid black 1px;
+#loadingBar {
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  text-align:center;
+  margin:0 auto;
+  z-index:100000;
+  background-color: rgba(255, 255, 255, 0.5);
+  
 }

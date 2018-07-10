@@ -91,8 +91,8 @@ app.use('/stratification', stratification);
 app.use('/notAvailable', notAvailable);
 
 app.post('/upload',function(req,res){
-  console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++==============")
-  console.log(req)
+  // console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++==============")
+  // console.log(req)
   fs.readFile(req.files.uploadFile.path, function(error, data) {
         var filePath = "C:/Users/ICUNIX/Desktop" + req.files.uploadFile.name;
         fs.writeFile(filePath, data, function(error) {

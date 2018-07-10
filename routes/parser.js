@@ -4,12 +4,12 @@ var multer = require('multer'); // express에 multer모듈 적용 (for 파일업
 
 var dataSum = require('./dataSummary')
 var upload = multer({
-    dest: 'uploads/'
-  })
-  var request = require('request');
-  var database = require('./transaction.js');
-  
-router.post('/csv', upload.single('csvfile'), function (req, res, next) {
+  dest: 'uploads/'
+})
+var request = require('request');
+var database = require('./transaction.js');
+
+router.post('/csv', upload.single('csvfile'), function(req, res, next) {
   var uid = req.query.uid;
   var dest = req.file.destination;
   var filename = req.file.filename;
@@ -20,11 +20,10 @@ router.post('/csv', upload.single('csvfile'), function (req, res, next) {
 
   var array = new Array();
   var i = 0;
-  var i = 0;
   var csvStream = fastCSV({
-    headers: true
-  })
-    .on("data", function (data) {  
+      headers: true
+    })
+    .on("data", function(data) {
       for (var key in data) {
         if (data.hasOwnProperty(key)) {
           data[key] = (isNaN(data[key])) ? data[key] : Number(data[key]);
@@ -33,17 +32,18 @@ router.post('/csv', upload.single('csvfile'), function (req, res, next) {
       array[i] = data;
       i++;
     })
-    .on("end", function () {
+    .on("end", function() {
       const df = new DataFrame(array);
       db.save(array);
-      dataframe = df.copy()
       var data = dataSum.dataSummary(df)
-      res.json({ data: data })
+      res.json({
+        data: data
+      })
     });
 
   stream.pipe(csvStream);
 
-  fs.unlink(fullDir, function (err) {
+  fs.unlink(fullDir, function(err) {
     if (err) throw err;
   });
 

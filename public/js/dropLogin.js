@@ -53,7 +53,7 @@ function loginCheck(){
 
 function bodyLogin()
   {
-      console.log("body")
+      // console.log("body")
     if (self.screenTop > 9000) {
         $('#signOut').trigger('click');
     } else {

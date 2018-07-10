@@ -10,19 +10,19 @@ function graphVariable(type) {
         $('#graphTable > tbody:last').append('<tr><td>' + variable[i] + '</td><td>' + example[i] + '</td><td><input type="radio" name="Xradio" value=' + variable[i] + ' /></td><td><input type="checkbox" name="Ycheck" value=' + variable[i] + ' /></td>');
     }
     $("input:radio[name='graphRadio']").each(function () {
-        //console.log("this.check= "+this.value+" type="+type)
+        // console.log("this.check= "+this.value+" type="+type)
         if (this.checked) {
             $(this).removeAttr("checked") ;
         }
     });
-    
+
     $("input:radio[name='graphRadio']").each(function () {
-        //console.log("this.check= "+this.value+" type="+type)
+        // console.log("this.check= "+this.value+" type="+type)
         if (this.value==type) {
             $(this).attr("checked", true) ;
         }
     });
-  
+
 
 }
 function btnGraphApply() {
@@ -51,18 +51,24 @@ function btnGraphApply() {
     $.ajax({
         data: { "xVar": xVar, "yVar": yVar, "type": type,"uid":uid },
         url: "/graph",
+        beforeSend: function () {
+          loading();
+        },
+        complete: function () {
+          complete()
+        },
         success: function (res) {
             Xdata = res.Xdata;
             Ydata = res.Ydata;
             variable = res.variable;
             type = res.type;
-            console.log(Xdata)
-            console.log(Ydata)
-            console.log(type)
+            // console.log(Xdata)
+            // console.log(Ydata)
+            // console.log(type)
             showplotly(variable, Xdata, Ydata, type);
         },
         error: function (res) {
-            console.log(res);
+            // console.log(res);
         }
     });
 }

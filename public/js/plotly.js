@@ -8,6 +8,7 @@ function showplotly(variable, Xdata, Ydata, type) {
         trace = pie(variable, Xdata, Ydata, type);
     }
 
+    $('#plotlyGraph').empty();
     Plotly.newPlot('plotlyGraph', trace)
 }
 

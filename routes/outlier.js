@@ -43,7 +43,7 @@ router.get('/', function (req, res, next) {
 router.get('/modal', function (req, res, next) {
 
   var uid = req.query.uid;
-  console.log("uid = "+uid)
+  // console.log("uid = "+uid)
   const db = new database(uid);
   db.load('tmp', function (data) {
     df = new DataFrame(data)

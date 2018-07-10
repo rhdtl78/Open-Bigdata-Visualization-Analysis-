@@ -70,7 +70,7 @@ module.exports = class Transaction {
       ref = this.ref.child('tmp');
     }
     ref.once('value', function(snapshot) {
-      console.log(snapshot.val());
+      // console.log(snapshot.val());
       var modified = [];
       var seriesArray = snapshot.val().data;
       seriesArray.forEach(function(value, index) {

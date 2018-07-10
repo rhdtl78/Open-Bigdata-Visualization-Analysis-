@@ -5,13 +5,19 @@ function covariance() {
   $.ajax({
     data:{"uid":uid},
     url: "/covariance",
+    beforeSend: function () {
+      loading();
+    },
+    complete: function () {
+      complete()
+    },
     success: function (res) {
       data = res.data;
       variable = res.variable
       showCovariance(data, variable);
     },
     error: function (res) {
-      console.log(res);
+      // console.log(res);
     }
   });
 

@@ -13,6 +13,12 @@ function outlierBox() {
   $.ajax({
     data:{"uid":uid},
     url: "/outlier/modal",
+    beforeSend: function () {
+      loading();
+    },
+    complete: function () {
+      complete()
+    },
     success: function (res) {
       data = res.data;
       variable = res.variable;
@@ -20,7 +26,7 @@ function outlierBox() {
       showOutlierBox(variable, data);
     },
     error: function (res) {
-      console.log(res);
+      // console.log(res);
     }
   });
 }
@@ -34,21 +40,27 @@ function btnOutlierApply() {
   $('input:text[name="maxValue"]').each(function () {
     maxArray.push(this.value);
   });
-  
+
   $('#outlierModal').modal('hide');
 
   var currentUser = firebase.auth().currentUser;
   var uid = currentUser.uid;
-  
+
   $.ajax({
     data: { "minArray": minArray, "maxArray": maxArray,"uid":uid },
     url: "/outlier",
+    beforeSend: function () {
+      loading();
+    },
+    complete: function () {
+      complete()
+    },
     success: function (res) {
       data = res.data;
       showSummary(data);
     },
     error: function (res) {
-      console.log(res);
+      // console.log(res);
     }
   });
 }

@@ -5,13 +5,19 @@ function correlation() {
   $.ajax({
     data:{"uid":uid},
     url: "/correlation",
+    beforeSend: function () {
+      loading();
+    },
+    complete: function () {
+      complete()
+    },
     success: function (res) {
       data = res.data;
       variable = res.variable
       showCorrelation(data, variable);
     },
     error: function (res) {
-      console.log(res);
+      // console.log(res);
     }
   });
 
