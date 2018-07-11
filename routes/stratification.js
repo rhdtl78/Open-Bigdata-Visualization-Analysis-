@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var dataSum = require('./dataSummary')
-var database = require('./DBConnecter.js');
+var summary = require('../lib/summary.js')
+var database = require('../lib/DBConnecter.js');
 
 router.get('/modal', function (req, res, next) {
   var uid = req.query.uid;
@@ -52,7 +52,7 @@ router.get('/', function (req, res, next) {
       }
     });
     db.save(df.to_json({ orient: 'records' }))
-    var data = dataSum.dataSummary(df);
+    var data = summary(df);
     res.json({ data: data })
   });
 

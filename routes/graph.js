@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var database = require('./DBConnecter.js');
+var database = require('../lib/DBConnecter.js');
 
 router.get('/', function (req, res, next) {
 

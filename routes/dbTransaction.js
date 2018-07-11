@@ -1,15 +1,14 @@
 var express = require('express');
 var router = express.Router();
-var database = require('./DBConnecter.js');
-//var dataSum = require('./dataSummary')
-const summary = require('../dataProcess/summary.js');
+var database = require('../lib/DBConnecter.js');
+const summary = require('../lib/summary.js');
 
 router.post("/load", (req, res, next) => {
   const db = new database(req.body.uid);
   var name = req.body.name;
   db.load(name, function(data) {
     res.send({
-      data: summary(data)
+      data: summary(new DataFrame(data))
     });
   });
 
