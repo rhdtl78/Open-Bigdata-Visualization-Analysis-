@@ -18,13 +18,15 @@ var graph = require('./routes/graph')
 var stratification = require('./routes/stratification')
 var notAvailable = require('./routes/notAvailable')
 var dbTransaction = require('./routes/dbTransaction');
+var manual = require('./routes/manual.js');
+
 
 plotly = require('plotly')("dongdong9335", "L4BOh9JUAoM30nRrLeIy")
 fastCSV = require('fast-csv');
 pandas = require('pandas-js');
 DataFrame = require('pandas-js').DataFrame
 Series =require('pandas-js').Series
-//DType = require('pandas-js').DType  
+//DType = require('pandas-js').DType
 //DType = require('dtype')
 map =require('pandas-js').map
 
@@ -53,7 +55,7 @@ var bodyParser = require('body-parser')
 
 var app = express();
 
- 
+
 // parse application/json
 app.use(bodyParser.urlencoded({
     limit: '50mb',
@@ -65,9 +67,9 @@ app.use(bodyParser.json({
     extended: true,
     parameterLimit: 1000000
 }))
-  
 
-app.set('fastCSV', fastCSV); 
+
+app.set('fastCSV', fastCSV);
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -89,24 +91,9 @@ app.use('/covariance', cov);
 app.use('/graph', graph);
 app.use('/stratification', stratification);
 app.use('/notAvailable', notAvailable);
-
-app.post('/upload',function(req,res){
-  // console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++==============")
-  // console.log(req)
-  fs.readFile(req.files.uploadFile.path, function(error, data) {
-        var filePath = "C:/Users/ICUNIX/Desktop" + req.files.uploadFile.name;
-        fs.writeFile(filePath, data, function(error) {
-          if (error) {
-             throw err;
-      }
-      else{
-        res.redirect("back");
-      }
-    })
-  })
-
-})
 app.use('/db', dbTransaction);
+app.use('/manual', manual);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
