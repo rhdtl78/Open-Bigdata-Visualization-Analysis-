@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var dataSum = require('./dataSummary')
-var database = require('./transaction.js');
+var database = require('./DBConnecter.js');
 
 router.get('/', function(req, res, next) {
 

@@ -7,7 +7,7 @@ var upload = multer({
   dest: 'uploads/'
 })
 var request = require('request');
-var database = require('./transaction.js');
+var database = require('./DBConnecter.js');
 
 router.post('/csv', upload.single('csvfile'), function(req, res, next) {
   var uid = req.query.uid;
