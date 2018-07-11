@@ -14,28 +14,36 @@ $('#filegroup').click(function(e) {
 submit.addEventListener("click", function() {
   try {
     var file = fileInput.files[0];
-    var formData = new FormData();
-    var uid = firebase.auth().currentUser.uid;
-    formData.append('csvfile', file, file.name);
+    var reader = new FileReader();
+    reader.onload = function (event) {
+      var result = event.target.result;
+      var encodedFile = new File([result], file.name);
+      var formData = new FormData();
+      var uid = firebase.auth().currentUser.uid;
+      formData.append('csvfile', encodedFile);
 
-    $.ajax({
-      data: formData,
-      url: "/parse/csv?uid=" + uid,
-      processData: false,
-      contentType: false,
-      type: 'post',
-      beforeSend: function () {
-        loading();
-      },
-      complete: function () {
-        complete()
-      },
-      success: function(res) {
-        showSummary(res.data);
-        $('#close-modal').trigger('click');
-      },
-      error: function(res) {}
-    });
+      $.ajax({
+        data: formData,
+        url: "/parse/csv?uid=" + uid,
+        processData: false,
+        contentType: false,
+        type: 'post',
+        beforeSend: function () {
+          loading();
+        },
+        complete: function () {
+          complete()
+        },
+        success: function(res) {
+          showSummary(res.data);
+          $('#close-modal').trigger('click');
+        },
+        error: function(res) {}
+      });
+    }
+    reader.readAsText(file, 'euc-kr');
+
+
   } catch (error) {
     $('#close-modal').trigger('click');
   }

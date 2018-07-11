@@ -16,7 +16,7 @@ router.post('/csv', upload.single('csvfile'), function(req, res, next) {
   var fullDir = dest + filename; // 전체 경로 계산
 
   var db = new database(uid);
-  var stream = fs.createReadStream(fullDir);
+  var stream = fs.createReadStream(fullDir, {endcoding: 'utf-8'});
 
   var array = new Array();
   var i = 0;
