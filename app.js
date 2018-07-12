@@ -26,32 +26,11 @@ fastCSV = require('fast-csv');
 pandas = require('pandas-js');
 DataFrame = require('pandas-js').DataFrame
 Series =require('pandas-js').Series
-//DType = require('pandas-js').DType
-//DType = require('dtype')
 map =require('pandas-js').map
-
-dataframe = new DataFrame();
-
-// DataFrame = require('DataFrame');
-// Series = require('Series')
 immutable = require('immutable');
-// dataframe = require('pandas-js').DataFrame;
-// series = require('pandas-js').Series;
 var serviceAccount = require("./serviceAccount.json");
 var appAccount = require("./firebase-credit.json");
-var bodyParser = require('body-parser')
-
-
-
-// admin.initializeApp({
-//   credential: admin.credential.cert(serviceAccount),
-//   storageBucket: "obva1234.appspot.com",
-//   databaseURL: "https://obva1234.firebaseio.com"
-// });
-
-
-
-
+var bodyParser = require('body-parser');
 
 var app = express();
 
