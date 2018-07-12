@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var database = require('./transaction.js');
+var database = require('../lib/DBConnecter.js');
 
 router.get('/', function (req, res, next) {
   var uid = req.query.uid;

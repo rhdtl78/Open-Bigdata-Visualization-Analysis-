@@ -2,12 +2,12 @@ var express = require('express');
 var router = express.Router();
 var multer = require('multer'); // express에 multer모듈 적용 (for 파일업로드)
 
-var dataSum = require('./dataSummary')
+var summary = require('../lib/summary.js')
 var upload = multer({
   dest: 'uploads/'
 })
 var request = require('request');
-var database = require('./transaction.js');
+var database = require('../lib/DBConnecter.js');
 
 router.post('/csv', upload.single('csvfile'), function(req, res, next) {
   var uid = req.query.uid;
@@ -35,7 +35,7 @@ router.post('/csv', upload.single('csvfile'), function(req, res, next) {
     .on("end", function() {
       const df = new DataFrame(array);
       db.save(array);
-      var data = dataSum.dataSummary(df)
+      var data = summary(df)
       res.json({
         data: data
       })
