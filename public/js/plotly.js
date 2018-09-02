@@ -1,3 +1,6 @@
+plotlyIndex = 0;
+analIndex = 0;
+
 function showplotly(variable, Xdata, Ydata, type) {
     var trace = new Array()
     if (type == "scatter" || type == "bar" || type == "box") {
@@ -7,11 +10,69 @@ function showplotly(variable, Xdata, Ydata, type) {
     } else if (type == "pie") {
         trace = pie(variable, Xdata, Ydata, type);
     }
-
-    $('#plotlyGraph').empty();
-    Plotly.newPlot('plotlyGraph', trace)
+    if(plotlyIndex==0){
+        $('#graph').empty();  
+    }
+    //$('#plotlyGraph').empty();
+    var name = "plotlyGraph" + plotlyIndex;
+    plotlyIndex++;
+    var btnName = "btn"+name;
+    var btn= $('<input type="button" id='+btnName+' class="btn btn-outline-danger btn-sm" onclick="plotlyClose(this.id)" value="X"/>');
+    $('#graph').append(btn);
+    var div= $('<div id='+name+'/>');
+    $('#graph').append(div);
+    Plotly.newPlot(name, trace)
+    
 }
 
+function show3dplotly(variable, Xdata, Ydata,Zdata, type) {
+    var trace = new Array()
+    if (type == "markers" || type == "lines") {
+        var trace1 = {
+            x: Xdata[0], 
+            y: Ydata[0], 
+            z: Zdata[0],
+            mode: type,
+            // marker: {
+            //     size: 12,
+            //     line: {
+            //     color: 'rgba(217, 217, 217, 0.14)',
+            //     width: 0.5},
+            //     opacity: 0.8},
+            type: 'scatter3d'
+        };
+    } else if (type == "bubble") {
+        var trace1 = {
+            x: Xdata[0],
+            y: Ydata[0],
+            mode: 'markers',
+            marker: {
+              size: Zdata[0]
+            }
+          };
+    } 
+    var trace = [trace1];
+    if(plotlyIndex==0){
+        $('#graph').empty();  
+    }
+    //$('#plotlyGraph').empty();
+    var name = "plotlyGraph" + plotlyIndex;
+    plotlyIndex++;
+    var btnName = "btn"+name;
+    var btn= $('<input type="button" id='+btnName+' class="btn btn-outline-danger btn-sm" onclick="plotlyClose(this.id)" value="X"/>');
+    $('#graph').append(btn);
+    var div= $('<div id='+name+'/>');
+    $('#graph').append(div);
+    Plotly.newPlot(name, trace)
+    
+}
+
+function plotlyClose(id){
+    $('#'+id).remove()
+    id = id.slice(3,id.length);
+    $('#'+id).remove()
+    //$('#'.remove();
+}
 function showOutlierBox(variable, Ydata) {
     var trace = new Array()
     for (i = 0; i < variable.length; i++) {

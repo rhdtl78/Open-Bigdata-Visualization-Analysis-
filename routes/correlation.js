@@ -4,22 +4,21 @@ var database = require('../lib/DBConnecter.js');
 
 router.get('/', function (req, res, next) {
   var uid = req.query.uid;
+  var select = req.query.select;
   const db = new database(uid);
   db.load('tmp', function (data) {
-    df = new DataFrame(data);
-    seqNames = df.columns;
-    //variable
-    var variable = new Array();
-    seqNames.forEach(function (element) {
-      variable.push(element);
-    });
-
-    corrDf = df.corr();
+    var df = new DataFrame(data);
+    var tempDf = new DataFrame();
+    
+    select.forEach(function(element){
+      tempDf=tempDf.set(element,df.get(element))
+    })
+    var corrDf = tempDf.corr();
     var data = new Array();
-    variable.forEach(function (element, index) {
+    select.forEach(function (element, index) {
       data.push(corrDf.get(element).to_json({ orient: 'records' }));
     })
-    res.json({ data: data, variable, variable })
+    res.json({ data: data, variable: select })
   });
 });
 

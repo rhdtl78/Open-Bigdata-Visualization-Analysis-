@@ -19,7 +19,11 @@ var stratification = require('./routes/stratification')
 var notAvailable = require('./routes/notAvailable')
 var dbTransaction = require('./routes/dbTransaction');
 var manual = require('./routes/manual.js');
-
+var regression = require('./routes/regression.js');
+var apriori = require('./routes/apriori.js');
+var removeCol = require('./routes/removeCol.js');
+var ANOVA = require('./routes/ANOVA.js');
+var derived = require('./routes/derived.js');
 
 plotly = require('plotly')("dongdong9335", "L4BOh9JUAoM30nRrLeIy")
 fastCSV = require('fast-csv');
@@ -31,6 +35,21 @@ immutable = require('immutable');
 var serviceAccount = require("./serviceAccount.json");
 var appAccount = require("./firebase-credit.json");
 var bodyParser = require('body-parser');
+
+PythonShell = require('python-shell');
+
+// var pyshell = new PythonShell('./python/test.py', {
+//   mode: 'json'
+// });
+// var output = '';
+// pyshell.stdout.on('data', function (data) {
+//   output += ''+data;
+// });
+// pyshell.send({ a: 'b' }).send(null).send([1, 2, 3]).end(function (err) {
+//   if (err) return done(err);
+//   //output.should.be.exactly('{"a": "b"}'+newline+'null'+newline+'[1, 2, 3]'+newline);
+//   console.log("output is "+output)
+// });
 
 var app = express();
 
@@ -72,7 +91,11 @@ app.use('/stratification', stratification);
 app.use('/notAvailable', notAvailable);
 app.use('/db', dbTransaction);
 app.use('/manual', manual);
-
+app.use('/regression', regression);
+app.use('/apriori', apriori);
+app.use('/removeCol', removeCol);
+app.use('/ANOVA', ANOVA);
+app.use('/derived', derived);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -89,5 +112,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
 
 module.exports = app;

@@ -23,8 +23,19 @@ function covariance() {
 
 }
 function showCovariance(data, variable) {
-  $('#analysis').empty();
-  var table = $('<table width="100%" class="table table-bordered table-hover table-striped">').attr('id', 'covTable');
+  //$('#analysis').empty();
+  if(analIndex==0){
+    $('#analysis').empty();  
+  }
+  var name = "analysis" + analIndex;
+  analIndex++;
+  var btnName = "btn" + name;
+  var btn = $('<input type="button" id=' + btnName + ' class="btn btn-outline-danger btn-sm" onclick="plotlyClose(this.id)" value="X"/>');
+  $('#analysis').append(btn);
+  var div = $('<div id=' + name + '/>');
+  //$('#analysis').append(div);
+
+  var table = $('<table width="100%" class="table table-bordered table-hover table-striped">');
 
   table.append($('<th>').addClass('covValue').text(" "));
   for (i = 0; i < variable.length; i++) {
@@ -43,6 +54,7 @@ function showCovariance(data, variable) {
     }
     table.append($('<tr>'))
   }
-  $('#analysis').append(table);
+  div.append(table)
+  $('#analysis').append(div);
 
 }

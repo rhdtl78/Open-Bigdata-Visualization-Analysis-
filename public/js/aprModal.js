@@ -1,0 +1,70 @@
+function aprTable() {
+    $('#aprTable > tbody').empty();
+    var variable = new Array();
+    $('#summaryTable tr').each(function () {
+      variable.push($(this).find("td:first").text())
+    })
+    for (i = 1; i < variable.length; i++) {
+      $('#aprTable > tbody:last').append('<tr><td>' + variable[i] + '</td><td><input type="checkbox" name="aprSelect" value=' + variable[i] + ' /></td></tr>');
+    }
+}
+function btnAprApply() {
+    var variableArray = new Array();
+    $('input:checkbox[name="aprSelect"]').each(function () {
+        if (this.checked) {
+          variableArray.push(this.value)
+        }
+      });
+      $('#aprModal').modal('hide');
+      var minSup = $('#minSupport').val();
+      var minCon = $('#minConfidence').val();
+      
+      var currentUser = firebase.auth().currentUser;
+      var uid = currentUser.uid;
+      $.ajax({
+        data: { "uid": uid, "variableArray": variableArray, "minSup":minSup,"minCon":minCon },
+        url: "/apriori",
+        beforeSend: function () {
+          loading();
+        },
+        complete: function () {
+          complete()
+        },
+        success: function (res) {
+        //   var data = res.data;
+        //   var variable = res.variable
+        //   var pred = res.pred;
+        //   var model = res.model
+        //   showApriori(data, pred, variable, model);
+        var result = res.result
+        showApriori(result)
+        
+        },
+        error: function (res) {
+          // console.log(res);
+        }
+      });
+}
+
+function showApriori(result) {
+    if(analIndex==0){
+        $('#analysis').empty();  
+      }
+      var name = "analysis" + analIndex;
+      analIndex++;
+      var btnName = "btn" + name;
+      var btn = $('<input type="button" id=' + btnName + ' class="btn btn-outline-danger btn-sm" onclick="plotlyClose(this.id)" value="X"/>');
+      $('#analysis').append(btn);
+      var div = $('<div id=' + name + '/>');
+      //$('#analysis').append(div);
+    
+      var table = $('<table width="100%" class="table table-bordered table-hover table-striped">');
+      table.append($('<tr><th>lhs</th><th> => </th><th>rhs</th><th>support</th><th>confidence</th><th>lift</th></tr>'))
+      result = result.associationRules;
+      result.forEach(function(array){
+        table.append($('<tr><td>'+array["lhs"]+'</td><td> => </td><td>'+array["rhs"]+'</td><td>'+array["support"].toFixed(4)+'</td><td>'+array["confidence"].toFixed(4)+'</td><td>'+array["lift"].toFixed(4)+'</td></tr>'));
+      })
+
+      div.append(table)
+      $('#analysis').append(div);
+}

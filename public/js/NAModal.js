@@ -24,16 +24,26 @@ function NATable() {
   });
 
   $('#NATable > tbody').empty();
-  $('#NAPorcessTable > tbody').empty();
+  //$('#NAPorcessTable > tbody').empty();
 
   for (i = 1; i < variable.length; i++) {
     if (NAcount[i] > 0) {
-      $('#NATable > tbody:last').append('<tr><td>' + variable[i] + '</td><td>' + NAcount[i] + '</td><td>' + NApercent[i] + '</td><td>' + totalCount[i] + '</td></tr>');
+      //$('#NATable > tbody:last').append('<tr><td>' + variable[i] + '</td><td>' + NAcount[i] + '</td><td>' + NApercent[i] + '</td><td>' + totalCount[i] + '</td></tr>');
 
       var tr= $('<tr/>');
       var td_val = $('<td/>', {
         'name': 'variable-name'
       }).text(variable[i]);
+      var td_NAc = $('<td/>', {
+        'name': 'NAcount'
+      }).text(variable[i]);
+      var td_NAp = $('<td/>', {
+        'name': 'NApercent'
+      }).text(variable[i]);
+      var td_NAtotal = $('<td/>', {
+        'name': 'totalCount'
+      }).text(variable[i]);
+      
       var td_sel = $('<td/>');
       var formGroup = $('<div/>', {
         'class': 'form-group',
@@ -55,8 +65,8 @@ function NATable() {
       select.append(optionRm).append(optionMean).append(optionMedian);
       formGroup.append(select);
       td_sel.append(formGroup);
-      tr.append(td_val).append(td_sel);
-      $('#NAPorcessTable > tbody:last').append(tr);
+      tr.append(td_val).append(td_NAc).append(td_NAp).append(td_NAtotal).append(td_sel);
+      $('#NATable > tbody:last').append(tr);
 
     }
   }

@@ -6,29 +6,37 @@ var database = require('../lib/DBConnecter.js');
 router.get('/', function (req, res, next) {
   var minArray = req.query.minArray;
   var maxArray = req.query.maxArray;
-
+  var seqNames = req.query.variableArray;
+  var variable = new Array();
+  seqNames.forEach(function(element){
+    if(element!=""){
+      variable.push(element)
+    }
+  })
   var uid = req.query.uid;
   const db = new database(uid);
   db.load('tmp', function (data) {
-    df = new DataFrame(data)
+    df = new DataFrame(data)    
     //selected variable
-    var variable = new Array();
-    seqNames = df.columns;
+    //var variable = new Array();
+    //seqNames = df.columns;
     //variable
-    var variable = new Array();
-    seqNames.forEach(function (element) {
-      variable.push(element);
-    });
+    
+    // seqNames.forEach(function (element) {
+    //   if(element == "dtype(int)"||element == "dtype(float)"){
+    //     variable.push(element);
+    //   }
+    // });
     if (minArray != null) {
       minArray.forEach(function (element, index) {
-        if (element > 0) {
+        if (element != "") {
           df = df.filter(df.get(variable[index]).gt(element));
         }
       });
     }
     if (maxArray != null) {
       maxArray.forEach(function (element, index) {
-        if (element > 0) {
+        if (element != "") {
           df = df.filter(df.get(variable[index]).lt(element));
         }
       });
@@ -52,8 +60,10 @@ router.get('/modal', function (req, res, next) {
     var variable = new Array();
     var data = new Array();
     seqNames.forEach(function (element) {
-      variable.push(element);
-      data.push(df.get(element).to_json({ orient: 'records' }))
+      if(df.get(element).dtype.toString()=="dtype(int)" || df.get(element).dtype.toString()=="dtype(float)" ){
+          variable.push(element);
+          data.push(df.get(element).to_json({ orient: 'records' }))
+      }
     });
 
     res.json({ variable: variable, data: data })

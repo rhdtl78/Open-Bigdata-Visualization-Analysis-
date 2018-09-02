@@ -102,6 +102,15 @@
                 <li>
                   <a href="#" onclick="graphVariable('pie')" data-toggle="modal" data-target="#graphModal">Pie graph</a>
                 </li>
+                <li>
+                  <a href="#" onclick="graph3dVariable('bubble')" data-toggle="modal" data-target="#graph3dModal">Bubble graph</a>
+                </li>
+                <li>
+                  <a href="#" onclick="graph3dVariable('lines')" data-toggle="modal" data-target="#graph3dModal">Line 3D graph</a>
+                </li>
+                <li>
+                  <a href="#" onclick="graph3dVariable('markers')" data-toggle="modal" data-target="#graph3dModal">Scatter 3D graph</a>
+                </li>
               </ul>
               <!-- /.nav-second-level -->
             </li>
@@ -117,16 +126,31 @@
                 <li>
                   <a href="#" onclick="strScatter()" data-toggle="modal" data-target="#stratificationModal"> Stratification process</a>
                 </li>
+                <li>
+                  <a href="#" onclick="colTable()" data-toggle="modal" data-target="#colModal"> Remove column</a>
+                </li>
+                <li>
+                  <a href="#" onclick="derTable()" data-toggle="modal" data-target="#derModal"> Derived variable</a>
+                </li>
               </ul>
             </li>
             <li>
               <a href="#"><i class="fa fa-search fa-fw"></i> Analysis <span class="fa arrow"></span> </a>
               <ul class="nav nav-second-level">
                 <li>
-                  <a href="#" onclick="correlation()"> Correlation</a>
+                  <a href="#" onclick="correlation()"  data-toggle="modal" data-target="#corrModal"> Correlation</a>
                 </li>
                 <li>
                   <a href="#" onclick="covariance()"> Covariance</a>
+                </li>
+                <li>
+                  <a href="#" onclick="regTable()"  data-toggle="modal" data-target="#regModal"> Regression</a>
+                </li>
+                <li>
+                  <a href="#" onclick="aprTable()"  data-toggle="modal" data-target="#aprModal"> Apriori</a>
+                </li>
+                <li>
+                  <a href="#" onclick="ANOVATable()"  data-toggle="modal" data-target="#ANOVAModal"> ANOVA</a>
                 </li>
               </ul>
             </li>
@@ -181,12 +205,10 @@
             <i class="fa fa-area-chart fa-fw"></i> graph
           </div>
           <!-- /.panel-heading -->
-          <div class="panel-body table-responsive">
-            <div id="plotlyGraph">
+          <div class="panel-body table-responsive" id ="graph">
               <div>
                 There is No Graph Yet
               </div>
-            </div>
           </div>
           <!-- /.panel-body -->
         </div>
@@ -338,7 +360,7 @@
 
   <!-- Not Available -->
   <div id="notAvailableModal" class="modal fade" role="dialog">
-    <div class="modal-dialog modal-sm">
+    <div class="modal-dialog">
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
@@ -353,16 +375,6 @@
                 <th>NA count</th>
                 <th>NA percent</th>
                 <th>total count</th>
-              </tr>
-            </thead>
-            <tbody>
-
-            </tbody>
-          </table>
-          <table width="100%" class="table table-bordered table-hover table-striped" id="NAPorcessTable">
-            <thead>
-              <tr>
-                <th>variable name</th>
                 <th>NA process</th>
               </tr>
             </thead>
@@ -491,6 +503,247 @@
 
     </div>
   </div>
+    <!-- Correlation -->
+    <div id="corrModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Correlation</h4>
+          </div>
+          <div class="modal-body table-responsive">
+            <table width="100%" class="table table-bordered table-hover table-striped" id="corrTable">
+              <thead>
+                <tr>
+                  <th>variable name</th>
+                  <th>select</th>
+                </tr>
+              </thead>
+              <tbody>
+  
+              </tbody>
+            </table>
+          </div>
+          <div class="modal-footer">
+  
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" onclick="btnCorrApply()">Apply</button>
+          </div>
+        </div>
+  
+      </div>
+    </div>  
+    <!-- Regression -->
+    <div id="regModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Regression</h4>
+          </div>
+          <div class="modal-body table-responsive">
+            <table width="100%" class="table table-bordered table-hover table-striped" id="regTable">
+              <thead>
+                <tr>
+                  <th>variable name</th>
+                  <th>dependent</th>
+                  <th>independent</th>
+                </tr>
+              </thead>
+              <tbody>
+  
+              </tbody>
+            </table>
+          </div>
+          <div class="modal-footer">
+  
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" onclick="btnRegApply()">Apply</button>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+
+        <!-- Apriori -->
+        <div id="aprModal" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Apriori</h4>
+              </div>
+              <div class="modal-body table-responsive">
+                <table width="100%" class="table table-bordered table-hover table-striped" id="aprTable">
+                  <thead>
+                    <tr>
+                      <th>variable name</th>
+                      <th>select</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+
+                  </tbody>
+                </table>
+                <lable>min support</lable><input type="text" id="minSupport" value="0.15" />
+                <lable>min confidence</lable><input type="text" id="minConfidence" value="0.6"></input>
+              </div>
+              <div class="modal-footer">
+
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="btnAprApply()">Apply</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+    <!-- Remove Column -->
+    <div id="colModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Remove Column</h4>
+          </div>
+          <div class="modal-body table-responsive">
+            <table width="100%" class="table table-bordered table-hover table-striped" id="colTable">
+              <thead>
+                <tr>
+                  <th>variable name</th>
+                  <th>select</th>
+                </tr>
+              </thead>
+              <tbody>
+  
+              </tbody>
+            </table>
+          </div>
+          <div class="modal-footer">
+  
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" onclick="btnColApply()">Apply</button>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+    <!-- ANOVA -->
+    <div id="ANOVAModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Analysis Of Variance</h4>
+          </div>
+          <div class="modal-body table-responsive">
+            <table width="100%" class="table table-bordered table-hover table-striped" id="ANOVATable">
+              <thead>
+                <tr>
+                  <th>variable name</th>
+                  <th>select</th>
+                </tr>
+              </thead>
+              <tbody>
+  
+              </tbody>
+            </table>
+          </div>
+          <div class="modal-footer">
+  
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" onclick="btnANOVAApply()">Apply</button>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+
+    <!-- Graph 3D -->
+    <div id="graph3dModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+  
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Graph</h4>
+          </div>
+          <div class="modal-body table-responsive">
+            <table width="100%" class="table table-bordered table-hover table-striped" id="graph3dTable">
+              <thead>
+                <tr>
+                  <th>variable name</th>
+                  <th>example</th>
+                  <th>X</th>
+                  <th>Y</th>
+                  <th>Z</th>
+                </tr>
+              </thead>
+              <tbody>
+  
+              </tbody>
+            </table>
+            <div class="graphType">
+              <input type="radio" name="graph3dRadio" value="markers" />
+              <label for="huey">Scatter 3D</label>
+              <input type="radio" name="graph3dRadio" value="lines" />
+              <label for="huey">Line 3D</label>
+              <input type="radio" name="graph3dRadio" value="bubble" />
+              <label for="huey">Bubble</label>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" onclick="btnGraph3dApply()">Apply</button>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+
+        <!-- Derived variable -->
+        <div id="derModal" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Derived Vairable</h4>
+              </div>
+              <div class="modal-body table-responsive">
+                <div id ="derBtn"></div>
+                <!-- <table width="100%" class="table table-bordered table-hover table-striped" id="derTable">
+                  <thead>
+                    <tr>
+                      <th>variable name</th>
+                      <th>click</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+
+                  </tbody>
+                </table> -->
+                <div class="graphType">
+                  <label for="huey">Expression</label>
+                  <input type="text" id="expression"/>
+                  <label for="huey">Dervied variable name</label>
+                  <input type="text" id="derName"/>
+
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="btnDerApply()">Apply</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
 
 
   <!-- Loading Image -->
@@ -508,7 +761,6 @@
           </td>
         </tr>
         </table>
-      </TABLE>
     </div>
   </div>
 
@@ -552,8 +804,11 @@
   <script type="text/javascript" src="../js/auth.js"></script>
   <script type="text/javascript" src="../js/database.js"></script>
   <script type="text/javascript" src="../js/dropLogin.js"></script>
-
-
+  <script type="text/javascript" src="../js/regModal.js"></script>
+  <script type="text/javascript" src="../js/aprModal.js"></script>
+  <script type="text/javascript" src="../js/colModal.js"></script>
+  <script type="text/javascript" src="../js/ANOVAModal.js"></script>
+  <script type="text/javascript" src="../js/derModal.js"></script>
 </body>
 
 </html>

@@ -2,7 +2,7 @@ function outlierVariable(variable) {
   $('#outlierTable > tbody').empty();
 
   variable.forEach(function (element) {
-    $('#outlierTable > tbody:last').append('<tr><td>' + element + '</td><td><input type="text" name="minValue" /></td><td><input type="text" name="maxValue" /></td>');
+    $('#outlierTable > tbody:last').append('<tr><td name="outValue" value ='+element+'>' + element + '</td><td><input type="text" name="minValue" /></td><td><input type="text" name="maxValue" /></td>');
   });
 }
 
@@ -40,14 +40,17 @@ function btnOutlierApply() {
   $('input:text[name="maxValue"]').each(function () {
     maxArray.push(this.value);
   });
-
+  var variableArray = new Array();
+  $('#outlierTable tr').each(function () {
+    variableArray.push($(this).find("td:first").text())
+})
   $('#outlierModal').modal('hide');
 
   var currentUser = firebase.auth().currentUser;
   var uid = currentUser.uid;
 
   $.ajax({
-    data: { "minArray": minArray, "maxArray": maxArray,"uid":uid },
+    data: { "minArray": minArray, "maxArray": maxArray, "variableArray":variableArray, "uid":uid },
     url: "/outlier",
     beforeSend: function () {
       loading();

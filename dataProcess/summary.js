@@ -21,12 +21,12 @@ module.exports = function summay(array) {
     max.push(series.cummax().tail(1).values)
     min.push(series.cummin().tail(1).values)
     mean.push(series.mean().toFixed(2))
-    if (series.dtype.toString() != "dtype(object)") {
+    if (series.dtype/*.toString()*/ != "dtype(object)") {
       median.push(series.median().toFixed(2))
     } else {
       median.push(series.median())
     }
-    dtype.push(series.dtype.toString());
+    dtype.push(series.dtype/*.toString()*/);
     let count = 0;
     series.forEach(function (current) { if (current == '') { return count++; } return; })
     NAcount.push(count)
