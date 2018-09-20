@@ -33,5 +33,20 @@
   },
   "devDependencies": {
     "pandas-js": "^0.2.4"
-  }
+  },
+  "description": "OBVA",
+  "main": "app.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rhdtl78/Open-Bigdata-Visualization-Analysis-.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rhdtl78/Open-Bigdata-Visualization-Analysis-/issues"
+  },
+  "homepage": "https://github.com/rhdtl78/Open-Bigdata-Visualization-Analysis-#readme"
 }

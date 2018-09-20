@@ -37,10 +37,8 @@ var appAccount = require("./firebase-credit.json");
 var bodyParser = require('body-parser');
 
 PythonShell = require('python-shell');
-
-// var pyshell = new PythonShell('./python/test.py', {
-//   mode: 'json'
-// });
+//
+// var pyshell = new PythonShell('./python/test.py');
 // var output = '';
 // pyshell.stdout.on('data', function (data) {
 //   output += ''+data;
@@ -49,6 +47,34 @@ PythonShell = require('python-shell');
 //   if (err) return done(err);
 //   //output.should.be.exactly('{"a": "b"}'+newline+'null'+newline+'[1, 2, 3]'+newline);
 //   console.log("output is "+output)
+// });
+//
+// pyshell.end(function (err,code,signal) {
+//   if (err) throw err;
+//     console.log('finished');
+// });
+// var options = {
+//
+//   mode: 'text',
+//
+//   pythonPath: 'C:/Users/ICUNIX/AppData/Local/Programs/Python/Python37',
+//
+//   pythonOptions: ['-u'],
+//
+//   scriptPath: '',
+//
+//   args: ['value1', 'value2', 'value3']
+//
+// };
+//
+//
+// PythonShell.run('./python/test.py', options, function (err, results) {
+//
+//   if (err) throw err;
+//
+//
+//   console.log('results: %j', results);
+//
 // });
 
 var app = express();

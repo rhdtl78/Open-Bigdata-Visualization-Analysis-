@@ -36,6 +36,7 @@ submit.addEventListener("click", function() {
         },
         success: function(res) {
           showSummary(res.data);
+          showData(res.data2,res.variable);
           $('#close-modal').trigger('click');
         },
         error: function(res) {}

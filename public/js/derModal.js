@@ -12,7 +12,18 @@ function derTable() {
         var btn = $('<input type="button" id=' + element + ' class="btn btn-primary" onclick="btnDer(this.id)" value='+element+' />');
         $('#derBtn').append(btn);
     });
-    
+
+}
+
+function btnOper(oper){
+  if(oper!="<"){
+    var temp = $('#expression').val() + oper;
+    $('#expression').val(temp);
+  } else {
+    var temp = $('#expression').val().slice(0,-1);;
+    $('#expression').val(temp);
+  }
+
 }
 
 function btnDer(variable){

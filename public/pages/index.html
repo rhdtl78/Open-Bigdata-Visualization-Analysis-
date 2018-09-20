@@ -190,12 +190,24 @@
         <!-- /.panel -->
         <div class="panel panel-default">
           <div class="panel-heading">
+            <i class="fa fa-table fa-fw"></i> data
+          </div>
+          <!-- /.panel-heading -->
+          <div class="panel-body table-responsive" id='dataDiv' style="max-height: 500px; overflow: auto;">
+            <div>
+              There is No Data yet
+            </div>
+          </div>
+          <!-- /.panel-body -->
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
             <i class="fa fa-table fa-fw"></i> data summary
           </div>
           <!-- /.panel-heading -->
           <div class="panel-body table-responsive" id='summayDiv'>
             <div>
-              There is No Data yet
+              There is No Data Summary yet
             </div>
           </div>
           <!-- /.panel-body -->
@@ -521,19 +533,19 @@
                 </tr>
               </thead>
               <tbody>
-  
+
               </tbody>
             </table>
           </div>
           <div class="modal-footer">
-  
+
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             <button type="button" class="btn btn-primary" onclick="btnCorrApply()">Apply</button>
           </div>
         </div>
-  
+
       </div>
-    </div>  
+    </div>
     <!-- Regression -->
     <div id="regModal" class="modal fade" role="dialog">
       <div class="modal-dialog">
@@ -553,17 +565,17 @@
                 </tr>
               </thead>
               <tbody>
-  
+
               </tbody>
             </table>
           </div>
           <div class="modal-footer">
-  
+
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             <button type="button" class="btn btn-primary" onclick="btnRegApply()">Apply</button>
           </div>
         </div>
-  
+
       </div>
     </div>
 
@@ -619,17 +631,17 @@
                 </tr>
               </thead>
               <tbody>
-  
+
               </tbody>
             </table>
           </div>
           <div class="modal-footer">
-  
+
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             <button type="button" class="btn btn-primary" onclick="btnColApply()">Apply</button>
           </div>
         </div>
-  
+
       </div>
     </div>
     <!-- ANOVA -->
@@ -650,24 +662,24 @@
                 </tr>
               </thead>
               <tbody>
-  
+
               </tbody>
             </table>
           </div>
           <div class="modal-footer">
-  
+
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             <button type="button" class="btn btn-primary" onclick="btnANOVAApply()">Apply</button>
           </div>
         </div>
-  
+
       </div>
     </div>
 
     <!-- Graph 3D -->
     <div id="graph3dModal" class="modal fade" role="dialog">
       <div class="modal-dialog">
-  
+
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -685,7 +697,7 @@
                 </tr>
               </thead>
               <tbody>
-  
+
               </tbody>
             </table>
             <div class="graphType">
@@ -702,7 +714,7 @@
             <button type="button" class="btn btn-primary" onclick="btnGraph3dApply()">Apply</button>
           </div>
         </div>
-  
+
       </div>
     </div>
 
@@ -716,7 +728,19 @@
                 <h4 class="modal-title">Derived Vairable</h4>
               </div>
               <div class="modal-body table-responsive">
-                <div id ="derBtn"></div>
+                <div id ="derBtn">
+                </div>
+                <div id ="derOper" align="center">
+                    <button type="button" class="btn btn-sm btn-info" onclick="btnOper('+')"> + </button>
+                    <button type="button" class="btn btn-sm btn-info" onclick="btnOper('-')"> - </button>
+                    <button type="button" class="btn btn-sm btn-info" onclick="btnOper('*')"> * </button>
+                    <button type="button" class="btn btn-sm btn-info" onclick="btnOper('/')"> / </button>
+                    <button type="button" class="btn btn-sm btn-info" onclick="btnOper('^')"> ^ </button>
+                    <button type="button" class="btn btn-sm btn-info" onclick="btnOper('(')"> ( </button>
+                    <button type="button" class="btn btn-sm btn-info" onclick="btnOper(')')"> ) </button>
+                    <button type="button" class="btn btn-sm btn-info" onclick="btnOper('<')"> < </button>
+                </div>
+
                 <!-- <table width="100%" class="table table-bordered table-hover table-striped" id="derTable">
                   <thead>
                     <tr>
@@ -730,7 +754,7 @@
                 </table> -->
                 <div class="graphType">
                   <label for="huey">Expression</label>
-                  <input type="text" id="expression"/>
+                  <input type="text" id="expression" /> <br/>
                   <label for="huey">Dervied variable name</label>
                   <input type="text" id="derName"/>
 
@@ -809,6 +833,9 @@
   <script type="text/javascript" src="../js/colModal.js"></script>
   <script type="text/javascript" src="../js/ANOVAModal.js"></script>
   <script type="text/javascript" src="../js/derModal.js"></script>
+  <script type="text/javascript" src="../js/data.js"></script>
+
+
 </body>
 
 </html>
