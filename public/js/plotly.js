@@ -27,31 +27,32 @@ function showplotly(variable, Xdata, Ydata, type) {
 
 function show3dplotly(variable, Xdata, Ydata,Zdata, type) {
     var trace = new Array()
-    if (type == "markers" || type == "lines") {
-        var trace1 = {
-            x: Xdata[0], 
-            y: Ydata[0], 
-            z: Zdata[0],
-            mode: type,
-            // marker: {
-            //     size: 12,
-            //     line: {
-            //     color: 'rgba(217, 217, 217, 0.14)',
-            //     width: 0.5},
-            //     opacity: 0.8},
-            type: 'scatter3d'
-        };
-    } else if (type == "bubble") {
-        var trace1 = {
-            x: Xdata[0],
-            y: Ydata[0],
-            mode: 'markers',
-            marker: {
-              size: Zdata[0]
-            }
-          };
-    } 
-    var trace = [trace1];
+    for (i = 0; i < variable.length; i++) {
+        if (type == "markers" || type == "lines") {
+            trace[i] = {
+                x: Xdata[i],
+                y: Ydata[i],
+                z: Zdata[i],
+                mode: type,
+                // marker: {
+                //     size: 12,
+                //     line: {
+                //     color: 'rgba(217, 217, 217, 0.14)',
+                //     width: 0.5},
+                //     opacity: 0.8},
+                type: 'scatter3d'
+            };
+        } else if (type == "bubble") {
+            trace[i] = {
+                x: Xdata[i],
+                y: Ydata[i],
+                mode: 'markers',
+                marker: {
+                    size: Zdata[i]
+                }
+            };
+        }
+    }
     if(plotlyIndex==0){
         $('#graph').empty();  
     }
@@ -111,19 +112,19 @@ function showStrScatter(variable, Ydata) {
 
 function lineBarBox(variable, Xdata, Ydata, type) {
     var trace = new Array();
-    if (Xdata.length < 1) {
-        for (i = 0; i < variable.length; i++) {
-            trace[i] = {
-                y: Ydata[i],
-                type: type,
-                name: variable[i]
-            };
-        }
-        return trace;
-    }
+    // if (Xdata.length < 1) {
+    //     for (i = 0; i < variable.length; i++) {
+    //         trace[i] = {
+    //             y: Ydata[i],
+    //             type: type,
+    //             name: variable[i]
+    //         };
+    //     }
+    //     return trace;
+    // }
     for (i = 0; i < variable.length; i++) {
         trace[i] = {
-            x: Xdata[0],
+            x: Xdata[i],
             y: Ydata[i],
             type: type,
             name: variable[i]
@@ -135,20 +136,20 @@ function lineBarBox(variable, Xdata, Ydata, type) {
 
 function scatter(variable, Xdata, Ydata, type) {
     var trace = new Array();
-    if (Xdata.length < 1) {
-        for (i = 0; i < variable.length; i++) {
-            trace[i] = {
-                y: Ydata[i],
-                mode: type,
-                type: "scatter",
-                name: variable[i]
-            };
-        }
-        return trace;
-    }
+    // if (Xdata.length < 1) {
+    //     for (i = 0; i < variable.length; i++) {
+    //         trace[i] = {
+    //             y: Ydata[i],
+    //             mode: type,
+    //             type: "scatter",
+    //             name: variable[i]
+    //         };
+    //     }
+    //     return trace;
+    // }
     for (i = 0; i < variable.length; i++) {
         trace[i] = {
-            x: Xdata[0],
+            x: Xdata[i],
             y: Ydata[i],
             mode: type,
             type: "scatter",
@@ -163,7 +164,7 @@ function pie(variable, Xdata, Ydata, type) {
     var trace = new Array();
     for (i = 0; i < variable.length; i++) {
         trace[i] = {
-            labels: Xdata[0],
+            labels: Xdata[i],
             values: Ydata[i],
             type: type,
             name: variable[i]

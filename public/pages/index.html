@@ -445,20 +445,24 @@
           <h4 class="modal-title">Graph</h4>
         </div>
         <div class="modal-body table-responsive">
+          X = <label id="showVariX"></label> Y = <label id="showVariY"></label>
           <table width="100%" class="table table-bordered table-hover table-striped" id="graphTable">
             <thead>
               <tr>
                 <th>variable name</th>
                 <th>example</th>
                 <th>X</th>
-                <th>Y</th>
+                <th>Y</th> 
+                
               </tr>
             </thead>
             <tbody>
 
             </tbody>
           </table>
-          <div class="graphType">
+          <div id="variList">
+          </div>
+          <div class="graphType" style="display:none">
             <input type="radio" name="graphRadio" value="scatter" />
             <label for="huey">Line</label>
             <input type="radio" name="graphRadio" value="bar" />
@@ -686,6 +690,7 @@
             <h4 class="modal-title">Graph</h4>
           </div>
           <div class="modal-body table-responsive">
+              X = <label id="show3dVariX"></label> Y = <label id="show3dVariY"></label> Z = <label id="show3dVariZ"></label>
             <table width="100%" class="table table-bordered table-hover table-striped" id="graph3dTable">
               <thead>
                 <tr>
@@ -700,7 +705,9 @@
 
               </tbody>
             </table>
-            <div class="graphType">
+            <div id="vari3dList">
+            </div>
+            <div class="graphType" style="display:none">
               <input type="radio" name="graph3dRadio" value="markers" />
               <label for="huey">Scatter 3D</label>
               <input type="radio" name="graph3dRadio" value="lines" />

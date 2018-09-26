@@ -54,7 +54,6 @@ router.get('/3d', function (req, res, next) {
       }
       if (yVar != null) {
         yVar.forEach(function (element) {
-          variable.push(element);
           Ydata.push(df.get(element).to_json({ orient: 'records' }))
         });
       }
