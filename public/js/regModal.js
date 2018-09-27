@@ -53,27 +53,9 @@ function showRegression(data, pred, variable, model) {
   if (analIndex == 0) {
     $('#analysis').empty();
   }
-  var name = "analysis" + analIndex;
-  analIndex++;
-  var btnName = "btn" + name;
-  var btn = $('<input type="button" id=' + btnName + ' class="btn btn-outline-danger btn-sm" onclick="plotlyClose(this.id)" value="X"/>');
-  $('#analysis').append(btn);
-  var div = $('<div id=' + name + '/>');
-  $('#analysis').append(div);
-  //$('#analysis').append($('<div>').attr('id', 'analysisGraph'));
-  //var data = new Array();
-  var theta = model.theta;
   var result = "";
-
-  var trace = new Array();
+  var theta = model.theta;
   for (i = 0; i < variable.length; i++) {
-    trace[i] = {
-      //x: data[i],
-      y: data[i],
-      type: 'scatter',
-      mode: "markers",
-      name: variable[i]
-    };
     if (i == 0) {
       result += theta[i].toFixed(4) + " + ";
     } else {
@@ -82,17 +64,37 @@ function showRegression(data, pred, variable, model) {
   }
   result = variable[variable.length - 1] + " = " + result;
   result = result.slice(0, -2);
-  trace[variable.length] = {
-    //x: data[i],
-    y: pred,
-    type: 'scatter',
-    mode: "line",
-    name: variable.pop() + " predicted"
-  };
-  var layout = {
-    title: result
-  };
 
-  Plotly.newPlot(name, trace, layout);
+  for (i = 0; i < variable.length; i++) {
+    var name = "analysis" + analIndex;
+    analIndex++;
+    var btnName = "btn" + name;
+    var btn = $('<input type="button" id=' + btnName + ' class="btn btn-outline-danger btn-sm" onclick="plotlyClose(this.id)" value="X"/>');
+    $('#analysis').append(btn);
+    var div = $('<div id=' + name + '/>');
+    $('#analysis').append(div);
+    //$('#analysis').append($('<div>').attr('id', 'analysisGraph'));
+    //var data = new Array();
+    
+    var trace = new Array();
+    trace[0] = {
+        x: data[i],
+        y: data[variable.length-1],
+        type: 'scatter',
+        mode: "markers",
+        name: variable[i]
+    }
+    trace[1] = {
+      x: data[i],
+      y: pred,
+      type: 'scatter',
+      mode: "markers",
+      name: variable.pop() + " predicted"
+    };
+    var layout = {
+      title: result
+    };
+    Plotly.newPlot(name, trace, layout);
+  }
 
 }

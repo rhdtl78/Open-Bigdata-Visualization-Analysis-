@@ -106,6 +106,7 @@ function btnNotAvailableApply() {
     success: function(res) {
       data = res.data;
       showSummary(data);
+      showData(res.data2,res.variable);
       $('#notAvailableModal').modal('hide');
 
     },

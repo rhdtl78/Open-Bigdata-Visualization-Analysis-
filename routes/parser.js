@@ -3,6 +3,7 @@ var router = express.Router();
 var multer = require('multer'); // express에 multer모듈 적용 (for 파일업로드)
 
 var summary = require('../lib/summary.js')
+var showData = require('../lib/showData.js')
 var upload = multer({
   dest: 'uploads/'
 })
@@ -36,20 +37,7 @@ router.post('/csv', upload.single('csvfile'), function(req, res, next) {
       const df = new DataFrame(array);
       db.save(array);
       var data = summary(df)
-
-      var data2Row = df.length
-      var data2Col = 0;
-      df.columns.forEach(function(element){
-        data2Col++;
-      })
-
-      if(data2Row>1000){
-        var df2 = df.iloc([0, 1000], [0, data2Col]);
-        var data2 = df2.to_json({orient: 'values'});
-      } else{
-        var data2 = df.to_json({orient: 'values'});
-      }
-
+      var data2 = showData(df)
 
       res.json({
         data: data,

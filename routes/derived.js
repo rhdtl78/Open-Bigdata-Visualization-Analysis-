@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 var database = require('../lib/DBConnecter.js');
 var summary = require('../lib/summary.js')
+var showData = require('../lib/showData.js')
+
 
 
 router.get('/', function (req, res, next) {
@@ -40,8 +42,13 @@ router.get('/', function (req, res, next) {
     df = df.set(derName,ds);
     db.save(df.to_json({ orient: 'records' }))
     var sumData = summary(df);
-
-    res.json({ data: sumData })
+    var data2 = showData(df)
+    
+    res.json({
+        data: sumData,
+        data2: data2,
+        variable: df.columns
+    })
 
   });
 

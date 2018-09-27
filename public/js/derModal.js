@@ -52,6 +52,8 @@ function btnDerApply() {
         success: function (res) {
             var data = res.data;
             showSummary(data);
+            showData(res.data2,res.variable);
+            
         },
         error: function (res) {
             // console.log(res);

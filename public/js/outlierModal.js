@@ -61,6 +61,7 @@ function btnOutlierApply() {
     success: function (res) {
       data = res.data;
       showSummary(data);
+      showData(res.data2,res.variable);
     },
     error: function (res) {
       // console.log(res);
