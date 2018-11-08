@@ -1,0 +1,21 @@
+{
+  "name": "open-bigdata-visualization-analysis-",
+  "version": "1.0.0",
+  "description": "OBVA",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "pm2 start ./webserver/bin/www; python3 ./apiserver/manage.py runserver 0.0.0.0:8000",
+    "install": "cd webserver; npm install; cd ../"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rhdtl78/Open-Bigdata-Visualization-Analysis-.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rhdtl78/Open-Bigdata-Visualization-Analysis-/issues"
+  },
+  "homepage": "https://github.com/rhdtl78/Open-Bigdata-Visualization-Analysis-#readme"
+}
