@@ -5,42 +5,43 @@ var showData = require("../lib/showData.js");
 var database = require("../lib/DBConnecter.js");
 const axios = require("axios");
 
-router.get("/", function(req, res, next) {
-  var minArray = req.query.minArray;
-  var maxArray = req.query.maxArray;
-  var seqNames = req.query.variableArray;
-  var variable = new Array();
-  seqNames.forEach(function(element) {
-    if (element != "") {
-      variable.push(element);
-    }
-  });
-  var uid = req.query.uid;
-  const db = new database(uid);
-  db.load("tmp", function(data) {
-    df = new DataFrame(data);
-    if (minArray != null) {
-      minArray.forEach(function(element, index) {
-        if (element != "") {
-          df = df.filter(df.get(variable[index]).gt(element));
-        }
-      });
-    }
-    if (maxArray != null) {
-      maxArray.forEach(function(element, index) {
-        if (element != "") {
-          df = df.filter(df.get(variable[index]).lt(element));
-        }
-      });
-    }
-    db.save(df.to_json({ orient: "records" }));
+// router.get("/", function(req, res, next) {
+//   var minArray = req.query.minArray;
+//   var maxArray = req.query.maxArray;
+//   var seqNames = req.query.variableArray;
+//   var variable = new Array();
+//   seqNames.forEach(function(element) {
+//     if (element != "") {
+//       variable.push(element);
+//     }
+//   });
+//   var uid = req.query.uid;
+//   const db = new database(uid);
+//   db.load("tmp", function(data) {
+//     df = new DataFrame(data);
+//     if (minArray != null) {
+//       minArray.forEach(function(element, index) {
+//         if (element != "") {
+//           df = df.filter(df.get(variable[index]).gt(element));
+//         }
+//       });
+//     }
+//     if (maxArray != null) {
+//       maxArray.forEach(function(element, index) {
+//         if (element != "") {
+//           df = df.filter(df.get(variable[index]).lt(element));
+//         }
+//       });
+//     }
+//     db.save(df.to_json({ orient: "records" }));
 
-    var data = summary(df);
-    var data2 = showData(df);
+//     var data = summary(df);
+//     var data2 = showData(df);
 
-    res.json({ data: data, data2: data2, variable: df.columns });
-  });
-});
+//     res.json({ data: data, data2: data2, variable: df.columns });
+//   });
+// });
+
 router.get("/modal", function(req, res, next) {
   var uid = req.query.uid;
   // console.log("uid = "+uid)
