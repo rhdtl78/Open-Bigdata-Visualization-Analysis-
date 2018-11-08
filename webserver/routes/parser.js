@@ -34,7 +34,9 @@ router.post('/csv', upload.single('csvfile'), function(req, res, next) {
       i++;
     })
     .on("end", function() {
+      
       const df = new DataFrame(array);
+
       db.save(array);
       var data = summary(df)
       var data2 = showData(df)

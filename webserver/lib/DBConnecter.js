@@ -38,7 +38,7 @@ module.exports = class Transaction {
       }
     }
 
-
+    
     if (name) {
       var saveData = {
         data: object,
@@ -84,6 +84,7 @@ module.exports = class Transaction {
           }
         }
       });
+
       if (typeof callback == "function") {
         callback(modified);
       }
