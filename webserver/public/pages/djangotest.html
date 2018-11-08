@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="uid"></div>
+    <div id="data"></div>
+    <!-- jQuery -->
+    <script src="../vendor/jquery/jquery.min.js"></script>
+    <!-- Firebase Init -->
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-storage.js"></script>
+    <script type="text/javascript" src="../js/firebase-init.js"></script>
+
+    <script>
+      $(function() {
+        firebase.auth().onAuthStateChanged(function(user) {
+          if (user) {
+            $.ajax({
+              url: "/djangotest",
+              data: { uid: user.uid },
+              success: function(res) {
+                $("#uid").html(res.message);
+                $('#data').html('<pre>'+res.snapshot+'</pre>')
+              }
+            });
+          } else {
+            $("#print").html("no user");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

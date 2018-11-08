@@ -24,7 +24,7 @@ var apriori = require('./routes/apriori.js');
 var removeCol = require('./routes/removeCol.js');
 var ANOVA = require('./routes/ANOVA.js');
 var derived = require('./routes/derived.js');
-
+var djangotest = require('./routes/djangotest.js');
 plotly = require('plotly')("dongdong9335", "L4BOh9JUAoM30nRrLeIy")
 fastCSV = require('fast-csv');
 pandas = require('pandas-js');
@@ -37,45 +37,6 @@ var appAccount = require("./firebase-credit.json");
 var bodyParser = require('body-parser');
 
 PythonShell = require('python-shell');
-//
-// var pyshell = new PythonShell('./python/test.py');
-// var output = '';
-// pyshell.stdout.on('data', function (data) {
-//   output += ''+data;
-// });
-// pyshell.send({ a: 'b' }).send(null).send([1, 2, 3]).end(function (err) {
-//   if (err) return done(err);
-//   //output.should.be.exactly('{"a": "b"}'+newline+'null'+newline+'[1, 2, 3]'+newline);
-//   console.log("output is "+output)
-// });
-//
-// pyshell.end(function (err,code,signal) {
-//   if (err) throw err;
-//     console.log('finished');
-// });
-// var options = {
-//
-//   mode: 'text',
-//
-//   pythonPath: 'C:/Users/ICUNIX/AppData/Local/Programs/Python/Python37',
-//
-//   pythonOptions: ['-u'],
-//
-//   scriptPath: '',
-//
-//   args: ['value1', 'value2', 'value3']
-//
-// };
-//
-//
-// PythonShell.run('./python/test.py', options, function (err, results) {
-//
-//   if (err) throw err;
-//
-//
-//   console.log('results: %j', results);
-//
-// });
 
 var app = express();
 
@@ -105,7 +66,11 @@ app.use(express.urlencoded({
 }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.all('/*', function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  next();
+});
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/parse', parser);
@@ -122,7 +87,7 @@ app.use('/apriori', apriori);
 app.use('/removeCol', removeCol);
 app.use('/ANOVA', ANOVA);
 app.use('/derived', derived);
-
+app.use('/djangotest', djangotest);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
