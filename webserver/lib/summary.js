@@ -1,5 +1,3 @@
-var express = require('express');
-
 module.exports = function summay(df) {
   seqNames = df.columns;
 

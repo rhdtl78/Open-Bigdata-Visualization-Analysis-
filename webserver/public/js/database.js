@@ -121,9 +121,10 @@ $('#submit-load').click(function() {
     success: function(res, state) {
       // console.log(res);
       alert("Load success");
-      showSummary(res.data);
+      
+      showData(res.data, res.variables);
+      showSummary(res.summary);
       $('.close').trigger('click');
-
     },
     error: function(res, state) {
       // console.log(res, state);

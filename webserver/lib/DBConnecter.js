@@ -1,5 +1,5 @@
-var express = require('express');
-var admin = require('firebase-admin');
+var express = require("express");
+var admin = require("firebase-admin");
 var serviceAccount = require("../serviceAccount.json");
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
@@ -13,19 +13,18 @@ module.exports = class Transaction {
   constructor(uid) {
     this.uid = uid;
     this.ref = db.ref(uid);
-  };
-
+  }
 
   save(data, name, callback) {
     var escape = {
       "#": "&35;",
-      "$": "&36;",
+      $: "&36;",
       ".": "&46;",
       "[": "&91;",
       "]": "&93;",
       "/": "&47;"
     };
-    var object = {};
+    var object = [];
     for (let i = 0; i < data.length; i++) {
       object[i] = {};
       for (var key in data[i]) {
@@ -38,17 +37,29 @@ module.exports = class Transaction {
       }
     }
 
-    
     if (name) {
-      var saveData = {
-        data: object,
-        date: Date.now()
-      };
-      this.ref.child(name).set(saveData);
+      this.ref
+        .child("saved")
+        .child(name)
+        .set({ date: Date.now() });
+      object.forEach((item, index) => {
+        this.ref
+          .child("saved")
+          .child(name)
+          .child("data")
+          .push(item);
+      });
     } else {
-      this.ref.child('tmp').set({
-        data: object
-      })
+      const ref = this.ref.child('tmp');
+      ref.set({});
+      object.forEach((item, index) => {
+        ref
+          .child("data")
+          .push(item);
+      });
+      // this.ref.child('tmp').set({
+      //   data: object
+      // })
     }
 
     if (typeof callback == "function") callback();
@@ -63,16 +74,12 @@ module.exports = class Transaction {
       "&93;": "]",
       "&47;": "/"
     };
-    var ref;
-    if (name) {
-      ref = this.ref.child(name);
-    } else {
-      ref = this.ref.child('tmp');
-    }
-    ref.once('value', function(snapshot) {
-      // console.log(snapshot.val());
+    const ref = (name) ? this.ref.child('saved').child(name) : this.ref.child("tmp");
+
+    ref.once("value", function(snapshot) {
       var modified = [];
-      var seriesArray = snapshot.val().data;
+      var seriesArray = Object.values(snapshot.val().data);
+      
       seriesArray.forEach(function(value, index) {
         modified[index] = {};
         for (var key in value) {
@@ -92,11 +99,11 @@ module.exports = class Transaction {
   }
 
   list(callback) {
-    this.ref.once('value', function(snapshot) {
+    this.ref.child('saved').once("value", function(snapshot) {
       var saveObj = snapshot.val();
       var saveList = [];
       for (var workName in saveObj) {
-        if (workName != "tmp") saveList.push(workName);
+        saveList.push(workName);
       }
 
       if (typeof callback == "function") callback(saveList);
@@ -105,12 +112,12 @@ module.exports = class Transaction {
 
   delete(name) {
     var ref;
-    if(name) {
+    if (name) {
       ref = this.ref.child(name);
-    }else{
-      ref = this.ref.child('tmp');
+    } else {
+      ref = this.ref.child("tmp");
     }
 
     ref.set(null);
   }
-}
+};

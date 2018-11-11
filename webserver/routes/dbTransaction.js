@@ -2,13 +2,21 @@ var express = require('express');
 var router = express.Router();
 var database = require('../lib/DBConnecter.js');
 const summary = require('../lib/summary.js');
+var showData = require("../lib/showData.js");
 
 router.post("/load", (req, res, next) => {
   const db = new database(req.body.uid);
   var name = req.body.name;
   db.load(name, function(data) {
+    
+    const df = new DataFrame(data);
+    console.log(df);
+    
+    const variables = df.columns;
     res.send({
-      data: summary(new DataFrame(data))
+      data: showData(df),
+      summary: summary(df),
+      variables: variables
     });
   });
 
