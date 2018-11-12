@@ -1,5 +1,5 @@
 import pandas as pd
-import numpy
+import numpy as np
 from ... import firebase_init
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt

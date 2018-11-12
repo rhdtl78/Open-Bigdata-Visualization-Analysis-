@@ -1,8 +1,9 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
-var summary = require('../lib/summary.js')
-var showData = require('../lib/showData.js')
-var database = require('../lib/DBConnecter.js');
+var summary = require("../lib/summary.js");
+var showData = require("../lib/showData.js");
+var database = require("../lib/DBConnecter.js");
+const axios = require("axios");
 
 // router.get('/', function (req, res, next) {
 //   var variable = req.query.variable;
@@ -58,7 +59,6 @@ var database = require('../lib/DBConnecter.js');
 // });
 
 router.post("/", (req, res) => {
-
   // const user_id = req.body.uid;
   // const minArray = req.body.minArray;
   // const maxArray = req.body.maxArray;
@@ -69,7 +69,6 @@ router.post("/", (req, res) => {
   var category = req.body.category;
   var uid = req.body.uid;
   const db = new database(uid);
-  console.log("it is okay")
   axios({
     url: "http://localhost:8000/server/transform",
     data: {
@@ -83,9 +82,11 @@ router.post("/", (req, res) => {
     headers: { "Content-type": "application/json" }
   })
     .then(response => {
+      console.log("it is okay");
+
       try {
         const data = JSON.parse(response.data.snapshot);
-        db.save(data)
+        db.save(data);
         const df = new DataFrame(data);
         // console.log(df);
 
@@ -95,9 +96,7 @@ router.post("/", (req, res) => {
         res.send({ data: data1, data2: data2, variable: df.columns });
       } catch (error) {
         console.log(error);
-
       }
-
     })
     .catch(error => {
       console.log("error", error);
