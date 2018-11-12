@@ -1,12 +1,15 @@
 function regTable() {
   $('#regTable > tbody').empty();
   var variable = new Array();
-  var example = new Array();
+  var type = new Array();
   $('#summaryTable tr').each(function () {
     variable.push($(this).find("td:first").text())
+    type.push($(this).find("td").eq(1).html())
   })
   for (i = 1; i < variable.length; i++) {
-    $('#regTable > tbody:last').append('<tr><td>' + variable[i] + '</td><td><input type="checkbox" name="regDep" value=' + variable[i] + ' /></td><td><input type="checkbox" name="regIndep" value=' + variable[i] + ' /></td></tr>');
+    if(type[i]!="dtype(object)"){
+      $('#regTable > tbody:last').append('<tr><td>' + variable[i] + '</td><td><input type="checkbox" name="regDep" value=' + variable[i] + ' /></td><td><input type="checkbox" name="regIndep" value=' + variable[i] + ' /></td></tr>');
+    }
   }
 
 }
@@ -75,7 +78,7 @@ function showRegression(data, pred, variable, model) {
     $('#analysis').append(div);
     //$('#analysis').append($('<div>').attr('id', 'analysisGraph'));
     //var data = new Array();
-    
+
     var trace = new Array();
     trace[0] = {
         x: data[i],
