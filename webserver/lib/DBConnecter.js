@@ -74,12 +74,12 @@ module.exports = class Transaction {
       "&93;": "]",
       "&47;": "/"
     };
-    const ref = (name) ? this.ref.child('saved').child(name) : this.ref.child("tmp");
+    const ref = (name !== "tmp") ? this.ref.child('saved').child(name) : this.ref.child("tmp");
 
     ref.once("value", function(snapshot) {
       var modified = [];
       var seriesArray = Object.values(snapshot.val().data);
-      
+
       seriesArray.forEach(function(value, index) {
         modified[index] = {};
         for (var key in value) {
@@ -92,6 +92,7 @@ module.exports = class Transaction {
         }
       });
 
+      
       if (typeof callback == "function") {
         callback(modified);
       }
