@@ -94,9 +94,10 @@ function btnNotAvailableApply() {
     data: {
       "variable": variable,
       "process": process,
-      "uid": uid
+      "uid": uid,
     },
     url: "/notAvailable",
+    type: "POST",
     beforeSend: function () {
       loading();
     },
@@ -104,9 +105,11 @@ function btnNotAvailableApply() {
       complete()
     },
     success: function(res) {
-      data = res.data;
-      showSummary(data);
-      showData(res.data2,res.variable);
+      console.log(res);
+      
+    
+      showSummary(res.summary);
+      showData(res.dataframe,res.variable);
       $('#notAvailableModal').modal('hide');
 
     },

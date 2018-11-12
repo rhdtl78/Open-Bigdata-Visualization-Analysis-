@@ -18,7 +18,7 @@ module.exports = class Transaction {
   save(data, name, callback) {
     var escape = {
       "#": "&35;",
-      $: "&36;",
+      "$": "&36;",
       ".": "&46;",
       "[": "&91;",
       "]": "&93;",
@@ -76,7 +76,7 @@ module.exports = class Transaction {
     };
     const ref = (name !== "tmp") ? this.ref.child('saved').child(name) : this.ref.child("tmp");
 
-    ref.once("value", function(snapshot) {
+    ref.once("value", (snapshot) => {
       var modified = [];
       var seriesArray = Object.values(snapshot.val().data);
 
@@ -92,7 +92,7 @@ module.exports = class Transaction {
         }
       });
 
-      
+      this.save(seriesArray);
       if (typeof callback == "function") {
         callback(modified);
       }
