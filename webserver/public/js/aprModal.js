@@ -1,11 +1,15 @@
 function aprTable() {
     $('#aprTable > tbody').empty();
     var variable = new Array();
+    var type = new Array();
     $('#summaryTable tr').each(function () {
       variable.push($(this).find("td:first").text())
+      type.push($(this).find("td").eq(1).html())
     })
     for (i = 1; i < variable.length; i++) {
-      $('#aprTable > tbody:last').append('<tr><td>' + variable[i] + '</td><td><input type="checkbox" name="aprSelect" value=' + variable[i] + ' /></td></tr>');
+      if(type[i]=="dtype(object)"){
+        $('#aprTable > tbody:last').append('<tr><td>' + variable[i] + '</td><td><input type="checkbox" name="aprSelect" value=' + variable[i] + ' /></td></tr>');
+      }
     }
 }
 function btnAprApply() {
@@ -18,7 +22,7 @@ function btnAprApply() {
       $('#aprModal').modal('hide');
       var minSup = $('#minSupport').val();
       var minCon = $('#minConfidence').val();
-      
+
       var currentUser = firebase.auth().currentUser;
       var uid = currentUser.uid;
       $.ajax({
@@ -38,7 +42,7 @@ function btnAprApply() {
         //   showApriori(data, pred, variable, model);
         var result = res.result
         showApriori(result)
-        
+
         },
         error: function (res) {
           // console.log(res);
@@ -48,7 +52,7 @@ function btnAprApply() {
 
 function showApriori(result) {
     if(analIndex==0){
-        $('#analysis').empty();  
+        $('#analysis').empty();
       }
       var name = "analysis" + analIndex;
       analIndex++;
@@ -57,7 +61,7 @@ function showApriori(result) {
       $('#analysis').append(btn);
       var div = $('<div id=' + name + '/>');
       //$('#analysis').append(div);
-    
+
       var table = $('<table width="100%" class="table table-bordered table-hover table-striped">');
       table.append($('<tr><th>lhs</th><th> => </th><th>rhs</th><th>support</th><th>confidence</th><th>lift</th></tr>'))
       result = result.associationRules;
