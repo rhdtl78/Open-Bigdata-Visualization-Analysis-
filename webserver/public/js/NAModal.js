@@ -11,13 +11,13 @@ function NATable() {
     var vari = $(this).find("td").eq(0).html();
     var NAco = $(this).find("td").eq(6).html();
     var total = $(this).find("td").eq(7).html();
-    if (vari != undefined) {
+    if (vari) {
       variable.push(vari)
     }
-    if (NAco != undefined) {
+    if (NAco) {
       NAcount.push(NAco)
     }
-    if (total != undefined) {
+    if (total) {
       totalCount.push(total)
       NApercent.push(((NAco / total) * 100).toFixed(2));
     }
@@ -94,9 +94,10 @@ function btnNotAvailableApply() {
     data: {
       "variable": variable,
       "process": process,
-      "uid": uid
+      "uid": uid,
     },
     url: "/notAvailable",
+    type: "POST",
     beforeSend: function () {
       loading();
     },
@@ -104,9 +105,11 @@ function btnNotAvailableApply() {
       complete()
     },
     success: function(res) {
-      data = res.data;
-      showSummary(data);
-      showData(res.data2,res.variable);
+      console.log(res);
+      
+    
+      showSummary(res.summary);
+      showData(res.dataframe,res.variable);
       $('#notAvailableModal').modal('hide');
 
     },

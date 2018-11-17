@@ -1,78 +1,35 @@
-var express = require('express');
-var router = express.Router();
-var summary = require('../lib/summary.js')
-var showData = require('../lib/showData.js')
-var database = require('../lib/DBConnecter.js');
+const express = require("express");
+const router = express.Router();
+const summary = require("../lib/summary.js");
+const showData = require("../lib/showData.js");
+const database = require("../lib/DBConnecter.js");
+const axios = require("axios");
 
-router.get('/', function(req, res, next) {
-
-  var variable = req.query.variable;
-  var process = req.query.process;
-  var uid = req.query.uid;
-  const db = new database(uid);
-  db.load('tmp', function(data) {
-    df = new DataFrame(data)
-    variable.forEach(function(element, index) {
-      naDf = df.get(element);
-      var naArray = new Array();
-
-      if (process[index] == "mean") {
-        meanDf = df.get(element)
-        avg = meanDf.mean();
-        naDf.forEach(function(current) {
-          if (current == '') {
-            naArray.push(avg)
-          } else {
-            naArray.push(current)
-          };
-        })
-        df = df.set(element, naArray);
-      } else if (process[index] == "median") {
-        medianDf = df.get(element)
-        middle = medianDf.median();
-        naDf.forEach(function(current) {
-          if (current == '') {
-            naArray.push(middle)
-          } else {
-            naArray.push(current)
-          };
-        })
-        df = df.set(element, naArray);
-      }
-    })
-
-    variable.forEach(function(element, index) {
-      var reDf = df.get(element);
-      var reArray = new Array();
-      if (process[index] == "remove") {
-        reDf.forEach(function(current) {
-          if (current == '') {
-            reArray.push(false)
-          } else {
-            reArray.push(true)
-          };
-        })
-        df = df.filter(reArray)
-      }
-    })
-    db.save(df.to_json({
-      orient: 'records'
-    }))
-    var data = summary(df)
-    var data2 = showData(df)
-
-    res.json({
-      data: data,
-      data2: data2,
-      variable: df.columns
-    })
-  });
-
+router.post("/", (req, res) => {
+  const { uid, process, variable } = req.body;
+  
+  axios({
+    url: "http://localhost:8000/server/notavailable",
+    data: {
+      "uid": uid,
+      "process": process,
+      "variable": variable
+    },
+    method: "POST",
+    header: { "Content-type": "application/json" }
+  })
+  .then(response => {
+    const snapshot = JSON.parse(response.data.snapshot);
+    const df = new DataFrame(snapshot)
+    const summ = summary(df)
+    const data = showData(df)
+    const columns = df.columns
+    res.json({ "summary": summ, "dataframe": data, "variable": columns });
+  })
+  .catch(response => {
+    console.log(response);
+    res.json({ "snapshot": "error" });    
+  })
 });
-
-
-
-
-
 
 module.exports = router;
