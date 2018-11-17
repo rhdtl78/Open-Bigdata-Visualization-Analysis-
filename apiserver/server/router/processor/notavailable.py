@@ -21,14 +21,20 @@ def process(request):
     data = snapshot['data']
     
     postData = coder.escape(data)
-    
+    print ("before\n")
+    print (postData)
+    print (postData.columns)
+    print (variable)
+
     for index, proc in enumerate(process):
         if proc == 'remove':
-            postData = postData.dropna(axis=0)
+            postData = postData['Sepal.Width'].dropna()
         elif proc == 'median':
             postData[variable[index]].where(pd.notnull(postData)[variable[index]], postData[variable[index]].median(), axis='columns')            
         elif proc == 'mean':
             postData[variable[index]].where(pd.notnull(postData)[variable[index]], postData[variable[index]].mean(), axis='columns')
 
+    print ("after")
+    print (postData)
 
     return JsonResponse({"snapshot": postData.to_json(orient='records')}, safe=False)

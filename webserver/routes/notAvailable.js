@@ -7,7 +7,7 @@ const axios = require("axios");
 
 router.post("/", (req, res) => {
   const { uid, process, variable } = req.body;
-
+  
   axios({
     url: "http://localhost:8000/server/notavailable",
     data: {

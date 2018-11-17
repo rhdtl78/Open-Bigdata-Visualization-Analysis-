@@ -27,7 +27,9 @@ router.post('/csv', upload.single('csvfile'), function(req, res, next) {
     .on("data", function(data) {
       for (var key in data) {
         if (data.hasOwnProperty(key)) {
-          data[key] = (isNaN(data[key])) ? data[key] : Number(data[key]);
+          if (data[key]) {
+            data[key] = (isNaN(data[key])) ? data[key] : Number(data[key]);
+          } 
         }
       }
       array[i] = data;
