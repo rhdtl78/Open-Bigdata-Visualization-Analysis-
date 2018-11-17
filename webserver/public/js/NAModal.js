@@ -11,13 +11,13 @@ function NATable() {
     var vari = $(this).find("td").eq(0).html();
     var NAco = $(this).find("td").eq(6).html();
     var total = $(this).find("td").eq(7).html();
-    if (vari != undefined) {
+    if (vari) {
       variable.push(vari)
     }
-    if (NAco != undefined) {
+    if (NAco) {
       NAcount.push(NAco)
     }
-    if (total != undefined) {
+    if (total) {
       totalCount.push(total)
       NApercent.push(((NAco / total) * 100).toFixed(2));
     }

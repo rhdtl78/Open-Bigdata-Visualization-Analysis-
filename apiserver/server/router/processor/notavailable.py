@@ -1,5 +1,5 @@
 import pandas as pd
-import numpy
+import numpy as np
 from ... import firebase_init
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -21,18 +21,26 @@ def process(request):
     data = snapshot['data']
     
     postData = coder.escape(data)
+    columns = postData.columns.tolist()
+    mask = (postData == 'None')
+    for column in columns:
+        postData.loc[mask[column]] = np.nan
+    
     print ("before\n")
     print (postData)
     print (postData.columns)
     print (variable)
 
     for index, proc in enumerate(process):
+        column = variable[index]
         if proc == 'remove':
-            postData = postData['Sepal.Width'].dropna()
+            postData = postData.dropna(subset=[column])
         elif proc == 'median':
-            postData[variable[index]].where(pd.notnull(postData)[variable[index]], postData[variable[index]].median(), axis='columns')            
+            median = postData[column].median()
+            postData.loc[mask[column]] = median
         elif proc == 'mean':
-            postData[variable[index]].where(pd.notnull(postData)[variable[index]], postData[variable[index]].mean(), axis='columns')
+            mean = postData[column].mean()
+            postData.loc[mask[column]] = mean
 
     print ("after")
     print (postData)

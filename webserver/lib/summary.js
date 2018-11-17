@@ -25,7 +25,7 @@ module.exports = function summay(df) {
     }
     dtype.push(series.dtype.toString());
     let count = 0;
-    series.forEach(function (current) { if (current == '') { return count++; } return; })
+    series.forEach(function (current) { if (!current) { return count++; } return; })
     NAcount.push(count)
     total.push(series.length)
     let ex = ""

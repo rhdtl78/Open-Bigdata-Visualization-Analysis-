@@ -23,7 +23,8 @@ router.post("/", (req, res) => {
     const df = new DataFrame(snapshot)
     const summ = summary(df)
     const data = showData(df)
-    res.json({ "summary": summ, "dataframe": data, "variable": variable });
+    const columns = df.columns
+    res.json({ "summary": summ, "dataframe": data, "variable": columns });
   })
   .catch(response => {
     console.log(response);

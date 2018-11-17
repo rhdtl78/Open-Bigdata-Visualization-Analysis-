@@ -32,7 +32,11 @@ module.exports = class Transaction {
           var newKey = key.replace(/[\.\#\$\[\]\/]/, function(x) {
             return escape[x];
           });
-          object[i][newKey] = data[i][key];
+          if (data[i][key]) {
+            object[i][newKey] = data[i][key];
+          } else {
+            object[i][newKey] = "None";
+          }
         }
       }
     }
@@ -87,7 +91,11 @@ module.exports = class Transaction {
             var newKey = key.replace(/&[0-9]+;/, function(x) {
               return escape[x];
             });
-            modified[index][newKey] = value[key];
+            if (value[key] !== "None") {
+              modified[index][newKey] = value[key];
+            } else {
+              modified[index][newKey] = NaN;
+            }
           }
         }
       });
