@@ -32,8 +32,6 @@ DataFrame = require('pandas-js').DataFrame
 Series =require('pandas-js').Series
 map =require('pandas-js').map
 immutable = require('immutable');
-var serviceAccount = require("./serviceAccount.json");
-var appAccount = require("./firebase-credit.json");
 var bodyParser = require('body-parser');
 
 PythonShell = require('python-shell');
@@ -60,10 +58,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({
-  extended: false
-}));
+
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.all('/*', function (req, res, next) {

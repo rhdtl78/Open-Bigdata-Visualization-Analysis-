@@ -12,7 +12,7 @@ function colTable() {
 function btnColApply() {
     var colSelect = new Array();
     $('input:checkbox[name="colSelect"]').each(function () {
-        if (!this.checked) {
+        if (this.checked) {
             colSelect.push(this.value)
         }
     });
@@ -24,6 +24,7 @@ function btnColApply() {
     $.ajax({
         data: { "colSelect": colSelect,"uid":uid },
         url: "/removeCol",
+        type: "post",
         beforeSend: function () {
           loading();
         },
@@ -33,8 +34,7 @@ function btnColApply() {
         success: function (res) {
             var data = res.data;
             showSummary(data);
-            showData(res.data2,res.variable);
-            
+            showData(res.data2,res.variable);        
         },
         error: function (res) {
             // console.log(res);
