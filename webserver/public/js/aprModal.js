@@ -28,6 +28,7 @@ function btnAprApply() {
       $.ajax({
         data: { "uid": uid, "variableArray": variableArray, "minSup":minSup,"minCon":minCon },
         url: "/apriori",
+        type: "POST",
         beforeSend: function () {
           loading();
         },
@@ -40,7 +41,7 @@ function btnAprApply() {
         //   var pred = res.pred;
         //   var model = res.model
         //   showApriori(data, pred, variable, model);
-        var result = res.result
+        var result = res.rules
         showApriori(result)
 
         },
@@ -50,7 +51,7 @@ function btnAprApply() {
       });
 }
 
-function showApriori(result) {
+function showApriori(rules) {
     if(analIndex==0){
         $('#analysis').empty();
       }

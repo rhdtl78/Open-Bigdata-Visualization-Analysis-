@@ -33,6 +33,7 @@ function btnRegApply() {
   $.ajax({
     data: { "uid": uid, "dependent": dependent, "independent": independent },
     url: "/regression",
+    type: "POST",
     beforeSend: function () {
       loading();
     },
@@ -40,35 +41,82 @@ function btnRegApply() {
       complete()
     },
     success: function (res) {
-      var data = res.data;
-      var variable = res.variable
+      var xData = res.xData;
+      var yData = res.yData
       var pred = res.pred;
-      var model = res.model
-      showRegression(data, pred, variable, model);
+      var params = res.params;
+      var xDataVal = res.xDataVal;
+      var yDataVal = res.yDataVal;
+      // console.log("=====pred====")
+      // console.log(pred)
+      // console.log("=====xData====")
+      // console.log(yData)
+      // console.log("=====parmas====")
+      // console.log(params)
+      showRegression(xData, yData, pred, params, xDataVal, yDataVal);
     },
     error: function (res) {
       // console.log(res);
     }
   });
 }
-function showRegression(data, pred, variable, model) {
+function showRegression(xData, yData, pred, params, xDataVal, yDataVal) {
   // $('#analysis').empty();
+  // if (analIndex == 0) {
+  //   $('#analysis').empty();
+  // }
+  // var result = "";
+  // var theta = model.theta;
+  // for (i = 0; i < variable.length; i++) {
+  //   if (i == 0) {
+  //     result += theta[i].toFixed(4) + " + ";
+  //   } else {
+  //     result += "(" + variable[i - 1] + "*" + theta[i].toFixed(4) + ") + "
+  //   }
+  // }
+  // result = variable[variable.length - 1] + " = " + result;
+  // result = result.slice(0, -2);
+  //
+  // for (i = 0; i < variable.length; i++) {
+  //   var name = "analysis" + analIndex;
+  //   analIndex++;
+  //   var btnName = "btn" + name;
+  //   var btn = $('<input type="button" id=' + btnName + ' class="btn btn-outline-danger btn-sm" onclick="plotlyClose(this.id)" value="X"/>');
+  //   $('#analysis').append(btn);
+  //   var div = $('<div id=' + name + '/>');
+  //   $('#analysis').append(div);
+  //   //$('#analysis').append($('<div>').attr('id', 'analysisGraph'));
+  //   //var data = new Array();
+  //
+  //   var trace = new Array();
+  //   trace[0] = {
+  //       x: data[i],
+  //       y: data[variable.length-1],
+  //       type: 'scatter',
+  //       mode: "markers",
+  //       name: variable[i]
+  //   }
+  //   trace[1] = {
+  //     x: data[i],
+  //     y: pred,
+  //     type: 'scatter',
+  //     mode: "markers",
+  //     name: variable.pop() + " predicted"
+  //   };
+  //   var layout = {
+  //     title: result
+  //   };
+  //   Plotly.newPlot(name, trace, layout);
+  // }
   if (analIndex == 0) {
     $('#analysis').empty();
   }
-  var result = "";
-  var theta = model.theta;
-  for (i = 0; i < variable.length; i++) {
-    if (i == 0) {
-      result += theta[i].toFixed(4) + " + ";
-    } else {
-      result += "(" + variable[i - 1] + "*" + theta[i].toFixed(4) + ") + "
-    }
+  var result = xDataVal + " = " + params[0].toFixed(4);
+  for (i = 0; i < yDataVal.length; i++) {
+    result += " + (" + yDataVal[i] + "*" + params[i+1].toFixed(4) + ")"
   }
-  result = variable[variable.length - 1] + " = " + result;
-  result = result.slice(0, -2);
-
-  for (i = 0; i < variable.length; i++) {
+  console.log("result = "+result)
+  for (i = 0; i < yData.length; i++) {
     var name = "analysis" + analIndex;
     analIndex++;
     var btnName = "btn" + name;
@@ -76,28 +124,27 @@ function showRegression(data, pred, variable, model) {
     $('#analysis').append(btn);
     var div = $('<div id=' + name + '/>');
     $('#analysis').append(div);
-    //$('#analysis').append($('<div>').attr('id', 'analysisGraph'));
-    //var data = new Array();
+  //$('#analysis').append($('<div>').attr('id', 'analysisGraph'));
+  //var data = new Array();
 
     var trace = new Array();
     trace[0] = {
-        x: data[i],
-        y: data[variable.length-1],
+        x: yData[i],
+        y: xData,
         type: 'scatter',
         mode: "markers",
-        name: variable[i]
-    }
+        name: xDataVal
+      }
     trace[1] = {
-      x: data[i],
-      y: pred,
-      type: 'scatter',
-      mode: "markers",
-      name: variable.pop() + " predicted"
-    };
+        x: yData[i],
+        y: pred,
+        type: 'scatter',
+        mode: "markers",
+        name: yDataVal[i] + "predict"
+      };
     var layout = {
       title: result
     };
     Plotly.newPlot(name, trace, layout);
   }
-
 }

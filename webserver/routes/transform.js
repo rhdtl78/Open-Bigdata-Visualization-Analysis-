@@ -75,9 +75,7 @@ router.post("/", (req, res) => {
     data: {
       uid: uid,
       variable: variable,
-      category: category.map(value => {
-        return parseFloat(value);
-      })
+      category: category
     },
     method: "POST",
     headers: { "Content-type": "application/json" }
