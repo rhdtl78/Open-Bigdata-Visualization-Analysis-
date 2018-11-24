@@ -41,15 +41,7 @@ def process(request):
         # print("after=  ",colName[idx])
 
     df.columns = colName
-
-    transactions = [['eggs', 'bacon', 'soup'],
-                ['eggs', 'bacon', 'apple'],
-                ['soup', 'bacon', 'banana']]
-    itemsets, rules = apriori(transactions, min_support=0.5,  min_confidence=1)
-    print(transactions)
-    print(rules)  # [{eggs} -> {bacon}, {soup} -> {bacon}]
-
-    print(df.columns)
+    
     apr = []
     newDf = pd.DataFrame()
     for idx,element in enumerate(select):
