@@ -3,7 +3,7 @@ var router = express.Router();
 var database = require('../lib/DBConnecter.js');
 //var summary = require('../lib/summary.js')
 var anova = require('anova');
-
+const axios = require("axios");
 
 router.get('/', function (req, res, next) {
 
@@ -23,6 +23,35 @@ router.get('/', function (req, res, next) {
 
   });
 
+});
+
+router.post("/", (req, res) => {
+  var uid = req.body.uid;
+  var dependent = req.body.dependent;
+  var independent = req.body.independent;
+  axios({
+    url: "http://localhost:8000/server/anova",
+    data: {
+      uid: uid,
+      dependent: dependent,
+      independent: independent
+    },
+    method: "POST",
+    headers: { "Content-type": "application/json" }
+  })
+    .then(response => {
+
+      try {
+        const result = JSON.parse(response.data.result.toString('utf-8'));
+        // console.log(rules)
+        res.send({result:result});
+      } catch (error) {
+        console.log(error);
+      }
+    })
+    .catch(error => {
+      console.log("error", error);
+    });
 });
 
 module.exports = router;
