@@ -28,6 +28,7 @@ function btnAprApply() {
       $.ajax({
         data: { "uid": uid, "variableArray": variableArray, "minSup":minSup,"minCon":minCon },
         url: "/apriori",
+        type: "POST",
         beforeSend: function () {
           loading();
         },
@@ -40,7 +41,7 @@ function btnAprApply() {
         //   var pred = res.pred;
         //   var model = res.model
         //   showApriori(data, pred, variable, model);
-        var result = res.result
+        var result = res.rules
         showApriori(result)
 
         },
@@ -50,7 +51,7 @@ function btnAprApply() {
       });
 }
 
-function showApriori(result) {
+function showApriori(rules) {
     if(analIndex==0){
         $('#analysis').empty();
       }
@@ -63,10 +64,19 @@ function showApriori(result) {
       //$('#analysis').append(div);
 
       var table = $('<table width="100%" class="table table-bordered table-hover table-striped">');
-      table.append($('<tr><th>lhs</th><th> => </th><th>rhs</th><th>support</th><th>confidence</th><th>lift</th></tr>'))
-      result = result.associationRules;
-      result.forEach(function(array){
-        table.append($('<tr><td>'+array["lhs"]+'</td><td> => </td><td>'+array["rhs"]+'</td><td>'+array["support"].toFixed(4)+'</td><td>'+array["confidence"].toFixed(4)+'</td><td>'+array["lift"].toFixed(4)+'</td></tr>'));
+      // table.append($('<tr><th>lhs</th><th> => </th><th>rhs</th><th>support</th><th>confidence</th><th>lift</th></tr>'))
+      table.append($('<tr><th>rules</th></tr>'))
+      // result = result.associationRules;
+      // result.forEach(function(array){
+      //   table.append($('<tr><td>'+array["lhs"]+'</td><td> => </td><td>'+array["rhs"]+'</td><td>'+array["support"].toFixed(4)+'</td><td>'+array["confidence"].toFixed(4)+'</td><td>'+array["lift"].toFixed(4)+'</td></tr>'));
+      // })
+      // console.log(rules)
+      // for(i=0;i<rules.length;i++){
+      //   table.append($('<tr><td>'+rules[i]+'</td></tr>'));
+      // }
+      // table.append($('<tr><td>'+rules+'</td></tr>'));
+      rules.forEach(function(element){
+        table.append($('<tr><td>'+element+'</td></tr>'));
       })
 
       div.append(table)
