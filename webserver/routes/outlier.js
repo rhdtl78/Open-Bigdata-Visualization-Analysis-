@@ -51,20 +51,20 @@ router.get("/modal", function(req, res, next) {
     seqNames = df.columns;
     // console.log("seq: ", seqNames);
     // console.log("df: ", df);
-    
+
     var variable = new Array();
     var data = new Array();
     seqNames.forEach(function(element) {
       if (
-        // df.get(element).dtype.toString() == "dtype(int)" ||
-        // df.get(element).dtype.toString() == "dtype(float)"
-        true
+        df.get(element).dtype.toString() == "dtype(int)" ||
+        df.get(element).dtype.toString() == "dtype(float)"
+        
       ) {
         variable.push(element);
         data.push(df.get(element).to_json({ orient: "records"}));
       }
     });
-    
+
     res.json({ variable: variable, data: data });
   });
 });
@@ -100,13 +100,13 @@ router.post("/", (req, res) => {
 
         const data1 = summary(df);
         const data2 = showData(df);
-        
+
         res.send({ data: data1, data2: data2, variable: df.columns });
       } catch (error) {
         console.log(error);
-        
+
       }
-      
+
     })
     .catch(error => {
       console.log("error", error);

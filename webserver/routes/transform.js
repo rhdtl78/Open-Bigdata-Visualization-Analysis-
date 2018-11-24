@@ -74,16 +74,12 @@ router.post("/", (req, res) => {
     data: {
       uid: uid,
       variable: variable,
-      category: category.map(value => {
-        return parseFloat(value);
-      })
+      category: category
     },
     method: "POST",
     headers: { "Content-type": "application/json" }
   })
     .then(response => {
-      console.log("it is okay");
-
       try {
         const data = JSON.parse(response.data.snapshot);
         db.save(data);
