@@ -75,6 +75,7 @@ function btnStratificationApply(){
     $.ajax({
         data : {"yRange": yRange,"variable":variable,"uid":uid,"xRange":xRange},
         url : "/stratification",
+        type:"POST",
         beforeSend: function () {
           loading();
         },

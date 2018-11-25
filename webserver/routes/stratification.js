@@ -3,6 +3,7 @@ var router = express.Router();
 var summary = require('../lib/summary.js')
 var showData = require('../lib/showData.js')
 var database = require('../lib/DBConnecter.js');
+const axios = require("axios");
 
 router.get('/modal', function (req, res, next) {
   var uid = req.query.uid;
@@ -39,15 +40,15 @@ router.get('/', function (req, res, next) {
 
         var strDf = df.get(element);
         var strArray = new Array();
-        strDf.forEach(function (current,index) { 
+        strDf.forEach(function (current,index) {
           if (start<=index && index<=end) {
-             strArray.push(true) 
-            } else { 
-              strArray.push(false) 
-            }; 
+             strArray.push(true)
+            } else {
+              strArray.push(false)
+            };
         });
         df = df.filter(strArray)
-      
+
         df = df.filter(df.get(variable[index]).gte(yRange[0]));
         df = df.filter(df.get(variable[index]).lte(yRange[1]));
       }
@@ -55,7 +56,7 @@ router.get('/', function (req, res, next) {
     db.save(df.to_json({ orient: 'records' }))
     var data = summary(df);
     var data2 = showData(df)
-    
+
           res.json({
             data: data,
             data2:data2,
@@ -63,6 +64,47 @@ router.get('/', function (req, res, next) {
           })
   });
 
+});
+
+
+router.post("/", (req, res) => {
+  var uid = req.body.uid;
+  var yRange = req.body.yRange;
+  var xRange = req.body.xRange;
+  var name = req.body.variable;
+  const db = new database(uid);
+  axios({
+    url: "http://localhost:8000/server/stratification",
+    data: {
+      uid: uid,
+      yRange:yRange,
+      xRange:xRange,
+      name:name
+    },
+    method: "POST",
+    headers: { "Content-type": "application/json" }
+  })
+    .then(response => {
+
+      try {
+
+        const data = JSON.parse(response.data.snapshot);
+        db.save(data)
+        const df = new DataFrame(data);
+        // console.log(df);
+
+        const data1 = summary(df);
+        const data2 = showData(df);
+
+        // console.log(rules)
+        res.send({data:data,data2:data2,variable:df.columns});
+      } catch (error) {
+        console.log(error);
+      }
+    })
+    .catch(error => {
+      console.log("error", error);
+    });
 });
 
 
