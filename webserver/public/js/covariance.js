@@ -5,6 +5,7 @@ function covariance() {
   $.ajax({
     data:{"uid":uid},
     url: "/covariance",
+    type:"POST",
     beforeSend: function () {
       loading();
     },
@@ -13,8 +14,7 @@ function covariance() {
     },
     success: function (res) {
       data = res.data;
-      variable = res.variable
-      showCovariance(data, variable);
+      showCovariance(data);
     },
     error: function (res) {
       // console.log(res);
@@ -22,10 +22,10 @@ function covariance() {
   });
 
 }
-function showCovariance(data, variable) {
+function showCovariance(cov) {
   //$('#analysis').empty();
   if(analIndex==0){
-    $('#analysis').empty();  
+    $('#analysis').empty();
   }
   var name = "analysis" + analIndex;
   analIndex++;
@@ -34,6 +34,20 @@ function showCovariance(data, variable) {
   $('#analysis').append(btn);
   var div = $('<div id=' + name + '/>');
   //$('#analysis').append(div);
+  var data = new Array();
+  var variable = new Array();
+
+  for(i=0;i<cov.length;i++){
+    cov[i] = cov[i].replace("(","")
+    cov[i] = cov[i].replace(")","")
+    var temp = cov[i].split(",")
+    variable.push(temp[0])
+    var array = new Array();
+    for(j=1;j<temp.length;j++){
+      array.push(parseFloat(temp[j]))
+    }
+    data.push(array)
+  }
 
   var table = $('<table width="100%" class="table table-bordered table-hover table-striped">');
 

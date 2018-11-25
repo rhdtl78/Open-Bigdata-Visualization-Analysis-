@@ -45,6 +45,7 @@ function btnCorrApply(){
   $.ajax({
     data: { "uid": uid,"select":select },
     url: "/correlation",
+    type:"POST",
     beforeSend: function () {
       loading();
     },
@@ -52,7 +53,7 @@ function btnCorrApply(){
       complete()
     },
     success: function (res) {
-      data = res.data;
+      data = res.corr;
       variable = res.variable
       showCorrelation(data, variable);
     },
@@ -64,7 +65,7 @@ function btnCorrApply(){
 function showCorrelation(data, variable) {
   //$('#analysis').empty();
   if(analIndex==0){
-    $('#analysis').empty();  
+    $('#analysis').empty();
   }
   var name = "analysis" + analIndex;
   analIndex++;
@@ -74,11 +75,26 @@ function showCorrelation(data, variable) {
   var div = $('<div id=' + name + '/>');
   $('#analysis').append(div);
 
+  var corr =new Array();
+  console.log("data lenght = "+data.length)
+  console.log("data = "+data)
+  for(i=0;i<data.length;i++){
+    data[i] = data[i].replace(")","")
+    data[i] = data[i].replace("(","")
+    var temp = data[i].split(",")
 
+    console.log("temp = "+temp)
+    var array = new Array();
+    for(j=1;j<temp.length;j++){
+      array.push(parseFloat(temp[j]));
+    }
+    corr.push(array)
+  }
+  console.log("corr = "+corr)
   //$('#analysis').append($('<div>').attr('id', 'analysisGraph'));
   var heatData = new Array();
   for (i = 0; i < variable.length; i++) {
-    heatData.push(data[i]);
+    heatData.push(corr[i]);
   }
   var trace = [
     {

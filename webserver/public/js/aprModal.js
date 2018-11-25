@@ -65,7 +65,7 @@ function showApriori(rules) {
 
       var table = $('<table width="100%" class="table table-bordered table-hover table-striped">');
       // table.append($('<tr><th>lhs</th><th> => </th><th>rhs</th><th>support</th><th>confidence</th><th>lift</th></tr>'))
-      table.append($('<tr><th>rules</th></tr>'))
+      table.append($('<tr><th>lhs</th><th>-></th><th>rhs</th><th>confidence</th><th>support</th><th>lift</th></tr>'))
       // result = result.associationRules;
       // result.forEach(function(array){
       //   table.append($('<tr><td>'+array["lhs"]+'</td><td> => </td><td>'+array["rhs"]+'</td><td>'+array["support"].toFixed(4)+'</td><td>'+array["confidence"].toFixed(4)+'</td><td>'+array["lift"].toFixed(4)+'</td></tr>'));
@@ -76,7 +76,20 @@ function showApriori(rules) {
       // }
       // table.append($('<tr><td>'+rules+'</td></tr>'));
       rules.forEach(function(element){
-        table.append($('<tr><td>'+element+'</td></tr>'));
+        element = element.split("->");
+        var lhs = element[0];
+        element = element[1].split("(conf:")
+        var rhs = element[0];
+        element = element[1].split("supp:")
+        var conf = element[0];
+        conf = conf.substring(0,conf.length-2);
+        element = element[1].split("lift:")
+        var supp = element[0];
+        supp = supp.substring(0,supp.length-2);
+        element = element[1].split("conv:")
+        var lift = element[0];
+        lift = lift.substring(0,lift.length-2);
+        table.append($('<tr><td>'+lhs+'</td><td>-></td><td>'+rhs+'</td><td>'+conf+'</td><td>'+supp+'</td><td>'+lift+'</td></tr>'));
       })
 
       div.append(table)

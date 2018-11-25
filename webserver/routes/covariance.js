@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var database = require('../lib/DBConnecter.js');
+const axios = require("axios");
 
 router.get('/', function (req, res, next) {
   var uid = req.query.uid;
@@ -24,5 +25,33 @@ router.get('/', function (req, res, next) {
 
   });
 });
+
+router.post("/", (req, res) => {
+  var uid = req.body.uid;
+
+  axios({
+    url: "http://localhost:8000/server/covariance",
+    data: {
+      uid: uid
+    },
+    method: "POST",
+    headers: { "Content-type": "application/json" }
+  })
+    .then(response => {
+
+      try {
+
+        const cov = JSON.parse(response.data.cov);
+        // console.log(rules)
+        res.send({data:cov});
+      } catch (error) {
+        console.log(error);
+      }
+    })
+    .catch(error => {
+      console.log("error", error);
+    });
+});
+
 
 module.exports = router;

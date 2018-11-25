@@ -1,8 +1,8 @@
 from django.conf.urls import url, include
 # from router.processor import outlier
 from . import views
-from .router.processor import outlier, transform
-from .router.analyzer import a,regression, apriori, anova
+from .router.processor import outlier, transform, stratification
+from .router.analyzer import a,regression, apriori, anova, correlation, covariance
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
@@ -10,5 +10,9 @@ urlpatterns = [
     url(r'^transform$', transform.process, name='transform'),
     url(r'^regression$', regression.process, name='regression'),
     url(r'^apriori$', apriori.process, name='apriori'),
-    url(r'^anova$', anova.process, name='anova')
+    url(r'^anova$', anova.process, name='anova'),
+    url(r'^correlation$', correlation.process, name='correlation'),
+    url(r'^covariance$', covariance.process, name='covariance'),
+    url(r'^stratification$', stratification.process, name='stratification')
+
 ]
