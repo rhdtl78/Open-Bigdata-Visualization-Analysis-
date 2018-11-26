@@ -1,8 +1,9 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
-var summary = require('../lib/summary.js')
-var showData = require('../lib/showData.js')
-var database = require('../lib/DBConnecter.js');
+var summary = require("../lib/summary.js");
+var showData = require("../lib/showData.js");
+var database = require("../lib/DBConnecter.js");
+const axios = require("axios");
 
 // router.get('/', function (req, res, next) {
 //   var variable = req.query.variable;
@@ -69,7 +70,6 @@ router.post("/", (req, res) => {
   var category = req.body.category;
   var uid = req.body.uid;
   const db = new database(uid);
-  console.log("it is okay")
   axios({
     url: "http://localhost:8000/server/transform",
     data: {
