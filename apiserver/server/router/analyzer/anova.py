@@ -24,8 +24,8 @@ def process(request):
 
         # print(dataList)
         df = pd.DataFrame(dataList)
-        print("select = ", dependent)
-        print("indepdnt = ", independent)
+        # print("select = ", dependent)
+        # print("indepdnt = ", independent)
         # print(seqNames, postData.columns.values.tolist())
         colName = df.columns.values.tolist()
         for idx, element in enumerate(colName):
@@ -50,14 +50,14 @@ def process(request):
         # for element in independent:
         #     formula += "C(" + element+ "):"
         # formula = formula[:-1]
-        print("formula =",formula)
+        # print("formula =",formula)
         lm = ols(formula, df).fit()
         # print(anova_lm(lm))
         result = anova_lm(lm)
         records = result.to_records()
         temp =[]
         for element in records:
-            print("element = ",element)
+            # print("element = ",element)
             temp.append(str(element))
 
         return JsonResponse({"result":json.dumps(temp)})

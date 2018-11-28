@@ -66,7 +66,7 @@ function btnTransApply(){
       showData(res.data2,res.variable);
     },
     error: function (res) {
-      // console.log(res);
+      console.log(res);
     }
   });
 }

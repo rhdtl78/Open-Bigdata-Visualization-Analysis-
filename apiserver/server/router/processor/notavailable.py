@@ -19,17 +19,17 @@ def process(request):
     ref = db.reference("/" + uid + "/tmp")
     snapshot = ref.get()
     data = snapshot['data']
-    
+
     postData = coder.escape(data)
     columns = postData.columns.tolist()
     mask = (postData == 'None')
     for column in columns:
         postData.loc[mask[column]] = np.nan
-    
-    print ("before\n")
-    print (postData)
-    print (postData.columns)
-    print (variable)
+
+    # print ("before\n")
+    # print (postData)
+    # print (postData.columns)
+    # print (variable)
 
     for index, proc in enumerate(process):
         column = variable[index]

@@ -25,7 +25,7 @@ def process(request):
 
     # print(dataList)
     df = pd.DataFrame(dataList)
-    print("select = ", select)
+    # print("select = ", select)
     # print(seqNames, postData.columns.values.tolist())
     colName = df.columns.values.tolist()
     for idx, element in enumerate(colName):
@@ -41,11 +41,11 @@ def process(request):
         # print("after=  ",colName[idx])
 
     df.columns = colName
-    
+
     apr = []
     newDf = pd.DataFrame()
     for idx,element in enumerate(select):
-        print(element)
+        # print(element)
         # temp = array()
         # temp = df[element].to_json(orient='records')
         # apr.append(tuple(temp))
@@ -62,10 +62,10 @@ def process(request):
     temp =""
     for element in rules:
         temp = str(element)
-        print("temp = ",temp)
-        print("element = ",element)
+        # print("temp = ",temp)
+        # print("element = ",element)
         jsonRules.append(temp)
-    print(jsonRules)
+    # print(jsonRules)
     # jsonRules = json.dumps(jsonRules)
     # print(apriori(apr))
     # print(results)

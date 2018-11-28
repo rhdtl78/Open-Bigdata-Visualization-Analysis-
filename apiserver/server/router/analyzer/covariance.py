@@ -21,6 +21,8 @@ def process(request):
     # print(dataList)
     df = pd.DataFrame(dataList)
     # print(seqNames, postData.columns.values.tolist())
+    # print(df.dtypes)
+
     colName = df.columns.values.tolist()
     for idx, element in enumerate(colName):
         # print("before=  ", colName[idx])
@@ -35,8 +37,11 @@ def process(request):
         # print("after=  ",colName[idx])
 
     df.columns = colName
-    cov = df.cov().to_records();
+    # print(df)
+    temp = df.cov().to_records()
+
+    # print(temp)
     result = []
-    for element in cov:
+    for element in temp:
         result.append(str(element))
     return JsonResponse({"cov":json.dumps(result)})

@@ -97,7 +97,7 @@ router.post("/", (req, res) => {
         const data2 = showData(df);
 
         // console.log(rules)
-        res.send({data:data,data2:data2,variable:df.columns});
+        res.send({data:data1,data2:data2,variable:df.columns});
       } catch (error) {
         console.log(error);
       }

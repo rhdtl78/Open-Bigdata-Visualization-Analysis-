@@ -45,24 +45,26 @@ const axios = require("axios");
 router.get("/modal", function(req, res, next) {
   var uid = req.query.uid;
   // console.log("uid = "+uid)
+  var variable = req.query.variable;
   const db = new database(uid);
   db.load("tmp", function(data) {
     df = new DataFrame(data);
-    seqNames = df.columns;
+    // seqNames = df.columns;
     // console.log("seq: ", seqNames);
     // console.log("df: ", df);
 
-    var variable = new Array();
+    // var variable = new Array();
     var data = new Array();
-    seqNames.forEach(function(element) {
-      if (
-        df.get(element).dtype.toString() == "dtype(int)" ||
-        df.get(element).dtype.toString() == "dtype(float)"
-        
-      ) {
-        variable.push(element);
-        data.push(df.get(element).to_json({ orient: "records"}));
-      }
+    variable.forEach(function(element) {
+      // if (
+      //   df.get(element).dtype.toString() == "dtype(int)" ||
+      //   df.get(element).dtype.toString() == "dtype(float)"
+      //
+      // ) {
+      //   variable.push(element);
+      //   data.push(df.get(element).to_json({ orient: "records"}));
+      // }
+      data.push(df.get(element).to_json({ orient: "records"}));
     });
 
     res.json({ variable: variable, data: data });

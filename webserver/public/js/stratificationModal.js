@@ -1,11 +1,20 @@
 function strVariable(name){
     $('#strSelect').empty();
     var variable = new Array();
+    var type = new Array();
+    var straVariable = new Array();
+
     $('#summaryTable tr').each(function(){
         variable.push($(this).find("td:first").text())
+        type.push($(this).find("td").eq(1).html())
     })
-    variable = variable.slice(1,variable.length)
-   for(let element of variable){
+    for (i = 1; i < variable.length; i++) {
+      if(type[i]!="dtype(object)"){
+        straVariable.push(variable[i]);
+      }
+    }
+
+   for(let element of straVariable){
         if(element == name){
             var option = $("<option value="+element+" selected>"+element+"</option>");
             $('#strSelect').append(option);
@@ -24,8 +33,21 @@ function strScatter(){
     var currentUser = firebase.auth().currentUser;
     var uid = currentUser.uid;
 
+    var variable = new Array();
+    var type = new Array();
+    var straVariable = new Array();
+
+    $('#summaryTable tr').each(function(){
+        variable.push($(this).find("td:first").text())
+        type.push($(this).find("td").eq(1).html())
+    })
+    for (i = 1; i < variable.length; i++) {
+      if(type[i]!="dtype(object)"){
+        straVariable.push(variable[i]);
+      }
+    }
     $.ajax({
-        data : {"variable": variable[1],"uid":uid},
+        data : {"variable": straVariable[0],"uid":uid},
         url : "/stratification/modal",
         success : function (res) {
           data = res.data;

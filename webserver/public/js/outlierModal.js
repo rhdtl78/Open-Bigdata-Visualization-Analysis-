@@ -15,8 +15,20 @@ function outlierVariable(variable) {
 function outlierBox() {
   var currentUser = firebase.auth().currentUser;
   var uid = currentUser.uid;
+  var variable = new Array();
+  var type = new Array();
+  var outVariable = new Array();
+  $('#summaryTable tr').each(function () {
+    variable.push($(this).find("td:first").text())
+    type.push($(this).find("td").eq(1).html())
+  })
+  for (i = 1; i < variable.length; i++) {
+    if(type[i]!="dtype(object)"){
+      outVariable.push(variable[i])
+    }
+  }
   $.ajax({
-    data: { uid: uid },
+    data: { uid: uid ,variable:outVariable},
     url: "/outlier/modal",
     beforeSend: function() {
       loading();

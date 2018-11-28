@@ -20,13 +20,10 @@ def process(request):
     dataList = []
     for key, value in data.items():
         dataList.append(value)
-
-    # print(dataList)
+    
     df = pd.DataFrame(dataList)
-    # print(seqNames, postData.columns.values.tolist())
     colName = df.columns.values.tolist()
     for idx, element in enumerate(colName):
-        # print("before=  ", colName[idx])
         element = element.replace("&35;", "#")
         element = element.replace("&36;", "$")
         element = element.replace("&46;", ".")
@@ -34,8 +31,6 @@ def process(request):
         element = element.replace("&93;", "]")
         element = element.replace("&47;", "/")
         colName[idx] = element
-        # print("element= ", element)
-        # print("after=  ",colName[idx])
 
     df.columns = colName
 
@@ -45,5 +40,5 @@ def process(request):
 
     df = df[df.get(variable) > float(yRange[0])]
     df = df[df.get(variable) < float(yRange[1])]
-    
+
     return JsonResponse({"snapshot": df.to_json(orient='records')})

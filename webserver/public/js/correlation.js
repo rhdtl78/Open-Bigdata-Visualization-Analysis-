@@ -76,21 +76,21 @@ function showCorrelation(data, variable) {
   $('#analysis').append(div);
 
   var corr =new Array();
-  console.log("data lenght = "+data.length)
-  console.log("data = "+data)
+  // console.log("data lenght = "+data.length)
+  // console.log("data = "+data)
   for(i=0;i<data.length;i++){
     data[i] = data[i].replace(")","")
     data[i] = data[i].replace("(","")
     var temp = data[i].split(",")
 
-    console.log("temp = "+temp)
+    // console.log("temp = "+temp)
     var array = new Array();
     for(j=1;j<temp.length;j++){
       array.push(parseFloat(temp[j]));
     }
     corr.push(array)
   }
-  console.log("corr = "+corr)
+  // console.log("corr = "+corr)
   //$('#analysis').append($('<div>').attr('id', 'analysisGraph'));
   var heatData = new Array();
   for (i = 0; i < variable.length; i++) {

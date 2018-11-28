@@ -115,7 +115,7 @@ function showRegression(xData, yData, pred, params, xDataVal, yDataVal) {
   for (i = 0; i < yDataVal.length; i++) {
     result += " + (" + yDataVal[i] + "*" + params[i+1].toFixed(4) + ")"
   }
-  console.log("result = "+result)
+  // console.log("result = "+result)
   for (i = 0; i < yData.length; i++) {
     var name = "analysis" + analIndex;
     analIndex++;

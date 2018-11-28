@@ -44,6 +44,11 @@ module.exports = function summay(df) {
 
   });
 
+  for(i =0;i<dtype.length;i++){
+    if(NAcount[i]!=0){
+      dtype[i] = "dtype(object)"
+    }
+  }
 
 
 

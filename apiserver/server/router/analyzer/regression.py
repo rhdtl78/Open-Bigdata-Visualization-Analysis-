@@ -23,8 +23,6 @@ def process(request):
 
     # print(dataList)
     df = pd.DataFrame(dataList)
-    print("dependent = ", dependent)
-    print("independent = ", independent)
     # print(seqNames, postData.columns.values.tolist())
     colName = df.columns.values.tolist()
     for idx, element in enumerate(colName):
@@ -40,29 +38,18 @@ def process(request):
         # print("after=  ",colName[idx])
 
     df.columns = colName
-    print("colums =",df.columns)
     eval = dependent +" ~ "
     for element in independent:
         eval = eval + element +" + "
     eval = eval[:-3]
-    print("eval = ",eval)
 
     result = sm.ols(formula = eval, data = df).fit()
     df["pred"] = result.predict()
     params = result.params
     jsonParams  = []
     for idx,element in enumerate(params):
-        print("element =",element)
         jsonParams.append(element)
 
-    print("jsonParams = ",jsonParams)
-    # print(result.params)
-    # print(result.predict())
-    # jsonParams = json.dumps(jsonParams)
-    # print("colName =  ",colName)
-
-    # for idx, element in enumerate(seqNames):
-    #     postData.columns.values[idx] = element
 
 
 

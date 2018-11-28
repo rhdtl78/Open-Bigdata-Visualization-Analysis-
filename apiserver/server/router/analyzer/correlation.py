@@ -45,4 +45,5 @@ def process(request):
     for element in corrTable:
         result.append(str(element))
 
+    # print(result)
     return JsonResponse({"corr":json.dumps(result)})
