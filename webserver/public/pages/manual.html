@@ -1,122 +1,551 @@
 <!doctype html>
 <html>
-
 <head>
-  <meta charset='UTF-8'>
-  <meta name='viewport' content='width=device-width initial-scale=1'>
-  <title>OBVA's Menual</title>
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' />
-  <link rel="stylesheet" href="/stylesheets/manual.css">
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>OBVA_Menual</title><link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit inherit; background-repeat: inherit inherit; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; padding-bottom: 70px; white-space: pre-wrap; overflow-x: visible; }
+.first-line-indent #write p .md-line { text-indent: 0px; }
+.first-line-indent #write li, .first-line-indent #write p, .first-line-indent #write p .md-line:first-child { text-indent: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+@media screen and (max-width: 500px) { 
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write > blockquote:first-child, #write > div:first-child, #write > figure:first-child, #write > ol:first-child, #write > p:first-child, #write > pre:first-child, #write > ul:first-child { margin-top: 30px; }
+#write li > figure:first-child { margin-top: -20px; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; }
+button, input, select, textarea { color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 2; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+h1, h2, h3, h4, h5, h6 { margin-top: 1rem; margin-bottom: 1rem; }
+p { -webkit-margin-before: 1rem; -webkit-margin-after: 1rem; -webkit-margin-start: 0px; -webkit-margin-end: 0px; }
+.mathjax-block { margin-top: 0px; margin-bottom: 0px; -webkit-margin-before: 0px; -webkit-margin-after: 0px; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.701961); color: rgb(85, 85, 85); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px !important; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 80px; }
+.CodeMirror-gutters { border-right-width: 0px; background-color: inherit; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+pre { white-space: pre-wrap; }
+pre.contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; position: relative !important; background-position: inherit inherit; background-repeat: inherit inherit; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+.md-fences.mock-cm { white-space: pre-wrap; }
+.show-fences-line-number .md-fences { padding-left: 0px; }
+.show-fences-line-number .md-fences.mock-cm { padding-left: 40px; }
+.CodeMirror-line { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; background-repeat: initial initial; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+.footnote-line { white-space: pre-wrap; }
+@media print { 
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid-page; break-before: avoid-page; }
+  #write { margin-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { padding-left: 1cm; padding-right: 1cm; padding-bottom: 0px; break-after: avoid-page; }
+  .typora-export #write::after { height: 0px; }
+  @page { margin: 20mm 0px; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background-color: rgb(204, 204, 204); display: block; overflow-x: hidden; background-position: initial initial; background-repeat: initial initial; }
+p > img:only-child { display: block; margin: auto; }
+.md-line > .md-image:only-child, p > .md-image:only-child { display: inline-block; width: 100%; text-align: center; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.mathjax-block { white-space: pre; overflow: hidden; width: 100%; }
+p + .mathjax-block { margin-top: -1.143rem; }
+.mathjax-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) { 
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, tt { font-family: var(--monospace); }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; }
+a.md-print-anchor { border: none !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; text-shadow: initial !important; background-position: 0px 0px !important; background-repeat: initial initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.mathjax-block .MathJax_SVG_Display { text-align: center; margin: 1em 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: monospace; }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Open Sans Regular'),url('file:///Users/bsy/Library/Application%20Support/abnerworks.Typora/themes/github/400.woff') format('woff')
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: italic;
+    font-weight: normal;
+    src: local('Open Sans Italic'),url('file:///Users/bsy/Library/Application%20Support/abnerworks.Typora/themes/github/400i.woff') format('woff')
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: bold;
+    src: local('Open Sans Bold'),url('file:///Users/bsy/Library/Application%20Support/abnerworks.Typora/themes/github/700.woff') format('woff')
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: italic;
+    font-weight: bold;
+    src: local('Open Sans Bold Italic'),url('file:///Users/bsy/Library/Application%20Support/abnerworks.Typora/themes/github/700i.woff') format('woff')
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write{
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 20px 30px 40px 30px;
+	padding-top: 20px;
+    padding-bottom: 100px;
+}
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+body > *:first-child {
+    margin-top: 0 !important;
+}
+body > *:last-child {
+    margin-bottom: 0 !important;
+}
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    /*background: url("file:///Users/bsy/Library/Application%20Support/images/modules/styleguide/para.png") no-repeat 10px center;*/
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    padding-bottom: .3em;
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+   padding-bottom: .3em;
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+body > h2:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+body > h1:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0;
+}
+body > h3:first-child,
+body > h4:first-child,
+body > h5:first-child,
+body > h6:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+a:first-child h1,
+a:first-child h2,
+a:first-child h3,
+a:first-child h4,
+a:first-child h5,
+a:first-child h6 {
+    margin-top: 0;
+    padding-top: 0;
+}
+h1 p,
+h2 p,
+h3 p,
+h4 p,
+h5 p,
+h6 p {
+    margin-top: 0;
+}
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border-top: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table tr th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
+}
+table tr td {
+    border: 1px solid #dfe2e5;
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
+}
+table tr th:first-child,
+table tr td:first-child {
+    margin-top: 0;
+}
+table tr th:last-child,
+table tr td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-gutters {
+    border-right: 1px solid #ddd;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #dfe2e5;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    font-family: Consolas, "Liberation Mono", Courier, monospace;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding: 0.2em 1em;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media screen and (min-width: 914px) {
+    /*body {
+        width: 854px;
+        margin: 0 auto;
+    }*/
+}
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    font-family: Consolas, "Liberation Mono", Courier, monospace;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag{
+	color: inherit;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+#md-notification:before {
+    top: 10px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+.html-for-mac .context-menu {
+    --item-hover-bg-color: #E6F0FE;
+}
+
+
+ .typora-export p, .typora-export .footnote-line {white-space: normal;} 
+</style>
 </head>
-
-<body class='typora-export'>
-  <div id='write' class='is-mac'>
-    <p>&nbsp;</p>
-    <h1><a name='header-n3' class='md-header-anchor '></a>Open Bigdata Visualizaition Analasize</h1>
-    <p><img src='../images/manual/main.PNG' alt='main' referrerPolicy='no-referrer' /></p>
-    <h2><a name='header-n6' class='md-header-anchor '></a>1. Upload CSV File</h2>
-    <p>csv파일을 업로드 할 수 있다.</p>
-    <p><img src='../images/manual/upload.PNG' alt='upload' referrerPolicy='no-referrer' /></p>
-    <p>&nbsp;</p>
-    <p>업로드를 하는순간 데이터의 요약본을 보여준다.</p>
-    <p><img src='../images/manual/dataSummary.PNG' alt='dataSummary' referrerPolicy='no-referrer' /></p>
-    <p>&nbsp;</p>
-    <h2><a name='header-n19' class='md-header-anchor '></a>2. Charts</h2>
-    <p>받아온 CSV 파일을 시각화 한다.</p>
-    <p><img src='../images/manual/graph.PNG' alt='graph' referrerPolicy='no-referrer' /></p>
-    <p>어떤 종류의 그래프를 그릴지 선택한뒤, 각각의 컬럼들을 보고 x축 y축을 선택하여 그래프를 그릴 수 있다.</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <h3><a name='header-n30' class='md-header-anchor '></a>2.1. Line graph</h3>
-    <p>라인 그래프로 데이터를 시각화한다.</p>
-    <p><img src='../images/manual/line.PNG' alt='line' referrerPolicy='no-referrer' /></p>
-    <p>트렌드와 증가량 등을 나타낼 때 각각의 데이터양 뿐만 아니라 증감을 한눈에 볼 수 있는 장점이 있다.</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <h3><a name='header-n39' class='md-header-anchor '></a>2.2. Bar graph</h3>
-    <p>막대 그래프로 데이터를 시각화한다.</p>
-    <p><img src='../images/manual/bar.PNG' alt='bar' referrerPolicy='no-referrer' /></p>
-    <p>값들이 뚜렷한 차이를 보이는 경우로 수치를 길이로 표현해 절대값을 갖는 막대를 배치함으로써 상대적인 차이를 한눈에 알아보는것이 가능하다.</p>
-    <p>바 차트는 가장 많이 활용되는 차트 중 하나로 특히 두가지 혹은 그 이상의 양을 비교할 때 효과적이다.\</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <h3><a name='header-n50' class='md-header-anchor '></a>2.3. Box graph</h3>
-    <p>박스 그래프로 데이터를 시각화한다.</p>
-    <p><img src='../images/manual/box.PNG' alt='box' referrerPolicy='no-referrer' /></p>
-    <p>&nbsp;</p>
-    <p><img src='../images/manual/box_ex.png' alt='box_ex' referrerPolicy='no-referrer' /></p>
-    <ol start=''>
-      <li>최솟값 : 제 1사분위에서 1.5 IQR을 뺀 위치이다.</li>
-      <li>제 1사분위(Q1) : 25%의 위치를 의미한다.</li>
-      <li>제 2사분위(Q2) : 50%의 위치로 중앙값(median)을 의미한다.</li>
-      <li>제 3사분위(Q3) : 75%의 위치를 의미한다.</li>
-      <li>최댓값 : 제 3사분위에서 1.5 IQR을 더한 위치이다.</li>
-    </ol>
-    <p>최솟값과 최댓값을 넘어가는 위치에 있는 값을 이상치(Outlier)라고 부른다.</p>
-    <p>&nbsp;</p>
-    <p>데이터 집합의 범위와 중앙값을 빠르게 확인 할 수 있는 목적으로 사용한다.</p>
-    <p>또한 통계적으로 이상치가 있는지도 확인이 가능하다.</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <h3><a name='header-n87' class='md-header-anchor '></a>2.4. Scatter graph</h3>
-    <p>산점도 그래프로 데이터를 시각화한다.</p>
-    <p><img src='../images/manual/scatter.PNG' alt='scatter' referrerPolicy='no-referrer' /></p>
-    <p>산점도는 두 변수 간의 영향력을 보여주기 위해 가로 축과 세로 축에 데이터 포인트를 그리는 데 사용한다.</p>
-    <p>&nbsp;</p>
-    <h3><a name='header-n96' class='md-header-anchor '></a>2.5. Pie graph</h3>
-    <p>원 그래프로 데이터를 시각화한다.</p>
-    <p><img src='../images/manual/pie.PNG' alt='pie' referrerPolicy='no-referrer' /></p>
-    <p>한눈에 순위 비교가 가능하지만 정확한 수치데이터를 알기에는 부적합하다.</p>
-    <p>&nbsp;</p>
-    <h2><a name='header-n105' class='md-header-anchor '></a>3. Preprocessing</h2>
-    <h3><a name='header-n106' class='md-header-anchor '></a>3.1. Outier process</h3>
-    <p>이상치란 정상 범주에서 크게 벗어난 값을 말한다. 데이터 수집 과정에서 오류가 발생할 수 있기 때문에 현장에서 만들어진 실제 데이터에는 이상치가 포함될 수 있다. 혹은 오류는 아니지만 굉장히 드물게 발생하는 값이 있을 수 있다.</p>
-    <p>이상치 처리는 이러한 이상치를 제거해주는 작업이다.</p>
-    <p><img src='../images/manual/outier.PNG' alt='outier' referrerPolicy='no-referrer' /></p>
-    <p>위의 빈칸에 원하는 최솟값, 최댓값을 넣어주면 그 값들의 사이의 값만 나오게 처리가 된다.</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <h3><a name='header-n119' class='md-header-anchor '></a>3.2. Not available process</h3>
-    <p>결측치란 쉽게 생각하면 &#39;없는 값&#39; 이다.</p>
-    <p>데이터를 분석할때 데이터들은 오류를 포함하고 있거나 결측값(값이 빠지거나 비어있는 값)등을 처리하지않으면 데이터 분석이 제대로 되질 않는다. 그러므로 데이터 결측치 처리를 해주어야 한다.</p>
-    <p><img src='../images/manual/not_avail.PNG' alt='not_avail' referrerPolicy='no-referrer' /></p>
-    <p>결측값을 없애준다.</p>
-    <p>&nbsp;</p>
-    <h3><a name='header-n130' class='md-header-anchor '></a>3.3. Stratification</h3>
-    <p>데이터의 정보를 더 작고 더 관련성이 있는 정보로 나누면 데이터를 더 쉽게 이해 할 수 있다.</p>
-    <p>데이터 계층화는 미리 결정된 기준에 따라 데이터를 더 작고 정의된 계층으로 분리하는 것이다.</p>
-    <p><img src='../images/manual/stratification.PNG' alt='stratification' referrerPolicy='no-referrer' /></p>
-    <p>&nbsp;</p>
-    <h2><a name='header-n139' class='md-header-anchor '></a>4. Analysis</h2>
-    <h3><a name='header-n140' class='md-header-anchor '></a>4.1. Correlation</h3>
-    <p>상관분석은 두 변수간의 어떤 선형적 관계를 갖고 있는 지를 분석하는 방법이다.</p>
-    <p>두 변수는 서로 독립적인 관계로부터 서로 상관된 관계일 수 있으며 이때 구변수간의 관계의 강도를 상관관계라고 한다.</p>
-    <p><img src='../images/manual/correlation.PNG' alt='correlation' referrerPolicy='no-referrer' /></p>
-    <ul>
-      <li>-1에 가까운 값 : 매우 강력한 음(-)의 상관. 오히려 너무 확고하기 때문에 일부 연구자들은 데이터를 조작한 게 아닌가 의심할 정도이다.사회과학 한정이다. 순수학문에 가까운 분야일수록 요구되는 상관관계는 높은 편.</li>
-      <li>-0.5 정도의 값 : 강력한 음(-)의 상관. 연구자는 변인 x 가 증가하면 변인 y 가 감소한다고 자신 있게 말할 수 있다.</li>
-      <li>-0.2 정도의 값 : 음(-)의 상관이긴 한데 너무 약해서 모호하다. 상관관계가 없다고는 할 수 없지만 좀 더 의심해 봐야 한다.</li>
-      <li>0 정도의 값 : 대부분의 경우, 상관관계가 존재하지 않을 것이라고 간주된다.</li>
-      <li>0.2 정도의 값 : 너무 약해서 의심스러운 양(+)의 상관. 이것만으로는 상관관계에 대해 아주 장담할 수는 없다. 하지만 사회과학에선 매우 큰 상관관계가 있는 것으로 간주한다.</li>
-      <li>0.5 정도의 값 : 강력한 양(+)의 상관. 변인 x 가 증가하면 변인 y 가 증가한다는 주장은 이제 통계적으로 지지받고 있다.</li>
-      <li>1에 가까운 값 : 매우 강력한 양(+)의 상관. 위와 마찬가지로, 이렇게까지 확고한 상관관계는 오히려 쉽게 찾아보기 어렵다.</li>
-    </ul>
-    <p>&nbsp;</p>
-    <h3><a name='header-n171' class='md-header-anchor '></a>4.2. Covariance</h3>
-    <p>공분산은 2개의확률변수와 상관정도를 나타내는 값이다.</p>
-    <p>만약 2개의 변수중 하나의 값이 상승하는 경향을 보일 때, 다른 값도 상승하는 경향의 상관관계에 있다면, 공분산의 값은 양수가 될 것이다.</p>
-    <p>반대로 2개의 변수중 하나의 값이 상승하는 경향을 보일 때, 다른 값이 하강하는 경향을 보인다면 공분산의 값은 음수가 된다.</p>
-    <p><img src='../images/manual/covariance.PNG' alt='covariance' referrerPolicy='no-referrer' /></p>
-    <h2><a name='header-n180' class='md-header-anchor '></a>5. Database</h2>
-    <h3><a name='header-n181' class='md-header-anchor '></a>5.1. Save in database</h3>
-    <p>정제된 데이터를 데이터베이스에 저장할 수 있다.</p>
-    <p><img src='../images/manual/save.PNG' alt='save' referrerPolicy='no-referrer' /></p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <h3><a name='header-n190' class='md-header-anchor '></a>5.2. Load from database</h3>
-    <p>저장했었던 정제된 데이터를 불러 올 수 있다.</p>
-    <p><img src='../images/manual/load.PNG' alt='load' referrerPolicy='no-referrer' /></p>
-  </div>
+<body class='typora-export' >
+<div  id='write'  class = 'is-mac'><p>&nbsp;</p><h1><a name='header-n3' class='md-header-anchor '></a>Open Bigdata Visualizaition Analasize</h1><p><img src='./image/main.PNG' alt='main' referrerPolicy='no-referrer' /></p><p>&nbsp;</p><h2><a name='header-n306' class='md-header-anchor '></a>1. Upload CSV File</h2><p>csv파일을 업로드 할 수 있다.</p><p><img src='./image/upload.PNG' alt='upload' referrerPolicy='no-referrer' /></p><p>&nbsp;</p><p>업로드를 하는순간 데이터의 요약본을 보여준다.</p><p><img src='./image/dataSummary.PNG' alt='dataSummary' referrerPolicy='no-referrer' /></p><p>&nbsp;</p><h2><a name='header-n19' class='md-header-anchor '></a>2. Charts</h2><p>받아온 CSV 파일을 시각화 한다.</p><p><img src='./image/graph.PNG' alt='graph' referrerPolicy='no-referrer' /></p><p>어떤 종류의 그래프를 그릴지 선택한뒤, 각각의 컬럼들을 보고 x축 y축을 선택하여 그래프를 그릴 수 있다.</p><p>&nbsp;</p><p>&nbsp;</p><h3><a name='header-n30' class='md-header-anchor '></a>2.1. Line graph</h3><p>라인 그래프로 데이터를 시각화한다.</p><p><img src='./image/line.PNG' alt='line' referrerPolicy='no-referrer' /></p><p>트렌드와 증가량 등을 나타낼 때 각각의 데이터양 뿐만 아니라 증감을 한눈에 볼 수 있는 장점이 있다.</p><p>&nbsp;</p><p>&nbsp;</p><h3><a name='header-n41' class='md-header-anchor '></a>2.2. Bar graph</h3><p>막대 그래프로 데이터를 시각화한다.</p><p><img src='./image/bar.PNG' alt='bar' referrerPolicy='no-referrer' /></p><p>값들이 뚜렷한 차이를 보이는 경우로 수치를 길이로 표현해 절대값을 갖는 막대를 배치함으로써 상대적인 차이를 한눈에 알아보는것이 가능하다.</p><p>바 차트는 가장 많이 활용되는 차트 중 하나로 특히 두가지 혹은 그 이상의 양을 비교할 때 효과적이다.</p><p>&nbsp;</p><p>&nbsp;</p><h3><a name='header-n54' class='md-header-anchor '></a>2.3. Box graph</h3><p>박스 그래프로 데이터를 시각화한다.</p><p><img src='./image/box.PNG' alt='box' referrerPolicy='no-referrer' /></p><p>&nbsp;</p><p><img src='./image/box_ex.png' alt='box_ex' referrerPolicy='no-referrer' /></p><ol start='' ><li>최솟값 : 제 1사분위에서 1.5 IQR을 뺀 위치이다.</li><li>제 1사분위(Q1) : 25%의 위치를 의미한다.</li><li>제 2사분위(Q2) : 50%의 위치로 중앙값(median)을 의미한다.</li><li>제 3사분위(Q3) : 75%의 위치를 의미한다.</li><li>최댓값 : 제 3사분위에서 1.5 IQR을 더한 위치이다.</li></ol><p>최솟값과 최댓값을 넘어가는 위치에 있는 값을 이상치(Outlier)라고 부른다.</p><p>&nbsp;</p><p>데이터 집합의 범위와 중앙값을 빠르게 확인 할 수 있는 목적으로 사용한다.</p><p>또한 통계적으로 이상치가 있는지도 확인이 가능하다.</p><p>&nbsp;</p><p>&nbsp;</p><h3><a name='header-n91' class='md-header-anchor '></a>2.4. Scatter graph</h3><p>산점도 그래프로 데이터를 시각화한다.</p><p><img src='./image/scatter.PNG' alt='scatter' referrerPolicy='no-referrer' /></p><p>산점도는 두 변수 간의 영향력을 보여주기 위해 가로 축과 세로 축에 데이터 포인트를 그리는 데 사용한다.</p><p>&nbsp;</p><h3><a name='header-n100' class='md-header-anchor '></a>2.5. Pie graph</h3><p>원 그래프로 데이터를 시각화한다.</p><p><img src='./image/pie.PNG' alt='pie' referrerPolicy='no-referrer' /></p><p>한눈에 순위 비교가 가능하지만 정확한 수치데이터를 알기에는 부적합하다.</p><p>&nbsp;</p><h3><a name='header-n204' class='md-header-anchor '></a>2.6. Bubble graph</h3><p>버블 그래프로 데이터를 시각화 한다.</p><p><img src='./image/bubble.PNG' alt='bubble' referrerPolicy='no-referrer' /></p><p>X, Y축 그리고 버블로 구성된 좌표평면 위에 세 지표를 동시적으로 표현함으로써, 세 지표와 그들 관계에서 나타나는 변화양상을 시각적으로 보여준다.</p><p>&nbsp;</p><h3><a name='header-n225' class='md-header-anchor '></a>2.7 Line 3D graph</h3><p>라인 3D 그래프로 데이터를 시각화 한다.</p><p><img src='./image/line3d.PNG' alt='line3d' referrerPolicy='no-referrer' /></p><p>기본 라인 그래프와 다르게 Z축이 추가되어 변수를 3개 선택하여 그래프를 그릴 수 있다.</p><h3><a name='header-n226' class='md-header-anchor '></a>2.8 Scatter 3D graph</h3><p>산점도 3D그래프로 데이터를 시각화 한다.</p><p><img src='./image/scatter3d.PNG' alt='scatter3d' referrerPolicy='no-referrer' /></p><p>기본 산점도 그래프와 다르게 Z축이 추가되어 변수를 3개 선택하여 그릴 수 있다.</p><p>&nbsp;</p><h2><a name='header-n304' class='md-header-anchor '></a>3. Preprocessing</h2><h3><a name='header-n110' class='md-header-anchor '></a>3.1. Outier process</h3><p>이상치란 정상 범주에서 크게 벗어난 값을 말한다. 데이터 수집 과정에서 오류가 발생할 수 있기 때문에 현장에서 만들어진 실제 데이터에는 이상치가 포함될 수 있다. 혹은 오류는 아니지만 굉장히 드물게 발생하는 값이 있을 수 있다.</p><p>이상치 처리는 이러한 이상치를 제거해주는 작업이다.</p><p><img src='./image/outier.PNG' alt='outier' referrerPolicy='no-referrer' /></p><p>위의 빈칸에 원하는 최솟값, 최댓값을 넣어주면 그 값들의 사이의 값만 나오게 처리가 된다.</p><p>&nbsp;</p><p>&nbsp;</p><h3><a name='header-n123' class='md-header-anchor '></a>3.2. Not available process</h3><p>결측치란 쉽게 생각하면 &#39;없는 값&#39; 이다.</p><p>데이터를 분석할때 데이터들은 오류를 포함하고 있거나 결측값(값이 빠지거나 비어있는 값)등을 처리하지않으면 데이터 분석이 제대로 되질 않는다. 그러므로 데이터 결측치 처리를 해주어야 한다.</p><p><img src='./image/not_avail.PNG' alt='not_avail' referrerPolicy='no-referrer' /></p><p>결측값을 없애준다.</p><p>&nbsp;</p><h3><a name='header-n134' class='md-header-anchor '></a>3.3. Stratification process</h3><p>데이터의 정보를 더 작고 더 관련성이 있는 정보로 나누면 데이터를 더 쉽게 이해 할 수 있다.</p><p>데이터 계층화는 미리 결정된 기준에 따라 데이터를 더 작고 정의된 계층으로 분리하는 것이다.</p><p><img src='./image/stratification.PNG' alt='stratification' referrerPolicy='no-referrer' /></p><p>&nbsp;</p><h3><a name='header-n264' class='md-header-anchor '></a>3.4 Remove column</h3><p>테이블의 컬럼을 지워 필요없는 변수를 없앤 테이블을 만든다.</p><h3><a name='header-n273' class='md-header-anchor '></a>3.5 Derived variable</h3><p>&nbsp;</p><h2><a name='header-n143' class='md-header-anchor '></a>4. Analysis</h2><h3><a name='header-n144' class='md-header-anchor '></a>4.1. Correlation</h3><p>상관분석은 두 변수간의 어떤 선형적 관계를 갖고 있는 지를 분석하는 방법이다.</p><p>두 변수는 서로 독립적인 관계로부터 서로 상관된 관계일 수 있으며 이때 구변수간의 관계의 강도를 상관관계라고 한다.</p><p><img src='./image/correlation.PNG' alt='correlation' referrerPolicy='no-referrer' /></p><ul><li>-1에 가까운 값 : 매우 강력한 음(-)의 상관. 오히려 너무 확고하기 때문에 일부 연구자들은 데이터를 조작한 게 아닌가 의심할 정도이다.사회과학 한정이다. 순수학문에 가까운 분야일수록 요구되는 상관관계는 높은 편.</li><li>-0.5 정도의 값 : 강력한 음(-)의 상관. 연구자는 변인 x 가 증가하면 변인 y 가 감소한다고 자신 있게 말할 수 있다.</li><li>-0.2 정도의 값 : 음(-)의 상관이긴 한데 너무 약해서 모호하다. 상관관계가 없다고는 할 수 없지만 좀 더 의심해 봐야 한다.</li><li>0 정도의 값 : 대부분의 경우, 상관관계가 존재하지 않을 것이라고 간주된다.</li><li>0.2 정도의 값 : 너무 약해서 의심스러운 양(+)의 상관. 이것만으로는 상관관계에 대해 아주 장담할 수는 없다. 하지만 사회과학에선 매우 큰 상관관계가 있는 것으로 간주한다.</li><li>0.5 정도의 값 : 강력한 양(+)의 상관. 변인 x 가 증가하면 변인 y 가 증가한다는 주장은 이제 통계적으로 지지받고 있다.</li><li>1에 가까운 값 : 매우 강력한 양(+)의 상관. 위와 마찬가지로, 이렇게까지 확고한 상관관계는 오히려 쉽게 찾아보기 어렵다.</li></ul><p>&nbsp;</p><h3><a name='header-n175' class='md-header-anchor '></a>4.2. Covariance</h3><p>공분산은 2개의확률변수와 상관정도를 나타내는 값이다.</p><p>만약 2개의 변수중 하나의 값이 상승하는 경향을 보일 때, 다른 값도 상승하는 경향의 상관관계에 있다면, 공분산의 값은 양수가 될 것이다.</p><p>반대로 2개의 변수중 하나의 값이 상승하는 경향을 보일 때, 다른 값이 하강하는 경향을 보인다면 공분산의 값은 음수가 된다.</p><p><img src='./image/covariance.PNG' alt='covariance' referrerPolicy='no-referrer' /></p><h3><a name='header-n184' class='md-header-anchor '></a>4.3. Regression</h3><p>회귀분석은 관찰된 연속형 변수들에 대해 두 변수 사이의 모형을 구한뒤 적합도를 측정해 내는 분석방법이다.</p><p><img src='./image/regression.PNG' alt='regression' referrerPolicy='no-referrer' /></p><p>회귀분석은 시간에 따라 변화하는 데이터나 어떤 영향, 가설적 실험, 인과 관계의 모델링등의 통계적 예측에 이용될 수 있다. 그러나 많은 경우 가정이 맞는지 아닌지 적절하게 밝혀지지 않은 채로 이용되어 그 결과가 오용되는 경우도 있다.</p><p>&nbsp;</p><h3><a name='header-n310' class='md-header-anchor '></a>4.4. Apriori</h3><p>연관규칙분석이란 어떤 두 아이템 집합이 번번히 발생하는가를 알려주는 일련의 규칙들을 생성하는 것이다.</p><p><img src='./image/apriori.PNG' alt='apriori' referrerPolicy='no-referrer' /></p><p>하나의 거래나 사건에 포함되어 있는 항목들의 관련성을 파악</p><p>둘 이상의 항목들로 구성된 연관성 규칙을 찾아내는 탐색적 모델링</p><p>거래와 항목으로 구성되어 있는 경우 분석이 가능함</p><h3><a name='header-n320' class='md-header-anchor '></a>4.5. ANOVA</h3><p>분산분석은 통계학에서 두개 이상 다수 집단을 비교하고자 할 때 집단 내의 분산, 총평균과 각 집단의 평균의 차이에 의해 생긴 집단 간 분산의 비교를 통해 만들어진 F분포를 이용하여 가설검정을 하는 방법이다. </p><p><img src='./image/ANOVA.PNG' alt='ANOVA' referrerPolicy='no-referrer' /></p><p>&nbsp;</p><h2><a name='header-n336' class='md-header-anchor '></a>5. Database</h2><h3><a name='header-n185' class='md-header-anchor '></a>5.1. Save in database</h3><p>정제된 데이터를 데이터베이스에 저장할 수 있다.</p><p><img src='./image/save.PNG' alt='save' referrerPolicy='no-referrer' /></p><p>&nbsp;</p><p>&nbsp;</p><h3><a name='header-n194' class='md-header-anchor '></a>5.2. Load from database</h3><p>저장했었던 정제된 데이터를 불러 올 수 있다.</p><p><img src='./image/load.PNG' alt='load' referrerPolicy='no-referrer' /></p><p>&nbsp;</p><h2><a name='header-n295' class='md-header-anchor '></a>6. Download CSV File</h2><p>지금 까지 작업했던 CSV파일을 내 컴퓨터에 저장한다.</p></div>
 </body>
-
 </html>
