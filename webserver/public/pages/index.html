@@ -79,7 +79,9 @@
 								<i class="fa fa-file fa-fw" ></i>
 								Upload CSV File
 							</a>
-							<a href="#" data-toggle="modal" data-target="#downloadModalCenter">
+						</li>
+						<li>
+							<a onclick="downloadCSV()">
 								<i class="fa fa-file fa-fw" ></i>
 								Download CSV File
 							</a>
@@ -375,41 +377,26 @@
 	</div>
 
 	<!-- Download-CSV -->
-
-
-  
-	<div class="modal fade" id="downloadModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	<!-- <div class="modal fade" id="downloadModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-			<h5 class="modal-title" id="exampleModalLongTitle">Download CSV File</h5>
-			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-			</button>
-			</div>
-			<!-- <div class="modal-body">
-			<form method="post" id="form" name="csvform" enctype="multipart/form-data">
-				<div class="form-group">
-				<label for="InputSubject1">CSV 파일 저장</label>
-				<input id="output-csv" type="file" style="display:none;">
-				<div class="input-group" id='filegroup'>
-					<input type="text" id="userfile" class="form-control" name="userfile" disabled>
-					<span class="input-group-btn">
-					<label for="fileInput" class="btn btn-default">
-						<span class="glyphicon fa fa-download"></span>
-					</label>
-					</span>
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLongTitle">Download CSV File</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
 				</div>
+
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal" id="close-modal">Close</button>
+					<button type="button" class="btn btn-primary" id="download-csv">Download File</button>
 				</div>
-			</form>
-			</div> -->
-			<div class="modal-footer">
-			<button type="button" class="btn btn-secondary" data-dismiss="modal" id="close-modal">Close</button>
-			<button type="button" class="btn btn-primary" id="download-csv">Download File</button>
 			</div>
 		</div>
-		</div>
-	</div>
+	</div> -->
+
+
+
 
 	<!-- Not Available -->
 	<div id="notAvailableModal" class="modal fade" role="dialog">

@@ -17,5 +17,6 @@
   "bugs": {
     "url": "https://github.com/rhdtl78/Open-Bigdata-Visualization-Analysis-/issues"
   },
-  "homepage": "https://github.com/rhdtl78/Open-Bigdata-Visualization-Analysis-#readme"
+  "homepage": "https://github.com/rhdtl78/Open-Bigdata-Visualization-Analysis-#readme",
+  "dependencies": {}
 }

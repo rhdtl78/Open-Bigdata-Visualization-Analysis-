@@ -4,13 +4,11 @@ var router = express.Router();
 var summary = require("../lib/summary.js");
 var showData = require("../lib/showData.js");
 var database = require("../lib/DBConnecter.js");
-
+const mime = require('mime');
+const path = require('path');
 
 router.get('/', function(req, res, next) {
-    // var filename = req.params.id;
-    // filepath = __dirname + '/files/' + filename;
-    // res.download(filepath);
-    
+
     var uid = req.query.uid;
 
     const db = new database(uid);
@@ -28,8 +26,25 @@ router.get('/', function(req, res, next) {
             }
         });
 
-        res.download(filepath);
+        var filename = path.basename(filepath);
+        var mimetype = mime.getType(filepath);
+
+        res.setHeader('Content-disposition', 'attachment; filename=' + filename);
+        res.setHeader('Content-type', mimetype);
+
+        var filestream = fs.createReadStream(filepath);
+        filestream.pipe(res).on('finish', () => {
+          try {
+            fs.unlinkSync(filepath, (err) => {
+              if (err) throw err;
+            });
+            res.end()
+          } catch (e) {
+            console.log(e);
+          }
+        })
     })
 });
+
 
 module.exports = router;
