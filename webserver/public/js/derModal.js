@@ -49,12 +49,13 @@ function btnDerApply() {
 	var uid = currentUser.uid;
 
 	$.ajax({
+		url: "/derived",
 		data: {
 			expression: expression,
 			derName: derName,
 			uid: uid
 		},
-		url: "/derived",
+		type: "POST",
 		beforeSend: function() {
 			loading();
 		},
