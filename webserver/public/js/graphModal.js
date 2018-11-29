@@ -15,8 +15,25 @@ function graphVariable(type) {
         example.push($(this).find("td").eq(8).html())
     })
     for (i = 1; i < variable.length; i++) {
-        //$('#graphTable > tbody:last').append('<tr><td>' + variable[i] + '</td><td>' + example[i] + '</td><td><input type="radio" name="Xradio" value=' + variable[i] + ' /></td><td><input type="checkbox" name="Ycheck" value=' + variable[i] + ' /></td>');
-        $('#graphTable > tbody:last').append('<tr><td>' + variable[i] + '</td><td>' + example[i] + '</td><td><button type="button" class="btn btn-primary" value=' + variable[i] + ' onclick="btnVariable(this.value,'+1+')"></button></td><td><button type="button" class="btn btn-danger" value=' + variable[i] + ' onclick="btnVariable(this.value,'+2+')"></button></td>');
+				var insertRow = $("<tr/>");
+				var variableX = $("<button/>", {
+					type: "button",
+					class: "btn btn-primary btn-block",
+					onclick: "btnVariable(this.value, 1)"
+				}).text(variable[i]);
+				var variableY = $("<button/>", {
+					type: "button",
+					class: "btn btn-danger btn-block",
+					onclick: "btnVariable(this.value, 2)"
+				}).text(variable[i]);
+
+				insertRow.append($("<td/>").text(variable[i]))
+				.append($("<td/>").text(example[i]))
+				.append($("<td/>").addClass("p-0").append(variableX))
+				.append($("<td/>").addClass("p-0").append(variableY))
+
+
+        $('#graphTable > tbody:last').append(insertRow);
     }
 
     $("input:radio[name='graphRadio']").each(function () {
@@ -62,7 +79,7 @@ function graph3dVariable(type) {
     $('#graph3dTable > tbody').empty();
     $('#vari3dList').empty();
     variX=null; variY=null;variZ=null; $("#show3dVariX").text(''); $("#show3dVariY").text(''); $("#show3dVariZ").text('');
-    
+
     var variable = new Array();
     var example = new Array();
     $('#summaryTable tr').each(function () {
@@ -70,9 +87,34 @@ function graph3dVariable(type) {
         example.push($(this).find("td").eq(8).html())
     })
     for (i = 1; i < variable.length; i++) {
-        //$('#graph3dTable > tbody:last').append('<tr><td>' + variable[i] + '</td><td>' + example[i] + '</td><td><input type="radio" name="xVar" value=' + variable[i] + ' /></td><td><input type="radio" name="yVar" value=' + variable[i] + ' /></td><td><input type="radio" name="zVar" value=' + variable[i] + ' /></td></tr>');
-        $('#graph3dTable > tbody:last').append('<tr><td>' + variable[i] + '</td><td>' + example[i] + '</td><td><button type="button" class="btn btn-primary" value=' + variable[i] + ' onclick="btn3dVariable(this.value,'+1+')"></button></td> <td><button type="button" class="btn btn-danger" value=' + variable[i] + ' onclick="btn3dVariable(this.value,'+2+')"></button></td><td><button type="button" class="btn btn-success" value=' + variable[i] + ' onclick="btn3dVariable(this.value,'+3+')"></button></td>');
-        
+
+			var insertRow = $("<tr/>");
+			var variableX = $("<button/>", {
+				type: "button",
+				class: "btn btn-primary btn-block",
+				onclick: "btn3dVariable(this.value, 1)"
+			}).text(variable[i]);
+
+			var variableY = $("<button/>", {
+				type: "button",
+				class: "btn btn-danger btn-block",
+				onclick: "btn3dVariable(this.value, 2)"
+			}).text(variable[i]);
+
+			var variableZ = $("<button/>", {
+				type: "button",
+				class: "btn btn-success btn-block",
+				onclick: "btn3dVariable(this.value, 3)"
+			}).text(variable[i]);
+
+			insertRow.append($("<td/>").text(variable[i]))
+			.append($("<td/>").text(example[i]))
+			.append($("<td/>").addClass("p-0 text-center align-middle").append(variableX))
+			.append($("<td/>").addClass("p-0 text-center align-middle").append(variableY))
+			.append($("<td/>").addClass("p-0 text-center align-middle").append(variableZ))
+
+        $('#graph3dTable > tbody:last').append(insertRow);
+
     }
     $("input:radio[name='graph3dRadio']").each(function () {
         // console.log("this.check= "+this.value+" type="+type)
@@ -99,7 +141,7 @@ function btn3dVariable(variName,select){
     }else if(select == 3){
         $("#show3dVariZ").text(variName);
         variZ = variName;
-    } 
+    }
     if(variX!=null && variY!=null && variZ!=null){
         var name = "variList" + variListIndex;
         variListIndex++;
@@ -118,7 +160,7 @@ function btnGraphApply() {
     //     }
     // });
     $('.variXList').each(function () {
-        xVar.push($(this).text());    
+        xVar.push($(this).text());
     });
     var yVar = new Array();
     // $('input:checkbox[name="Ycheck"]').each(function () {
@@ -127,7 +169,7 @@ function btnGraphApply() {
     //     }
     // });
     $('.variYList').each(function () {
-        yVar.push($(this).text());    
+        yVar.push($(this).text());
     });
 
     $('input:radio[name="graphRadio"]').each(function () {
@@ -173,7 +215,7 @@ function btnGraph3dApply() {
     //     }
     // });
     $('.vari3dXList').each(function () {
-        xVar.push($(this).text());    
+        xVar.push($(this).text());
     });
     var yVar = new Array();
     // $('input:radio[name="yVar"]').each(function () {
@@ -182,7 +224,7 @@ function btnGraph3dApply() {
     //     }
     // });
     $('.vari3dYList').each(function () {
-        yVar.push($(this).text());    
+        yVar.push($(this).text());
     });
     var zVar = new Array();
     // $('input:radio[name="zVar"]').each(function () {
@@ -191,7 +233,7 @@ function btnGraph3dApply() {
     //     }
     // });
     $('.vari3dZList').each(function () {
-        zVar.push($(this).text());    
+        zVar.push($(this).text());
     });
 
     $('input:radio[name="graph3dRadio"]').each(function () {

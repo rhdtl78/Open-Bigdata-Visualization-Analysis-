@@ -11,13 +11,11 @@ function derTable() {
 
 	variable = variable.slice(1, variable.length);
 	variable.forEach(function(element) {
-		var btn = $(
-			'<button type="button" id=' +
-			element +
-			' class="btn btn-primary" onclick="btnDer(this.id)">' +
-			element +
-			"</button>"
-		);
+		var btn = $( "<button/>", {
+			type: "button",
+			class: "btn btn-primary btn-block",
+			onclick: "btnDer(this.id)"
+		}). text(element);
 		$("#derBtn").append(btn);
 	});
 }
