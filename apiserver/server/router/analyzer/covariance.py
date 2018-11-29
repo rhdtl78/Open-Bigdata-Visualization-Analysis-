@@ -38,6 +38,7 @@ def process(request):
 
     df.columns = colName
     # print(df)
+    print(df.columns)
     temp = df.cov().to_records()
 
     # print(temp)

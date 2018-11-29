@@ -45,7 +45,7 @@ def process(request):
     apr = []
     newDf = pd.DataFrame()
     for idx,element in enumerate(select):
-        # print(element)
+        print(element)
         # temp = array()
         # temp = df[element].to_json(orient='records')
         # apr.append(tuple(temp))
@@ -62,10 +62,10 @@ def process(request):
     temp =""
     for element in rules:
         temp = str(element)
-        # print("temp = ",temp)
-        # print("element = ",element)
+        print("temp = ",temp)
+        print("element = ",element)
         jsonRules.append(temp)
-    # print(jsonRules)
+    print(jsonRules)
     # jsonRules = json.dumps(jsonRules)
     # print(apriori(apr))
     # print(results)

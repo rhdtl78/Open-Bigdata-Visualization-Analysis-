@@ -49,24 +49,30 @@ function showCovariance(cov) {
     data.push(array)
   }
 
-  var table = $('<table width="100%" class="table table-bordered table-hover table-striped">');
+  var table = $('<table/>', {
+    class: "table table-bordered table-hover table-striped"
+  });
 
-  table.append($('<th>').addClass('covValue').text(" "));
+  var thead = $('<thead/>').appendTo(table);
+  var headRow = $("<tr/>").appendTo(thead);
+  headRow.append($('<th/>').addClass('covValue'));
   for (i = 0; i < variable.length; i++) {
-    var row = $('<th>').addClass('covValue').text(variable[i]);
-    table.append(row);
+    headRow.append($('<th/>').addClass('covValue').text(variable[i]));
   }
-  table.append($('<tr>').addClass('covValue').text(" "));
+
+  var tbody = $('<tbody/>').appendTo(table);
+
   for (i = 0; i < variable.length; i++) {
-    var row = $('<td>').addClass('covValue').text(variable[i]);
-    table.append(row);
+    var bodyRow = $('<tr/>').appendTo(table);
+    bodyRow.append($('<th/>', {
+      class: "coValue",
+      scope: "col"
+    }).text(variable[i]));
     for (j = 0; j < variable.length; j++) {
       var fixData = data[i][j];
       fixData = parseFloat(fixData).toFixed(2)
-      table.append($('<td>').text(fixData));
-
+      bodyRow.append($('<td/>').text(fixData));
     }
-    table.append($('<tr>'))
   }
   div.append(table)
   $('#analysis').append(div);

@@ -63,18 +63,22 @@ function showApriori(rules) {
       var div = $('<div id=' + name + '/>');
       //$('#analysis').append(div);
 
-      var table = $('<table width="100%" class="table table-bordered table-hover table-striped">');
-      // table.append($('<tr><th>lhs</th><th> => </th><th>rhs</th><th>support</th><th>confidence</th><th>lift</th></tr>'))
-      table.append($('<tr><th>lhs</th><th>-></th><th>rhs</th><th>confidence</th><th>support</th><th>lift</th></tr>'))
-      // result = result.associationRules;
-      // result.forEach(function(array){
-      //   table.append($('<tr><td>'+array["lhs"]+'</td><td> => </td><td>'+array["rhs"]+'</td><td>'+array["support"].toFixed(4)+'</td><td>'+array["confidence"].toFixed(4)+'</td><td>'+array["lift"].toFixed(4)+'</td></tr>'));
-      // })
-      // console.log(rules)
-      // for(i=0;i<rules.length;i++){
-      //   table.append($('<tr><td>'+rules[i]+'</td></tr>'));
-      // }
-      // table.append($('<tr><td>'+rules+'</td></tr>'));
+      var table = $('<table/>', {
+        class: "table table-bordered table-hover table-striped"
+      });
+
+      var thead = $("<thead/>").appendTo(table);
+      var tbody = $("<tbody/>").appendTo(table);
+
+      var headRow = $("<tr/>").appendTo(thead);
+
+      headRow.append($("<th/>").text("LHS"))
+      .append($("<th/>").text("-->"))
+      .append($("<th/>").text("RHS"))
+      .append($("<th/>").text("Confidence"))
+      .append($("<th/>").text("Support"))
+      .append($("<th/>").text("Lift"))
+
       rules.forEach(function(element){
         element = element.split("->");
         var lhs = element[0];
@@ -89,7 +93,14 @@ function showApriori(rules) {
         element = element[1].split("conv:")
         var lift = element[0];
         lift = lift.substring(0,lift.length-2);
-        table.append($('<tr><td>'+lhs+'</td><td>-></td><td>'+rhs+'</td><td>'+conf+'</td><td>'+supp+'</td><td>'+lift+'</td></tr>'));
+
+        var bodyRow = $("<tr/>").appendTo(tbody);
+        bodyRow.append($("<td/>").text(lhs))
+        .append($("<td/>").text("-->"))
+        .append($("<td/>").text(rhs))
+        .append($("<td/>").text(conf))
+        .append($("<td/>").text(supp))
+        .append($("<td/>").text(lift))
       })
 
       div.append(table)

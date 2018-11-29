@@ -5,17 +5,19 @@ function showData(data, variable) {
     id: "dataTable",
     style: "width:100%;"
   });
-  table.append($("<tr>"));
+
+  var thead = $('<thead/>').appendTo(table);
+  var headRow = $("<tr/>").appendTo(thead);
   variable.forEach(function(element) {
-    table.append($("<th>" + element + "</th>"));
+    headRow.append($("<th>" + element + "</th>"));
   });
-  table.append($("</tr>"));
+
+  var tbody = $('<tbody/>').appendTo(table);
   for (i = 0; i < data.length; i++) {
-    table.append($("<tr>"));
+    var bodyRow = $('<tr/>').appendTo(tbody);
     for (j = 0; j < data[i].length; j++) {
-      table.append($("<td>" + data[i][j] + "</td>"));
+      bodyRow.append($("<td>" + data[i][j] + "</td>"));
     }
-    table.append($("</tr>"));
   }
 
   table.appendTo(target);

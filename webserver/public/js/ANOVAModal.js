@@ -68,18 +68,37 @@ function showANOVA(data){
       residual = residual.substring(1,residual.length-1)
       residual = residual.split(",")
 
-      var table = $('<table width="100%" class="table table-bordered table-hover table-striped">');
+      var table = $('<table/>', {
+        class: "table table-bordered table-hover table-striped"
+      });
 
-      table.append($('<tr><th></th><th>Degrees of Freedom</th><th>Sum of Squares</th><th>Mean Square</th><th>F</th><th>Probability of the F value</th></tr>'));
+      var thead = $("<thead/>").appendTo(table);
+      var tbody = $("<tbody/>").appendTo(table);
 
-      // table.append($('<tr><td> Sum of Squares </td><td>'+parseFloat(treatment["SS"]).toFixed(4)+'</td><td>'+parseFloat(residual["SS"]).toFixed(4)+'</td><td>'+parseFloat(total["SS"]).toFixed(4)+'</td></tr>'));
-      // table.append($('<tr><td> Degrees of Freedom </td><td>'+parseFloat(treatment["DF"]).toFixed(4)+'</td><td>'+parseFloat(residual["DF"]).toFixed(4)+'</td><td>'+parseFloat(total["DF"]).toFixed(4)+'</td></tr>'));
-      // table.append($('<tr><td> Mean Square </td><td>'+parseFloat(treatment["MS"]).toFixed(4)+'</td><td>'+parseFloat(residual["MS"]).toFixed(4)+'</td><td></td></tr>'));
-      // table.append($('<tr><td> F </td><td>'+parseFloat(treatment["F"]).toFixed(4)+'</td><td></td><td></td></tr>'));
+      var headRow = $("<tr/>").appendTo(thead);
+      var bodyRow = $("<tr/>").appendTo(tbody);
 
-      table.append($('<tr><td> '+independent[0]+' </td><td>'+independent[1]+'</td><td>'+independent[2]+'</td><td>'+independent[3]+'</td><td>'+independent[4]+'</td><td>'+independent[5]+'</td></tr>'));
-      table.append($('<tr><td> '+residual[0]+' </td><td>'+residual[1]+'</td><td>'+residual[2]+'</td><td>'+residual[3]+'</td><td>'+residual[4]+'</td><td>'+residual[5]+'</td></tr>'));
+      headRow.append($("<th/>").text('Variable'))
+      .append($("<th/>").text("Degrees of Freedom"))
+      .append($("<th/>").text("Sum of Squares"))
+      .append($("<th/>").text("Mean Square"))
+      .append($("<th/>").text("F"))
+      .append($("<th/>").text("Probability of the F value"));
 
+      bodyRow.append($("<td/>").text(independent[0]))
+      .append($("<td/>").text(independent[1]))
+      .append($("<td/>").text(independent[2]))
+      .append($("<td/>").text(independent[3]))
+      .append($("<td/>").text(independent[4]))
+      .append($("<td/>").text(independent[5]))
+
+      bodyRow = $("<tr/>").appendTo(tbody);
+      bodyRow.append($("<td/>").text(residual[0]))
+      .append($("<td/>").text(residual[1]))
+      .append($("<td/>").text(residual[2]))
+      .append($("<td/>").text(residual[3]))
+      .append($("<td/>").text(residual[4]))
+      .append($("<td/>").text(residual[5]))
 
       div.append(table)
       $('#analysis').append(div);
