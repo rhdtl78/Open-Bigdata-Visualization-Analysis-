@@ -19,11 +19,13 @@ function graphVariable(type) {
 				var variableX = $("<button/>", {
 					type: "button",
 					class: "btn btn-primary btn-block",
+					value: variable[i],
 					onclick: "btnVariable(this.value, 1)"
 				}).text(variable[i]);
 				var variableY = $("<button/>", {
 					type: "button",
 					class: "btn btn-danger btn-block",
+					value: variable[i],
 					onclick: "btnVariable(this.value, 2)"
 				}).text(variable[i]);
 
@@ -53,7 +55,7 @@ function graphVariable(type) {
 }
 
 function btnVariable(variName,select){
-    //console.log(variName)
+    console.log(variName)
     if(select == 1){
         $("#showVariX").text(variName);
         variX = variName;
@@ -92,18 +94,21 @@ function graph3dVariable(type) {
 			var variableX = $("<button/>", {
 				type: "button",
 				class: "btn btn-primary btn-block",
+				value: variable[i],
 				onclick: "btn3dVariable(this.value, 1)"
 			}).text(variable[i]);
 
 			var variableY = $("<button/>", {
 				type: "button",
 				class: "btn btn-danger btn-block",
+				value: variable[i],
 				onclick: "btn3dVariable(this.value, 2)"
 			}).text(variable[i]);
 
 			var variableZ = $("<button/>", {
 				type: "button",
 				class: "btn btn-success btn-block",
+				value: variable[i],
 				onclick: "btn3dVariable(this.value, 3)"
 			}).text(variable[i]);
 
