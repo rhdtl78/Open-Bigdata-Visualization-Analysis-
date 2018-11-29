@@ -25,7 +25,7 @@ var removeCol = require('./routes/removeCol.js');
 var ANOVA = require('./routes/ANOVA.js');
 var derived = require('./routes/derived.js');
 var transform = require('./routes/transform.js');
-
+var download = require('./routes/download.js');
 var djangotest = require('./routes/djangotest.js');
 plotly = require('plotly')("dongdong9335", "L4BOh9JUAoM30nRrLeIy")
 fastCSV = require('fast-csv');
@@ -86,6 +86,7 @@ app.use('/ANOVA', ANOVA);
 app.use('/derived', derived);
 app.use('/transform', transform);
 app.use('/djangotest', djangotest);
+app.use('/download', download);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
