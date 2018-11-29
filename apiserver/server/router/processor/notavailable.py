@@ -22,25 +22,33 @@ def process(request):
 
     postData = coder.escape(data)
     columns = postData.columns.tolist()
-    mask = (postData == 'None')
+
     for column in columns:
-        postData.loc[mask[column]] = np.nan
+        postData = postData.replace({column: "None"}, {column: np.nan})
 
     # print ("before\n")
     # print (postData)
     # print (postData.columns)
     # print (variable)
+    # print (process)
+
+    medians = postData.median()
+    means = postData.mean()
+
+    print (medians, means)
+
+    print ("before")
+    print (postData)
 
     for index, proc in enumerate(process):
         column = variable[index]
+        print (column, medians[column])
         if proc == 'remove':
             postData = postData.dropna(subset=[column])
         elif proc == 'median':
-            median = postData[column].median()
-            postData.loc[mask[column]] = median
+            postData = postData.fillna(medians[column:])
         elif proc == 'mean':
-            mean = postData[column].mean()
-            postData.loc[mask[column]] = mean
+            postData = postData.fillna(means[column:])
 
     print ("after")
     print (postData)

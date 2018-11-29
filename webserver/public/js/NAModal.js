@@ -43,7 +43,7 @@ function NATable() {
       var td_NAtotal = $('<td/>', {
         'name': 'totalCount'
       }).text(variable[i]);
-      
+
       var td_sel = $('<td/>');
       var formGroup = $('<div/>', {
         'class': 'form-group',
@@ -75,9 +75,16 @@ function NATable() {
 function btnNotAvailableApply() {
   var variable = new Array();
   var variableCol = $('td[name="variable-name"]');
-  variableCol.each(function (index, value) {
-    variable.push($(value).text());
-  })
+
+	const summaryTable = $('#summaryTable > tbody tr');
+	const NAVariable = [];
+	summaryTable.each(function (idx, element) {
+		if ($(element).children().eq(6).text() !== '0'){
+			NAVariable.push($(element).children().eq(0).text());
+		}
+	})
+
+	console.log(NAVariable);
 
   var process = new Array();
   $('[name="NAselect"]').each(function() {
@@ -92,7 +99,7 @@ function btnNotAvailableApply() {
 
   $.ajax({
     data: {
-      "variable": variable,
+      "variable": NAVariable,
       "process": process,
       "uid": uid,
     },
@@ -106,8 +113,8 @@ function btnNotAvailableApply() {
     },
     success: function(res) {
       console.log(res);
-      
-    
+
+
       showSummary(res.summary);
       showData(res.dataframe,res.variable);
       $('#notAvailableModal').modal('hide');
