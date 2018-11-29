@@ -14,7 +14,8 @@ function derTable() {
 		var btn = $( "<button/>", {
 			type: "button",
 			class: "btn btn-primary btn-block",
-			onclick: "btnDer(this.id)"
+			onclick: "btnDer(this.id)",
+			id: element
 		}). text(element);
 		$("#derBtn").append(btn);
 	});
