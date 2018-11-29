@@ -2,35 +2,35 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
-  <meta name="author" content="">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
 
-  <title>OBVA</title>
+	<title>OBVA</title>
 
-  <!-- Bootstrap Core CSS -->
-  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Bootstrap Core CSS -->
+	<link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- MetisMenu CSS -->
-  <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+	<!-- MetisMenu CSS -->
+	<link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
 
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="/stylesheets/style.css">
-  <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+	<!-- Custom CSS -->
+	<link rel="stylesheet" href="/stylesheets/style.css">
+	<link href="../dist/css/sb-admin-2.css" rel="stylesheet">
 
-  <!-- Morris Charts CSS -->
-  <link href="../vendor/morrisjs/morris.css" rel="stylesheet">
+	<!-- Morris Charts CSS -->
+	<link href="../vendor/morrisjs/morris.css" rel="stylesheet">
 
-  <!-- Custom Fonts -->
-  <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<!-- Custom Fonts -->
+	<link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
   <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
   <![endif]-->
@@ -38,809 +38,812 @@
 </head>
 
 <body>
-  <div id="wrapper">
-    <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+	<div id="wrapper">
+		<!-- Navigation -->
+		<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.html">OBVA</a>
-      </div>
-      <!-- /.navbar-header -->
+				<a class="navbar-brand" href="index.html">OBVA</a>
+			</div>
+			<!-- /.navbar-header -->
 
-      <ul class="nav navbar-top-links navbar-right">
+			<ul class="nav navbar-top-links navbar-right">
 
-        <li class="dropdown" style="float: right">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+				<li class="dropdown" style="float: right">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#">
             <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
           </a>
-          <ul class="dropdown-menu dropdown-user" onload="bodyLogin()">
-            <li id="signIn"><a href="#" data-toggle="modal" data-target="#signInModal"><i class="fa fa-user fa-fw"></i> Sign in</a>
-            </li>
-            <li id="signUp"><a href="#" data-toggle="modal" data-target="#signUpModal"><i class="fa fa-gear fa-fw"></i> Sign up</a>
-            </li>
-            <li id="signOutLi"><a id='signOut'><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-            </li>
-          </ul>
-        </li>
-      </ul>
-      <!-- /.navbar-top-links -->
+					<ul class="dropdown-menu dropdown-user" onload="bodyLogin()">
+						<li id="signIn"><a href="#" data-toggle="modal" data-target="#signInModal"><i class="fa fa-user fa-fw"></i> Sign in</a>
+						</li>
+						<li id="signUp"><a href="#" data-toggle="modal" data-target="#signUpModal"><i class="fa fa-gear fa-fw"></i> Sign up</a>
+						</li>
+						<li id="signOutLi"><a id='signOut'><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+			<!-- /.navbar-top-links -->
 
-      <div class="navbar-default sidebar" role="navigation">
-        <div class="sidebar-nav navbar-collapse">
-          <ul class="nav" id="side-menu">
-            <li class="sidebar-nav">
-              <!-- Button trigger modal -->
-              <a href="#" data-toggle="modal" data-target="#exampleModalCenter">
+			<div class="navbar-default sidebar" role="navigation">
+				<div class="sidebar-nav navbar-collapse">
+					<ul class="nav" id="side-menu">
+						<li class="sidebar-nav">
+							<!-- Button trigger modal -->
+							<a href="#" data-toggle="modal" data-target="#exampleModalCenter">
                 <i class="fa fa-file fa-fw" ></i>
                 Upload CSV File
               </a>
-            </li>
-            <li>
-              <a href="#">
+						</li>
+						<li>
+							<a href="#">
                 <i class="fa fa-area-chart fa-fw" ></i>
                 Charts
                 <span class="fa arrow" ></span>
               </a>
-              <ul class="nav nav-second-level">
-                <li>
-                  <a href="#" onclick="graphVariable('scatter')" data-toggle="modal" data-target="#graphModal">Line graph</a>
-                </li>
-                <li>
-                  <a href="#" onclick="graphVariable('bar')" data-toggle="modal" data-target="#graphModal">Bar graph</a>
-                </li>
-                <li>
-                  <a href="#" onclick="graphVariable('box')" data-toggle="modal" data-target="#graphModal">Box graph</a>
-                </li>
-                <li>
-                  <a href="#" onclick="graphVariable('markers')" data-toggle="modal" data-target="#graphModal">Scatter graph</a>
-                </li>
-                <li>
-                  <a href="#" onclick="graphVariable('pie')" data-toggle="modal" data-target="#graphModal">Pie graph</a>
-                </li>
-                <li>
-                  <a href="#" onclick="graph3dVariable('bubble')" data-toggle="modal" data-target="#graph3dModal">Bubble graph</a>
-                </li>
-                <li>
-                  <a href="#" onclick="graph3dVariable('lines')" data-toggle="modal" data-target="#graph3dModal">Line 3D graph</a>
-                </li>
-                <li>
-                  <a href="#" onclick="graph3dVariable('markers')" data-toggle="modal" data-target="#graph3dModal">Scatter 3D graph</a>
-                </li>
-              </ul>
-              <!-- /.nav-second-level -->
-            </li>
-            <li>
-              <a href="#"><i class="fa fa-pencil fa-fw"></i> Process <span class="fa arrow"></span> </a>
-              <ul class="nav nav-second-level">
-                <li>
-                  <a href="#" onclick="outlierBox()" data-toggle="modal" data-target="#outlierModal"> Outlier process</a>
-                </li>
-                <li>
-                  <a href="#" onclick="NATable()" data-toggle="modal" data-target="#notAvailableModal"> Not available process</a>
-                </li>
-                <li>
-                  <a href="#" onclick="strScatter()" data-toggle="modal" data-target="#stratificationModal"> Stratification process</a>
-                </li>
-                <li>
-                  <a href="#" onclick="colTable()" data-toggle="modal" data-target="#colModal"> Remove column</a>
-                </li>
-                <li>
-                  <a href="#" onclick="derTable()" data-toggle="modal" data-target="#derModal"> Derived variable</a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a href="#"><i class="fa fa-search fa-fw"></i> Analysis <span class="fa arrow"></span> </a>
-              <ul class="nav nav-second-level">
-                <li>
-                  <a href="#" onclick="correlation()"  data-toggle="modal" data-target="#corrModal"> Correlation</a>
-                </li>
-                <li>
-                  <a href="#" onclick="covariance()"> Covariance</a>
-                </li>
-                <li>
-                  <a href="#" onclick="regTable()"  data-toggle="modal" data-target="#regModal"> Regression</a>
-                </li>
-                <li>
-                  <a href="#" onclick="aprTable()"  data-toggle="modal" data-target="#aprModal"> Apriori</a>
-                </li>
-                <li>
-                  <a href="#" onclick="ANOVATable()"  data-toggle="modal" data-target="#ANOVAModal"> ANOVA</a>
-                </li>
-              </ul>
-            </li>
+							<ul class="nav nav-second-level">
+								<li>
+									<a href="#" onclick="graphVariable('scatter')" data-toggle="modal" data-target="#graphModal">Line graph</a>
+								</li>
+								<li>
+									<a href="#" onclick="graphVariable('bar')" data-toggle="modal" data-target="#graphModal">Bar graph</a>
+								</li>
+								<li>
+									<a href="#" onclick="graphVariable('box')" data-toggle="modal" data-target="#graphModal">Box graph</a>
+								</li>
+								<li>
+									<a href="#" onclick="graphVariable('markers')" data-toggle="modal" data-target="#graphModal">Scatter graph</a>
+								</li>
+								<li>
+									<a href="#" onclick="graphVariable('pie')" data-toggle="modal" data-target="#graphModal">Pie graph</a>
+								</li>
+								<li>
+									<a href="#" onclick="graph3dVariable('bubble')" data-toggle="modal" data-target="#graph3dModal">Bubble graph</a>
+								</li>
+								<li>
+									<a href="#" onclick="graph3dVariable('lines')" data-toggle="modal" data-target="#graph3dModal">Line 3D graph</a>
+								</li>
+								<li>
+									<a href="#" onclick="graph3dVariable('markers')" data-toggle="modal" data-target="#graph3dModal">Scatter 3D graph</a>
+								</li>
+							</ul>
+							<!-- /.nav-second-level -->
+						</li>
+						<li>
+							<a href="#"><i class="fa fa-pencil fa-fw"></i> Process <span class="fa arrow"></span> </a>
+							<ul class="nav nav-second-level">
+								<li>
+									<a href="#" onclick="outlierBox()" data-toggle="modal" data-target="#outlierModal"> Outlier process</a>
+								</li>
+								<li>
+									<a href="#" onclick="NATable()" data-toggle="modal" data-target="#notAvailableModal"> Not available process</a>
+								</li>
+								<li>
+									<a href="#" onclick="strScatter()" data-toggle="modal" data-target="#stratificationModal"> Stratification process</a>
+								</li>
+								<li>
+									<a href="#" onclick="colTable()" data-toggle="modal" data-target="#colModal"> Remove column</a>
+								</li>
+								<li>
+									<a href="#" onclick="derTable()" data-toggle="modal" data-target="#derModal"> Derived variable</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<a href="#"><i class="fa fa-search fa-fw"></i> Analysis <span class="fa arrow"></span> </a>
+							<ul class="nav nav-second-level">
+								<li>
+									<a href="#" onclick="correlation()" data-toggle="modal" data-target="#corrModal"> Correlation</a>
+								</li>
+								<li>
+									<a href="#" onclick="covariance()"> Covariance</a>
+								</li>
+								<li>
+									<a href="#" onclick="regTable()" data-toggle="modal" data-target="#regModal"> Regression</a>
+								</li>
+								<li>
+									<a href="#" onclick="aprTable()" data-toggle="modal" data-target="#aprModal"> Apriori</a>
+								</li>
+								<li>
+									<a href="#" onclick="ANOVATable()" data-toggle="modal" data-target="#ANOVAModal"> ANOVA</a>
+								</li>
+							</ul>
+						</li>
 
-            <li>
-              <a href="#"><i class="fa fa-database fa-fw"></i> Database <span class="fa arrow"></span></a>
-              <ul class="nav nav-second-level">
-                <li>
-                  <a id="save-database" data-toggle="modal" data-target="#saveDBModal"> Save in database</a>
-                </li>
-                <li>
-                  <a id="load-database" data-toggle="modal" data-target="#loadDBModal"> Load from database</a>
-                </li>
-              </ul>
-              <!-- /.nav-second-level -->
-            </li>
-            <li>
-              <a href="/manual"><i class="fa fa-question-circle fa-fw"></i> Help </a>
-            </li>
-          </ul>
-        </div>
-        <!-- /.sidebar-collapse -->
-      </div>
-    </nav>
+						<li>
+							<a href="#"><i class="fa fa-database fa-fw"></i> Database <span class="fa arrow"></span></a>
+							<ul class="nav nav-second-level">
+								<li>
+									<a id="save-database" data-toggle="modal" data-target="#saveDBModal"> Save in database</a>
+								</li>
+								<li>
+									<a id="load-database" data-toggle="modal" data-target="#loadDBModal"> Load from database</a>
+								</li>
+							</ul>
+							<!-- /.nav-second-level -->
+						</li>
+						<li>
+							<a href="/manual"><i class="fa fa-question-circle fa-fw"></i> Help </a>
+						</li>
+					</ul>
+				</div>
+				<!-- /.sidebar-collapse -->
+			</div>
+		</nav>
 
-    <div id="page-wrapper">
-      <div class="row">
-        <div class="col-lg-12">
-          <h1 class="page-header">OBVA - Open Big-Data Visualization & Analysis</h1>
-        </div>
-      </div>
-      <!-- /.row -->
+		<div id="page-wrapper">
+			<div class="row">
+				<div class="col-lg-12">
+					<h1 class="page-header">OBVA - Open Big-Data Visualization & Analysis</h1>
+				</div>
+			</div>
+			<!-- /.row -->
 
-      <div class="row">
-        <div class="col-lg-8">
-        </div>
-        <!-- /.panel -->
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <i class="fa fa-table fa-fw"></i> data
-          </div>
-          <!-- /.panel-heading -->
-          <div class="panel-body table-responsive" id='dataDiv' style="max-height: 500px; overflow: auto;">
-            <div>
-              There is No Data yet
-            </div>
-          </div>
-          <!-- /.panel-body -->
-        </div>
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <i class="fa fa-table fa-fw"></i> data summary
-          </div>
-          <!-- /.panel-heading -->
-          <div class="panel-body table-responsive" id='summayDiv'>
-            <div>
-              There is No Data Summary yet
-            </div>
-          </div>
-          <!-- /.panel-body -->
-        </div>
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <i class="fa fa-area-chart fa-fw"></i> graph
-          </div>
-          <!-- /.panel-heading -->
-          <div class="panel-body table-responsive" id ="graph">
-              <div>
-                There is No Graph Yet
-              </div>
-          </div>
-          <!-- /.panel-body -->
-        </div>
-        <!-- /.row -->
+			<div class="row">
+				<div class="col-lg-8">
+				</div>
+				<!-- /.panel -->
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<i class="fa fa-table fa-fw"></i> data
+					</div>
+					<!-- /.panel-heading -->
+					<div class="panel-body table-responsive" id='dataDiv' style="max-height: 500px; overflow: auto;">
+						<div>
+							There is No Data yet
+						</div>
+					</div>
+					<!-- /.panel-body -->
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<i class="fa fa-table fa-fw"></i> data summary
+					</div>
+					<!-- /.panel-heading -->
+					<div class="panel-body table-responsive" id='summayDiv'>
+						<div>
+							There is No Data Summary yet
+						</div>
+					</div>
+					<!-- /.panel-body -->
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<i class="fa fa-area-chart fa-fw"></i> graph
+					</div>
+					<!-- /.panel-heading -->
+					<div class="panel-body table-responsive" id="graph">
+						<div>
+							There is No Graph Yet
+						</div>
+					</div>
+					<!-- /.panel-body -->
+				</div>
+				<!-- /.row -->
 
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <i class="fa fa-search fa-fw"></i> analysis
-          </div>
-          <!-- /.panel-heading -->
-          <div class="panel-body table-responsive" id="analysis">
-            <div>
-              There is No Analysis Yet
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- /.row -->
-    </div>
-    <!-- /#page-wrapper -->
-  </div>
-  <!-- /#wrapper -->
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<i class="fa fa-search fa-fw"></i> analysis
+					</div>
+					<!-- /.panel-heading -->
+					<div class="panel-body table-responsive" id="analysis">
+						<div>
+							There is No Analysis Yet
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /.row -->
+		</div>
+		<!-- /#page-wrapper -->
+	</div>
+	<!-- /#wrapper -->
 
-  <!-- Modal -->
-  <!-- signUp -->
-  <div id="signUpModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Sign up account</h4>
-        </div>
-        <div class="modal-body">
-          <label for="exampleInputName">First name</label>
-          <input class="form-control" id="inputName" type="text" aria-describedby="nameHelp" placeholder="Enter first name">
-          <label for="exampleInputLastName">Last name</label>
-          <input class="form-control" id="inputLastName" type="text" aria-describedby="nameHelp" placeholder="Enter last name">
-          <label for="exampleInputEmail">Email address</label>
-          <input class="form-control" id="inputEmail" type="email" aria-describedby="emailHelp" placeholder="Enter email">
-          <label for="exampleInputPassword">Password</label>
-          <input class="form-control" id="inputPassword" type="password" placeholder="Password">
-          <label for="exampleConfirmPassword">Confirm password</label>
-          <input class="form-control" id="confirmPassword" type="password" placeholder="Confirm password">
-        </div>
-        <div class="modal-footer">
-          <a class="btn btn-primary btn-block" href="#" id="submit-signUp">Sign up</a>
-        </div>
-      </div>
-    </div>
-  </div>
+	<!-- Modal -->
+	<!-- signUp -->
+	<div id="signUpModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Sign up account</h4>
+				</div>
+				<div class="modal-body">
+					<label for="exampleInputName">First name</label>
+					<input class="form-control" id="inputName" type="text" aria-describedby="nameHelp" placeholder="Enter first name">
+					<label for="exampleInputLastName">Last name</label>
+					<input class="form-control" id="inputLastName" type="text" aria-describedby="nameHelp" placeholder="Enter last name">
+					<label for="exampleInputEmail">Email address</label>
+					<input class="form-control" id="inputEmail" type="email" aria-describedby="emailHelp" placeholder="Enter email">
+					<label for="exampleInputPassword">Password</label>
+					<input class="form-control" id="inputPassword" type="password" placeholder="Password">
+					<label for="exampleConfirmPassword">Confirm password</label>
+					<input class="form-control" id="confirmPassword" type="password" placeholder="Confirm password">
+				</div>
+				<div class="modal-footer">
+					<a class="btn btn-primary btn-block" href="#" id="submit-signUp">Sign up</a>
+				</div>
+			</div>
+		</div>
+	</div>
 
-  <!-- signIn -->
-  <div id="signInModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Sign in account</h4>
-        </div>
-        <div class="modal-body">
-          <div class="form-group">
-            <input class="form-control" placeholder="E-mail" name="email" type="email" id="signInEmail" autofocus>
-          </div>
-          <div class="form-group">
-            <input class="form-control" placeholder="Password" name="password" type="password" value="" id="signInPassword">
-          </div>
-        </div>
-        <div class="modal-footer">
-          <a href="#" class="btn btn-lg btn-success btn-block" id="submit-signIn">Sign in</a>
-        </div>
-      </div>
-    </div>
-  </div>
+	<!-- signIn -->
+	<div id="signInModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Sign in account</h4>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+						<input class="form-control" placeholder="E-mail" name="email" type="email" id="signInEmail" autofocus>
+					</div>
+					<div class="form-group">
+						<input class="form-control" placeholder="Password" name="password" type="password" value="" id="signInPassword">
+					</div>
+				</div>
+				<div class="modal-footer">
+					<a href="#" class="btn btn-lg btn-success btn-block" id="submit-signIn">Sign in</a>
+				</div>
+			</div>
+		</div>
+	</div>
 
-  <!-- DB-Save -->
-  <div id="saveDBModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Save Current Work</h4>
-        </div>
-        <div class="modal-body">
-          <div class="form-group">
-            <input class="form-control" placeholder="Work Name" name="work-name" type="text" id="work-name" autofocus>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <a href="#" class="btn btn-lg btn-success btn-block" id="submit-save">Save</a>
-        </div>
-      </div>
+	<!-- DB-Save -->
+	<div id="saveDBModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Save Current Work</h4>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+						<input class="form-control" placeholder="Work Name" name="work-name" type="text" id="work-name" autofocus>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<a href="#" class="btn btn-lg btn-success btn-block" id="submit-save">Save</a>
+				</div>
+			</div>
 
-    </div>
-  </div>
+		</div>
+	</div>
 
-  <!-- DB-Load -->
-  <div id="loadDBModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Load Work</h4>
-        </div>
-        <div class="modal-body" id='load-body'></div>
-        <div class="modal-footer">
-          <a href="#" class="btn btn-lg btn-success btn-block" id="submit-load">Load</a>
-        </div>
-      </div>
-    </div>
-  </div>
+	<!-- DB-Load -->
+	<div id="loadDBModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Load Work</h4>
+				</div>
+				<div class="modal-body" id='load-body'></div>
+				<div class="modal-footer">
+					<a href="#" class="btn btn-lg btn-success btn-block" id="submit-load">Load</a>
+				</div>
+			</div>
+		</div>
+	</div>
 
-  <!-- Upload-CSV -->
-  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Upload CSV File</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	<!-- Upload-CSV -->
+	<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLongTitle">Upload CSV File</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
-        </div>
-        <div class="modal-body">
-          <form method="post" id="form" name="csvform" enctype="multipart/form-data">
-            <div class="form-group">
-              <label for="InputSubject1">CSV 파일첨부</label>
-              <input id="upload-csv" type="file" style="display:none;">
-              <div class="input-group" id='filegroup'>
-                <input type="text" id="userfile" class="form-control" name="userfile" disabled>
-                <span class="input-group-btn">
+				</div>
+				<div class="modal-body">
+					<form method="post" id="form" name="csvform" enctype="multipart/form-data">
+						<div class="form-group">
+							<label for="InputSubject1">CSV 파일첨부</label>
+							<input id="upload-csv" type="file" style="display:none;">
+							<div class="input-group" id='filegroup'>
+								<input type="text" id="userfile" class="form-control" name="userfile" disabled>
+								<span class="input-group-btn">
                   <label for="fileInput" class="btn btn-default">
                     <span class="glyphicon fa fa-upload"></span>
-                  </label>
-                </span>
-              </div>
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close-modal">Close</button>
-          <button type="button" class="btn btn-primary" id="submit-csv">Upload File</button>
-        </div>
-      </div>
-    </div>
-  </div>
+								</label>
+								</span>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal" id="close-modal">Close</button>
+					<button type="button" class="btn btn-primary" id="submit-csv">Upload File</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
-  <!-- Not Available -->
-  <div id="notAvailableModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Not available process</h4>
-        </div>
-        <div class="modal-body table-responsive">
-          <table width="100%" class="table table-bordered table-hover table-striped" id="NATable">
-            <thead>
-              <tr>
-                <th>variable name</th>
-                <th>NA count</th>
-                <th>NA percent</th>
-                <th>total count</th>
-                <th>NA process</th>
-              </tr>
-            </thead>
-            <tbody>
+	<!-- Not Available -->
+	<div id="notAvailableModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Not available process</h4>
+				</div>
+				<div class="modal-body table-responsive">
+					<table width="100%" class="table table-bordered table-hover table-striped" id="NATable">
+						<thead>
+							<tr>
+								<th>variable name</th>
+								<th>NA count</th>
+								<th>NA percent</th>
+								<th>total count</th>
+								<th>NA process</th>
+							</tr>
+						</thead>
+						<tbody>
 
-            </tbody>
-          </table>
+						</tbody>
+					</table>
 
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" onclick="btnNotAvailableApply()">Apply</button>
-        </div>
-      </div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary" onclick="btnNotAvailableApply()">Apply</button>
+				</div>
+			</div>
 
-    </div>
-  </div>
+		</div>
+	</div>
 
-  <!-- Stratification -->
-  <div id="stratificationModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Stratification process</h4>
-        </div>
-        <div class="modal-body">
+	<!-- Stratification -->
+	<div id="stratificationModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Stratification process</h4>
+				</div>
+				<div class="modal-body">
 
-          <div id="stratificationScatter"></div>
-          <lable>variable</lable>
-          <select id="strSelect" onchange="itemChange()">
+					<div id="stratificationScatter"></div>
+					<lable>variable</lable>
+					<select id="strSelect" onchange="itemChange()">
 
           </select>
 
 
 
-        </div>
-        <div class="modal-footer">
+				</div>
+				<div class="modal-footer">
 
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" onclick="btnStratificationApply()">Apply</button>
-        </div>
-      </div>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary" onclick="btnStratificationApply()">Apply</button>
+				</div>
+			</div>
 
-    </div>
-  </div>
+		</div>
+	</div>
 
-  <!-- Graph -->
-  <div id="graphModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
+	<!-- Graph -->
+	<div id="graphModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
 
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Graph</h4>
-        </div>
-        <div class="modal-body table-responsive">
-          X = <label id="showVariX"></label> Y = <label id="showVariY"></label>
-          <table width="100%" class="table table-bordered table-hover table-striped" id="graphTable">
-            <thead>
-              <tr>
-                <th>variable name</th>
-                <th>example</th>
-                <th>X</th>
-                <th>Y</th> 
-                
-              </tr>
-            </thead>
-            <tbody>
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Graph</h4>
+				</div>
+				<div class="modal-body table-responsive">
+					X = <label id="showVariX"></label> Y = <label id="showVariY"></label>
+					<table width="100%" class="table table-bordered table-hover table-striped" id="graphTable">
+						<thead>
+							<tr>
+								<th>variable name</th>
+								<th>example</th>
+								<th>X</th>
+								<th>Y</th>
 
-            </tbody>
-          </table>
-          <div id="variList">
-          </div>
-          <div class="graphType" style="display:none">
-            <input type="radio" name="graphRadio" value="scatter" />
-            <label for="huey">Line</label>
-            <input type="radio" name="graphRadio" value="bar" />
-            <label for="huey">Bar</label>
-            <input type="radio" name="graphRadio" value="box" />
-            <label for="huey">Box</label>
-            <input type="radio" name="graphRadio" value="markers" />
-            <label for="huey">Scatter</label>
-            <input type="radio" name="graphRadio" value="pie" />
-            <label for="huey">Pie</label>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" onclick="btnGraphApply()">Apply</button>
-        </div>
-      </div>
+							</tr>
+						</thead>
+						<tbody>
 
-    </div>
-  </div>
+						</tbody>
+					</table>
+					<div id="variList">
+					</div>
+					<div class="graphType" style="display:none">
+						<input type="radio" name="graphRadio" value="scatter" />
+						<label for="huey">Line</label>
+						<input type="radio" name="graphRadio" value="bar" />
+						<label for="huey">Bar</label>
+						<input type="radio" name="graphRadio" value="box" />
+						<label for="huey">Box</label>
+						<input type="radio" name="graphRadio" value="markers" />
+						<label for="huey">Scatter</label>
+						<input type="radio" name="graphRadio" value="pie" />
+						<label for="huey">Pie</label>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary" onclick="btnGraphApply()">Apply</button>
+				</div>
+			</div>
 
-  <!-- Outlier -->
-  <div id="outlierModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Outlier process</h4>
-        </div>
-        <div class="modal-body table-responsive">
-          <div id="outlierBox">
+		</div>
+	</div>
 
-          </div>
-          <table width="100%" class="table table-bordered table-hover table-striped" id="outlierTable">
-            <thead>
-              <tr>
-                <th>variable name</th>
-                <th>min</th>
-                <th>max</th>
-              </tr>
-            </thead>
-            <tbody>
+	<!-- Outlier -->
+	<div id="outlierModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Outlier process</h4>
+				</div>
+				<div class="modal-body table-responsive">
+					<div id="outlierBox">
 
-            </tbody>
-          </table>
-        </div>
-        <div class="modal-footer">
+					</div>
+					<table width="100%" class="table table-bordered table-hover table-striped" id="outlierTable">
+						<thead>
+							<tr>
+								<th>variable name</th>
+								<th>min</th>
+								<th>max</th>
+							</tr>
+						</thead>
+						<tbody>
 
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" onclick="btnOutlierApply()">Apply</button>
-        </div>
-      </div>
+						</tbody>
+					</table>
+				</div>
+				<div class="modal-footer">
 
-    </div>
-  </div>
-    <!-- Correlation -->
-    <div id="corrModal" class="modal fade" role="dialog">
-      <div class="modal-dialog">
-        <!-- Modal content-->
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Correlation</h4>
-          </div>
-          <div class="modal-body table-responsive">
-            <table width="100%" class="table table-bordered table-hover table-striped" id="corrTable">
-              <thead>
-                <tr>
-                  <th>variable name</th>
-                  <th>select</th>
-                </tr>
-              </thead>
-              <tbody>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary" onclick="btnOutlierApply()">Apply</button>
+				</div>
+			</div>
 
-              </tbody>
-            </table>
-          </div>
-          <div class="modal-footer">
+		</div>
+	</div>
+	<!-- Correlation -->
+	<div id="corrModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Correlation</h4>
+				</div>
+				<div class="modal-body table-responsive">
+					<table width="100%" class="table table-bordered table-hover table-striped" id="corrTable">
+						<thead>
+							<tr>
+								<th>variable name</th>
+								<th>select</th>
+							</tr>
+						</thead>
+						<tbody>
 
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" onclick="btnCorrApply()">Apply</button>
-          </div>
-        </div>
+						</tbody>
+					</table>
+				</div>
+				<div class="modal-footer">
 
-      </div>
-    </div>
-    <!-- Regression -->
-    <div id="regModal" class="modal fade" role="dialog">
-      <div class="modal-dialog">
-        <!-- Modal content-->
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Regression</h4>
-          </div>
-          <div class="modal-body table-responsive">
-            <table width="100%" class="table table-bordered table-hover table-striped" id="regTable">
-              <thead>
-                <tr>
-                  <th>variable name</th>
-                  <th>dependent</th>
-                  <th>independent</th>
-                </tr>
-              </thead>
-              <tbody>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary" onclick="btnCorrApply()">Apply</button>
+				</div>
+			</div>
 
-              </tbody>
-            </table>
-          </div>
-          <div class="modal-footer">
+		</div>
+	</div>
+	<!-- Regression -->
+	<div id="regModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Regression</h4>
+				</div>
+				<div class="modal-body table-responsive">
+					<table width="100%" class="table table-bordered table-hover table-striped" id="regTable">
+						<thead>
+							<tr>
+								<th>variable name</th>
+								<th>dependent</th>
+								<th>independent</th>
+							</tr>
+						</thead>
+						<tbody>
 
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" onclick="btnRegApply()">Apply</button>
-          </div>
-        </div>
+						</tbody>
+					</table>
+				</div>
+				<div class="modal-footer">
 
-      </div>
-    </div>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary" onclick="btnRegApply()">Apply</button>
+				</div>
+			</div>
 
-        <!-- Apriori -->
-        <div id="aprModal" class="modal fade" role="dialog">
-          <div class="modal-dialog">
-            <!-- Modal content-->
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Apriori</h4>
-              </div>
-              <div class="modal-body table-responsive">
-                <table width="100%" class="table table-bordered table-hover table-striped" id="aprTable">
-                  <thead>
-                    <tr>
-                      <th>variable name</th>
-                      <th>select</th>
-                    </tr>
-                  </thead>
-                  <tbody>
+		</div>
+	</div>
 
-                  </tbody>
-                </table>
-                <lable>min support</lable><input type="text" id="minSupport" value="0.15" />
-                <lable>min confidence</lable><input type="text" id="minConfidence" value="0.6"></input>
-              </div>
-              <div class="modal-footer">
+	<!-- Apriori -->
+	<div id="aprModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Apriori</h4>
+				</div>
+				<div class="modal-body table-responsive">
+					<table width="100%" class="table table-bordered table-hover table-striped" id="aprTable">
+						<thead>
+							<tr>
+								<th>variable name</th>
+								<th>select</th>
+							</tr>
+						</thead>
+						<tbody>
 
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" onclick="btnAprApply()">Apply</button>
-              </div>
-            </div>
+						</tbody>
+					</table>
+					<lable>min support</lable><input type="text" id="minSupport" value="0.15" />
+					<lable>min confidence</lable><input type="text" id="minConfidence" value="0.6"></input>
+				</div>
+				<div class="modal-footer">
 
-          </div>
-        </div>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary" onclick="btnAprApply()">Apply</button>
+				</div>
+			</div>
 
-    <!-- Remove Column -->
-    <div id="colModal" class="modal fade" role="dialog">
-      <div class="modal-dialog">
-        <!-- Modal content-->
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Remove Column</h4>
-          </div>
-          <div class="modal-body table-responsive">
-            <table width="100%" class="table table-bordered table-hover table-striped" id="colTable">
-              <thead>
-                <tr>
-                  <th>variable name</th>
-                  <th>select</th>
-                </tr>
-              </thead>
-              <tbody>
+		</div>
+	</div>
 
-              </tbody>
-            </table>
-          </div>
-          <div class="modal-footer">
+	<!-- Remove Column -->
+	<div id="colModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Remove Column</h4>
+				</div>
+				<div class="modal-body table-responsive">
+					<table width="100%" class="table table-bordered table-hover table-striped" id="colTable">
+						<thead>
+							<tr>
+								<th>variable name</th>
+								<th>select</th>
+							</tr>
+						</thead>
+						<tbody>
 
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" onclick="btnColApply()">Apply</button>
-          </div>
-        </div>
+						</tbody>
+					</table>
+				</div>
+				<div class="modal-footer">
 
-      </div>
-    </div>
-    <!-- ANOVA -->
-    <div id="ANOVAModal" class="modal fade" role="dialog">
-      <div class="modal-dialog">
-        <!-- Modal content-->
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Analysis Of Variance</h4>
-          </div>
-          <div class="modal-body table-responsive">
-            <table width="100%" class="table table-bordered table-hover table-striped" id="ANOVATable">
-              <thead>
-                <tr>
-                  <th>variable name</th>
-                  <th>select</th>
-                </tr>
-              </thead>
-              <tbody>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary" onclick="btnColApply()">Apply</button>
+				</div>
+			</div>
 
-              </tbody>
-            </table>
-          </div>
-          <div class="modal-footer">
+		</div>
+	</div>
+	<!-- ANOVA -->
+	<div id="ANOVAModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Analysis Of Variance</h4>
+				</div>
+				<div class="modal-body table-responsive">
+					<table width="100%" class="table table-bordered table-hover table-striped" id="ANOVATable">
+						<thead>
+							<tr>
+								<th>variable name</th>
+								<th>select</th>
+							</tr>
+						</thead>
+						<tbody>
 
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" onclick="btnANOVAApply()">Apply</button>
-          </div>
-        </div>
+						</tbody>
+					</table>
+				</div>
+				<div class="modal-footer">
 
-      </div>
-    </div>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary" onclick="btnANOVAApply()">Apply</button>
+				</div>
+			</div>
 
-    <!-- Graph 3D -->
-    <div id="graph3dModal" class="modal fade" role="dialog">
-      <div class="modal-dialog">
+		</div>
+	</div>
 
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Graph</h4>
-          </div>
-          <div class="modal-body table-responsive">
-              X = <label id="show3dVariX"></label> Y = <label id="show3dVariY"></label> Z = <label id="show3dVariZ"></label>
-            <table width="100%" class="table table-bordered table-hover table-striped" id="graph3dTable">
-              <thead>
-                <tr>
-                  <th>variable name</th>
-                  <th>example</th>
-                  <th>X</th>
-                  <th>Y</th>
-                  <th>Z</th>
-                </tr>
-              </thead>
-              <tbody>
+	<!-- Graph 3D -->
+	<div id="graph3dModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
 
-              </tbody>
-            </table>
-            <div id="vari3dList">
-            </div>
-            <div class="graphType" style="display:none">
-              <input type="radio" name="graph3dRadio" value="markers" />
-              <label for="huey">Scatter 3D</label>
-              <input type="radio" name="graph3dRadio" value="lines" />
-              <label for="huey">Line 3D</label>
-              <input type="radio" name="graph3dRadio" value="bubble" />
-              <label for="huey">Bubble</label>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" onclick="btnGraph3dApply()">Apply</button>
-          </div>
-        </div>
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Graph</h4>
+				</div>
+				<div class="modal-body table-responsive">
+					X = <label id="show3dVariX"></label> Y = <label id="show3dVariY"></label> Z = <label id="show3dVariZ"></label>
+					<table width="100%" class="table table-bordered table-hover table-striped" id="graph3dTable">
+						<thead>
+							<tr>
+								<th>variable name</th>
+								<th>example</th>
+								<th>X</th>
+								<th>Y</th>
+								<th>Z</th>
+							</tr>
+						</thead>
+						<tbody>
 
-      </div>
-    </div>
+						</tbody>
+					</table>
+					<div id="vari3dList">
+					</div>
+					<div class="graphType" style="display:none">
+						<input type="radio" name="graph3dRadio" value="markers" />
+						<label for="huey">Scatter 3D</label>
+						<input type="radio" name="graph3dRadio" value="lines" />
+						<label for="huey">Line 3D</label>
+						<input type="radio" name="graph3dRadio" value="bubble" />
+						<label for="huey">Bubble</label>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary" onclick="btnGraph3dApply()">Apply</button>
+				</div>
+			</div>
 
-        <!-- Derived variable -->
-        <div id="derModal" class="modal fade" role="dialog">
-          <div class="modal-dialog">
+		</div>
+	</div>
 
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Derived Vairable</h4>
-              </div>
-              <div class="modal-body table-responsive">
-                <div id ="derBtn">
-                </div>
-                <div id ="derOper" align="center">
-                    <button type="button" class="btn btn-sm btn-info" onclick="btnOper('+')"> + </button>
-                    <button type="button" class="btn btn-sm btn-info" onclick="btnOper('-')"> - </button>
-                    <button type="button" class="btn btn-sm btn-info" onclick="btnOper('*')"> * </button>
-                    <button type="button" class="btn btn-sm btn-info" onclick="btnOper('/')"> / </button>
-                    <button type="button" class="btn btn-sm btn-info" onclick="btnOper('^')"> ^ </button>
-                    <button type="button" class="btn btn-sm btn-info" onclick="btnOper('(')"> ( </button>
-                    <button type="button" class="btn btn-sm btn-info" onclick="btnOper(')')"> ) </button>
-                    <button type="button" class="btn btn-sm btn-info" onclick="btnOper('<')"> < </button>
-                </div>
-
-                <!-- <table width="100%" class="table table-bordered table-hover table-striped" id="derTable">
-                  <thead>
-                    <tr>
-                      <th>variable name</th>
-                      <th>click</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-
-                  </tbody>
-                </table> -->
-                <div class="graphType">
-                  <label for="huey">Expression</label>
-                  <input type="text" id="expression" /> <br/>
-                  <label for="huey">Dervied variable name</label>
-                  <input type="text" id="derName"/>
-
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" onclick="btnDerApply()">Apply</button>
-              </div>
-            </div>
-
-          </div>
-        </div>
+	<!-- Derived variable -->
+	<div id="derModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Derived Vairable</h4>
+				</div>
+				<div class="modal-body">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-md-3">
+								<label for="">기존 변수</label>
+							</div>
+							<div class="col-md-2">
+								<label for="">연산자</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-3">
+								<div id="derBtn" class="btn-group-vertical"> </div>
+							</div>
+							<div class="col-md-2">
+								<div id="derOper" class="btn-group-vertical">
+									<button type="button" class="btn btn-info w-100" onclick="btnOper('+')"> + </button>
+									<button type="button" class="btn btn-info w-100" onclick="btnOper('-')"> - </button>
+									<button type="button" class="btn btn-info w-100" onclick="btnOper('*')"> * </button>
+									<button type="button" class="btn btn-info w-100" onclick="btnOper('/')"> / </button>
+									<button type="button" class="btn btn-info w-100" onclick="btnOper('(')"> ( </button>
+									<button type="button" class="btn btn-info w-100" onclick="btnOper(')')"> ) </button>
+								</div>
+							</div>
+							<div class="col-md-7">
+								<div class="graphType">
+									<label for="expression">Expression</label>
+									<input type="text" class="form-control" id="expression" /> <br/>
+									<label for="derName">Dervied variable name</label>
+									<input type="text" class="form-control" id="derName" />
+								</div>
+							</div>
+						</div>
 
 
-  <!-- Loading Image -->
-  <div id="divLoadBody">
-    <!-- Loding Image -->
-    <div id="loadingBar">
-      <table width="100%" height="100%" border="0" bgcolor="#000000">
-        <tr>
-          <td align="center">
-            <div style="text-align:center;">
-                <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
-                <span class="sr-only">Loading...</span> <br />
-                <h3>Loading...</h3>
-            </div>
-          </td>
-        </tr>
-        </table>
-    </div>
-  </div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary" onclick="btnDerApply()">Apply</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
 
 
-  <!-- jQuery -->
-  <script src="../vendor/jquery/jquery.min.js"></script>
+	<!-- Loading Image -->
+	<div id="divLoadBody">
+		<!-- Loding Image -->
+		<div id="loadingBar">
+			<table width="100%" height="100%" border="0" bgcolor="#000000">
+				<tr>
+					<td align="center">
+						<div style="text-align:center;">
+							<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+							<span class="sr-only">Loading...</span> <br />
+							<h3>Loading...</h3>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
 
-  <!-- Bootstrap Core JavaScript -->
-  <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
 
-  <!-- Metis Menu Plugin JavaScript -->
-  <script src="../vendor/metisMenu/metisMenu.min.js"></script>
+	<!-- jQuery -->
+	<script src="../vendor/jquery/jquery.min.js"></script>
 
-  <!-- Morris Charts JavaScript -->
-  <script src="../vendor/raphael/raphael.min.js"></script>
-  <script src="../vendor/morrisjs/morris.min.js"></script>
-  <script src="../data/morris-data.js"></script>
+	<!-- Bootstrap Core JavaScript -->
+	<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
 
-  <!-- Firebase Init -->
-  <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-database.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-storage.js"></script>
-  <script type="text/javascript" src="../js/firebase-init.js"></script>
+	<!-- Metis Menu Plugin JavaScript -->
+	<script src="../vendor/metisMenu/metisMenu.min.js"></script>
 
-  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+	<!-- Morris Charts JavaScript -->
+	<script src="../vendor/raphael/raphael.min.js"></script>
+	<script src="../vendor/morrisjs/morris.min.js"></script>
+	<script src="../data/morris-data.js"></script>
 
-  <!-- Custom Theme JavaScript -->
-  <script src="../dist/js/sb-admin-2.js"></script>
-  <script type="text/javascript" src='../js/loading.js'></script>
-  <script type="text/javascript" src="../js/upload.js"></script>
-  <script type="text/javascript" src="../js/plotly.js"></script>
-  <script type="text/javascript" src="../js/summary.js"></script>
-  <script type="text/javascript" src="../js/graphModal.js"></script>
-  <script type="text/javascript" src="../js/outlierModal.js"></script>
-  <script type="text/javascript" src="../js/correlation.js"></script>
-  <script type="text/javascript" src="../js/covariance.js"></script>
-  <script type="text/javascript" src="../js/stratificationModal.js"></script>
-  <script type="text/javascript" src="../js/NAModal.js"></script>
-  <script type="text/javascript" src="../js/auth.js"></script>
-  <script type="text/javascript" src="../js/database.js"></script>
-  <script type="text/javascript" src="../js/dropLogin.js"></script>
-  <script type="text/javascript" src="../js/regModal.js"></script>
-  <script type="text/javascript" src="../js/aprModal.js"></script>
-  <script type="text/javascript" src="../js/colModal.js"></script>
-  <script type="text/javascript" src="../js/ANOVAModal.js"></script>
-  <script type="text/javascript" src="../js/derModal.js"></script>
-  <script type="text/javascript" src="../js/data.js"></script>
+	<!-- Firebase Init -->
+	<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-storage.js"></script>
+	<script type="text/javascript" src="../js/firebase-init.js"></script>
+
+	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+	<!-- Custom Theme JavaScript -->
+	<script src="../dist/js/sb-admin-2.js"></script>
+	<script type="text/javascript" src='../js/loading.js'></script>
+	<script type="text/javascript" src="../js/upload.js"></script>
+	<script type="text/javascript" src="../js/plotly.js"></script>
+	<script type="text/javascript" src="../js/summary.js"></script>
+	<script type="text/javascript" src="../js/graphModal.js"></script>
+	<script type="text/javascript" src="../js/outlierModal.js"></script>
+	<script type="text/javascript" src="../js/correlation.js"></script>
+	<script type="text/javascript" src="../js/covariance.js"></script>
+	<script type="text/javascript" src="../js/stratificationModal.js"></script>
+	<script type="text/javascript" src="../js/NAModal.js"></script>
+	<script type="text/javascript" src="../js/auth.js"></script>
+	<script type="text/javascript" src="../js/database.js"></script>
+	<script type="text/javascript" src="../js/dropLogin.js"></script>
+	<script type="text/javascript" src="../js/regModal.js"></script>
+	<script type="text/javascript" src="../js/aprModal.js"></script>
+	<script type="text/javascript" src="../js/colModal.js"></script>
+	<script type="text/javascript" src="../js/ANOVAModal.js"></script>
+	<script type="text/javascript" src="../js/derModal.js"></script>
+	<script type="text/javascript" src="../js/data.js"></script>
 
 
 </body>
