@@ -35,14 +35,14 @@ def process(request):
     medians = postData.median()
     means = postData.mean()
 
-    print (medians, means)
+    # print (medians, means)
 
-    print ("before")
-    print (postData)
+    # print ("before")
+    # print (postData)
 
     for index, proc in enumerate(process):
         column = variable[index]
-        print (column, medians[column])
+        # print (column, medians[column])
         if proc == 'remove':
             postData = postData.dropna(subset=[column])
         elif proc == 'median':
@@ -50,7 +50,7 @@ def process(request):
         elif proc == 'mean':
             postData = postData.fillna(means[column:])
 
-    print ("after")
-    print (postData)
+    # print ("after")
+    # print (postData)
 
     return JsonResponse({"snapshot": postData.to_json(orient='records')}, safe=False)

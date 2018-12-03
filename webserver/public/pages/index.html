@@ -43,11 +43,11 @@
 		<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          			<span class="sr-only">Toggle navigation</span>
-          			<span class="icon-bar"></span>
-         			<span class="icon-bar"></span>
-         			<span class="icon-bar"></span>
-       			</button>
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
 				<a class="navbar-brand" href="index.html">OBVA</a>
 			</div>
 			<!-- /.navbar-header -->
@@ -56,8 +56,8 @@
 
 				<li class="dropdown" style="float: right">
 					<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-          				<i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
-          			</a>
+						<i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+					</a>
 					<ul class="dropdown-menu dropdown-user" onload="bodyLogin()">
 						<li id="signIn"><a href="#" data-toggle="modal" data-target="#signInModal"><i class="fa fa-user fa-fw"></i> Sign in</a>
 						</li>
@@ -76,16 +76,16 @@
 						<li class="sidebar-nav">
 							<!-- Button trigger modal -->
 							<a href="#" data-toggle="modal" data-target="#exampleModalCenter">
-								<i class="fa fa-file fa-fw" ></i>
+								<i class="fa fa-file fa-fw"></i>
 								Upload CSV File
 							</a>
 						</li>
 
 						<li>
 							<a href="#">
-								<i class="fa fa-area-chart fa-fw" ></i>
+								<i class="fa fa-area-chart fa-fw"></i>
 								Charts
-								<span class="fa arrow" ></span>
+								<span class="fa arrow"></span>
 							</a>
 							<ul class="nav nav-second-level">
 								<li>
@@ -133,6 +133,9 @@
 								<li>
 									<a href="#" onclick="derTable()" data-toggle="modal" data-target="#derModal"> Derived variable</a>
 								</li>
+								<li>
+                  <a href="#" onclick="transTable()" data-toggle="modal" data-target="#transModal"> Transform</a>
+                </li>
 							</ul>
 						</li>
 						<li>
@@ -170,7 +173,7 @@
 						</li>
 						<li>
 							<a onclick="downloadCSV()">
-								<i class="fa fa-file fa-fw" ></i>
+								<i class="fa fa-file fa-fw"></i>
 								Download CSV File
 							</a>
 						</li>
@@ -350,8 +353,8 @@
 				<div class="modal-header">
 					<h5 class="modal-title" id="exampleModalLongTitle">Upload CSV File</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+						<span aria-hidden="true">&times;</span>
+					</button>
 				</div>
 				<div class="modal-body">
 					<form method="post" id="form" name="csvform" enctype="multipart/form-data">
@@ -361,9 +364,9 @@
 							<div class="input-group" id='filegroup'>
 								<input type="text" id="userfile" class="form-control" name="userfile" disabled>
 								<span class="input-group-btn">
-                  <label for="fileInput" class="btn btn-default">
-                    <span class="glyphicon fa fa-upload"></span>
-								</label>
+									<label for="fileInput" class="btn btn-default">
+										<span class="glyphicon fa fa-upload"></span>
+									</label>
 								</span>
 							</div>
 						</div>
@@ -427,7 +430,7 @@
 					<lable>variable</lable>
 					<select id="strSelect" onchange="itemChange()">
 
-          </select>
+					</select>
 
 
 
@@ -768,7 +771,7 @@
 							<div class="col-md-7">
 								<div class="graphType">
 									<label for="expression">Expression</label>
-									<input type="text" class="form-control" id="expression" /> <br/>
+									<input type="text" class="form-control" id="expression" /> <br />
 									<label for="derName">Dervied variable name</label>
 									<input type="text" class="form-control" id="derName" />
 								</div>
@@ -806,6 +809,42 @@
 		</div>
 	</div>
 
+	<!-- transform -->
+	<div id="transModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Transform</h4>
+				</div>
+				<div class="modal-body table-responsive">
+					<table width="100%" class="table table-bordered table-hover table-striped" id="transTable">
+						<thead>
+							<tr>
+								<th>variable name</th>
+								<th>min</th>
+								<th></th>
+								<th></th>
+								<th></th>
+								<th>max</th>
+								<th>select</th>
+							</tr>
+						</thead>
+						<tbody>
+
+						</tbody>
+					</table>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary" onclick="btnTransApply()">Apply</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
 
 	<!-- jQuery -->
 	<script src="../vendor/jquery/jquery.min.js"></script>
@@ -852,6 +891,7 @@
 	<script type="text/javascript" src="../js/ANOVAModal.js"></script>
 	<script type="text/javascript" src="../js/derModal.js"></script>
 	<script type="text/javascript" src="../js/data.js"></script>
+	<script type="text/javascript" src="../js/transModal.js"></script>
 	<script type="text/javascript" src="../js/download.js"></script>
 
 

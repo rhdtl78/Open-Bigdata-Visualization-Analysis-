@@ -36,13 +36,13 @@ function NATable() {
       }).text(variable[i]);
       var td_NAc = $('<td/>', {
         'name': 'NAcount'
-      }).text(variable[i]);
+      }).text(NAcount[i]);
       var td_NAp = $('<td/>', {
         'name': 'NApercent'
-      }).text(variable[i]);
+      }).text(NApercent[i]);
       var td_NAtotal = $('<td/>', {
         'name': 'totalCount'
-      }).text(variable[i]);
+      }).text(totalCount[i]);
 
       var td_sel = $('<td/>');
       var formGroup = $('<div/>', {
