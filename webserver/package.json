@@ -18,7 +18,7 @@
     "express": "~4.16.0",
     "fast-csv": "^2.4.1",
     "firebase": "^5.1.0",
-    "firebase-admin": "^5.12.1",
+    "firebase-admin": "^11.4.1",
     "fs": "0.0.1-security",
     "http-errors": "~1.6.2",
     "immutable": "^3.8.2",
